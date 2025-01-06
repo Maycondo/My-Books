@@ -1,0 +1,20 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+.Container {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(31, 28, 28);
+}
+
+.Container h1 {
+    height: 4rem;
+    width: 100%;
+    color: white;
+}
+
+
