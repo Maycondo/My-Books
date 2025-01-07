@@ -3,8 +3,6 @@ import "./style.css"
 import { IoBookSharp } from "react-icons/io5";
 
 
-
-
 export default function Panelsuperior() {
 
 

@@ -16,14 +16,14 @@ const useLoader = (display: number) => {
 }
 
 export default function Home() {
-  const loading = useLoader(7000)
+  const loading = useLoader(10000)
 
   if (loading) {
     return <Loader />
   }
 
   return (
-    <div>
+    <div> 
         <Panelsuperior />
     </div>
   );
