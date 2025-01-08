@@ -5,16 +5,38 @@
 
 .Container {
     height: 4rem;
-    width: 100%;
+    width: 100vw;
     display: flex;
-    justify-content: space-evenly;
     background-color: rgb(31, 28, 28);
 }
 
-.Container h1 {
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+nav h1 {
     height: 4rem;
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+    font-family: "Josefin Sans", serif;
+    align-items: center;
     width: 100%;
     color: white;
 }
 
+ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1rem;
+    padding: 1rem;
+
+}
 

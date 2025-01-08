@@ -1,6 +1,6 @@
 import "./style.css"
 
-import { IoBookSharp } from "react-icons/io5";
+import { ImBooks } from "react-icons/im";
 
 
 export default function Panelsuperior() {
@@ -9,7 +9,7 @@ export default function Panelsuperior() {
     return (
         <div className="Container">
             <nav>
-                    <h1><IoBookSharp /> My Books</h1>
+                    <h1><ImBooks/>My Books</h1>    
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
