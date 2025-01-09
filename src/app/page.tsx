@@ -1,8 +1,10 @@
 "use client";
 
 import { useState , useEffect } from "react";
-import Panelsuperior from "@/components/Panelsuperior/Panelsuperior";
 import Loader from "@/components/Loader/Loader"
+import Panelsuperior from "@/components/Panelsuperior/Panelsuperior";
+import ButtomAddBooks from "@/components/ButtonAdd/ButtonAddBooks";
+
 
 const useLoader = (display: number) => {
     const [loading, setLoading] = useState(true);
@@ -25,6 +27,7 @@ export default function Home() {
   return (
     <div> 
         <Panelsuperior />
+        <ButtomAddBooks />
     </div>
   );
 }
