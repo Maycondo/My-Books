@@ -1,0 +1,97 @@
+.Card_opacity {
+    height: 85rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(1, 1, 1, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    padding: 10px;
+}
+
+.Button {
+    position: relative;
+    left: 92%;
+    margin: 1rem;
+    width: 3em;
+    height: 3em;
+    border: none;
+    background: #2e2c2c;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .X {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 1.5px;
+    background-color: rgb(255, 255, 255);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  
+  .Y {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 1.5px;
+    background-color: #fff;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  
+  .close {
+    position: absolute;
+    display: flex;
+    padding: 0.8rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    top: -70%;
+    left: 50%;
+    width: 3em;
+    height: 1.7em;
+    font-size: 12px;
+    background-color: rgb(19, 22, 24);
+    color: rgb(187, 229, 236);
+    border: none;
+    border-radius: 3px;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .Button:hover {
+    background-color: rgb(211, 21, 21);
+  }
+  
+  .Button:active {
+    background-color: rgb(130, 0, 0);
+  }
+  
+  .Button:hover > .close {
+    animation: close 0.2s forwards 0.25s;
+  }
+  
+  @keyframes close {
+    100% {
+      opacity: 1;
+    }
+  }
+  
+
+.Card_add_book {
+    height: 70rem;
+    width: 60rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5%;
+    background-color: aliceblue;
+}

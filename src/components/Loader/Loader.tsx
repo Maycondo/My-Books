@@ -48,7 +48,7 @@ export default function Loader () {
 
     return (
         <div className="Loader">
-           <motion.h1 id="Name-Perso" variants={bounceAnimation} initial="hidden" animate="visible">
+           <motion.h1 id="Name-Perso" variants={ bounceAnimation } initial="hidden" animate="visible">
                 {displayedText}
            </motion.h1>           
         </div>
