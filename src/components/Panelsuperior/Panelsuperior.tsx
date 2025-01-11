@@ -9,7 +9,7 @@ export default function Panelsuperior() {
     return (
         <div className="Container">
             <nav>
-                    <h1><ImBooks/>My Books</h1>    
+                    <h1 className="NameProject"><ImBooks/>My Books</h1>    
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>

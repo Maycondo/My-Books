@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect , useState } from "react";
 import "./style.css"
 
-
-
-export default function CardBookAdd ({ setAddbook, onClose }) {
+import { BiSolidImageAdd } from "react-icons/bi";
+export default function CardBookAdd ({ setAddbook , onClose }) {
     if(!setAddbook) return null;
+
+
 
     return (
         <div className="Card_opacity">
@@ -14,8 +15,8 @@ export default function CardBookAdd ({ setAddbook, onClose }) {
                     <span class="Y"></span>
                     <div class="close">Close</div>
                 </button>
-
-                <h1>TESTANDO</h1>
+                   <img src="" alt={BiSolidImageAdd} />
+                    <h2>Adicionar imagem do livro</h2>
             </div>
         </div>
     )

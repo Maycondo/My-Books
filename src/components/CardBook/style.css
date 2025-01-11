@@ -1,6 +1,7 @@
 .Card_opacity {
     height: 85rem;
     width: 100%;
+    z-index: 3;
     position: absolute;
     top: 0;
     left: 0;
@@ -18,8 +19,8 @@
     position: relative;
     left: 92%;
     margin: 1rem;
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border: none;
     background: #2e2c2c;
     border-radius: 5px;
@@ -31,8 +32,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 2em;
-    height: 1.5px;
+    width: 1.5em;
+    height: 1px;
     background-color: rgb(255, 255, 255);
     transform: translateX(-50%) rotate(45deg);
   }
@@ -42,8 +43,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 2em;
-    height: 1.5px;
+    width: 1.5em;
+    height: 1px;
     background-color: #fff;
     transform: translateX(-50%) rotate(-45deg);
   }
@@ -85,13 +86,14 @@
       opacity: 1;
     }
   }
-  
 
 .Card_add_book {
-    height: 70rem;
-    width: 60rem;
+    height: 75rem;
+    width: 50rem;
+    z-index: inbde;
     display: flex;
     flex-direction: column;
+    align-content: center;
     border-radius: 0.5%;
     background-color: aliceblue;
 }

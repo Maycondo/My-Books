@@ -18,10 +18,11 @@ nav {
     justify-content: space-around;
 }
 
-nav h1 {
+.NameProject {
     height: 4rem;
     margin: 1rem;
     display: flex;
+    font-size: 1.8rem;
     gap: 1rem;
     font-family: "Josefin Sans", serif;
     align-items: center;

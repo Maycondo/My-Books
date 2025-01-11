@@ -20,7 +20,6 @@ export default  function AddBooks () {
                 </button>
             </div>
             {isAddingBook && (<CardBook setAddbook={setIsAddingBook} onClose={() => toggleAddBook(false)}></CardBook>)}
-
         </>
     )
 }
