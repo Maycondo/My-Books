@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   return (
-    <div> 
+    <div className="My_Book"> 
         <Panelsuperior />
         <ButtomAddBooks />
         <PanelBook />

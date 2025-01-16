@@ -1,11 +1,7 @@
-* {
-    margin: 0%;
-    padding: 0%;
-}
 
 .Container {
     height: 4rem;
-    width: 100vw;
+    width: 100%;
     display: flex;
     background-color: rgb(31, 28, 28);
 }

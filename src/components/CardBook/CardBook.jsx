@@ -1,7 +1,8 @@
 import { useEffect , useState } from "react";
+import ImagemBook from "@/Image/livros.jpeg"
 import "./style.css"
 
-import { BiSolidImageAdd } from "react-icons/bi";
+
 
 
 export default function CardBookAdd ({ setAddbook , onClose }) {
@@ -16,8 +17,13 @@ export default function CardBookAdd ({ setAddbook , onClose }) {
                     <span className="Y"></span>
                     <div className="close">Close</div>
                 </button>
-                   <img src="" alt={BiSolidImageAdd} />
-                    <h2>Adicionar imagem do livro</h2>
+                    <form action="">
+                        <img className="Imagem_add" src={ ImagemBook }alt="Book"/> 
+                                <div class="input-group">
+                                    <input class="input-text" name="text" type="text" placeholder="Title Book" autocomplete="off"/>
+                                    <label class="input-text-label" for="text">Title Book</label>
+                                </div> 
+                    </form>
             </div>
         </div>
     )
