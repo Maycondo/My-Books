@@ -1,5 +1,5 @@
 .Card_opacity {
-    height: 85rem;
+    height: 110rem;
     width: 100%;
     z-index: 3;
     position: absolute;
@@ -13,6 +13,15 @@
     backdrop-filter: blur(6.9px);
     -webkit-backdrop-filter: blur(6.9px);
     padding: 10px;
+}
+
+.Form_card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-content: center;
 }
 
 .Button {
@@ -88,7 +97,7 @@
   }
 
 .Card_add_book {
-    height: 75rem;
+    height: 95rem;
     width: 50rem;
     z-index: inbde;
     display: flex;
@@ -98,75 +107,88 @@
     background-color: aliceblue;
 }
 
-.Imagem_add {
-  width: 10rem;
-  height: 10rem;
-}
+.Card_Imagem {
+    height: 600px;
+    margin: 2rem;
+    width: auto;
+    object-fit: cover;
+    border-radius: 0.5%;
+    display: flex;
+    justify-content: center;
+  }
+
+.Imagem_book {
+    width: 400px;
+    height: 600px;
+    border-radius: 0.5%;
+    object-fit: cover;
+  }
 
 .input-group {
-  display: flex;
-  gap: 10px;
-  position: relative;
-  padding: 7px 0 0;
-  width: 80%;
-  margin-bottom: 10px;
-  margin-top: 2px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    position: relative;
+    padding: 7px 0 0;
+    width: 80%;
+    margin-bottom: 10px;
+    margin-top: 2px;
 }
 
 .input-text {
-  font-family: inherit;
-  width: 30%;
-  border: none;
-  border-bottom: 2px solid #7f7f7f;
-  border-radius: 0 !important;
-  outline: 0;
-  font-size: 17px;
-  color: #7f7f7f;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
+    font-family: inherit;
+    width: 30%;
+    border: none;
+    border-bottom: 2px solid #7f7f7f;
+    border-radius: 0 !important;
+    outline: 0;
+    font-size: 19px;
+    color: #7f7f7f;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
 }
 
 .input-text::placeholder {
-  color: transparent;
-}
+    color: transparent;
+  }
 
 .input-text:placeholder-shown ~ .input-text-label {
-  font-size: 17px;
-  cursor: text;
+    font-size: 19px;
+    cursor: text;
 }
 
 .input-text-label {
-  position: absolute;
-  display: block;
-  transition: 0.2s;
-  font-size: 17px;
-  color: #7f7f7f;
-  pointer-events: none;
+    position: absolute;
+    display: block;
+    transition: 0.2s;
+    font-size: 19px;
+    color: #7f7f7f;
+    pointer-events: none;
 }
 
 .input-text:focus {
-  padding-bottom: 6px;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #000000, #000000);
-  border-image-slice: 1;
+    padding-bottom: 6px;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #000000, #000000);
+    border-image-slice: 1;
 }
 
 .input-text:focus ~ .input-text-label {
-  color: #000000;
+    color: #000000;
 }
 
 .input-text:not(:placeholder-shown) ~ .input-text-label,
 .input-text:focus ~ .input-text-label {
-  position: absolute;
-  display: block;
-  transition: 0.2s;
-  font-size: 15px;
-  font-weight: 700;
-  top: -17px;
+    position: absolute;
+    display: block;
+    transition: 0.2s;
+    font-size: 15px;
+    font-weight: 700;
+    top: -17px;
 }
 
 .input-text:required,
 .input-text:invalid {
-  box-shadow: none;
+    box-shadow: none;
 }
