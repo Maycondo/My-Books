@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 
 import Image from "next/image";
 import ImagemBook from "@/Image/livros.jpeg"
 import "./style.css"
-import { JSX } from "react";
+import { JSX, useState } from "react";
 
 
 type Categoria = Array<string>;
@@ -10,6 +11,7 @@ type Categoria = Array<string>;
 
 const categorias: Categoria = [
     "Ação",
+    "Fantasia",
     "Aventura",
     "Biografia",
     "Comédia",
@@ -29,7 +31,17 @@ interface CardBookAddProps { setAddbook: boolean;  onClose: () => void; }
 
 export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps): JSX.Element | null {
     if(!setAddbook) return null;
+    const [selectedCategorias, setSelectedCategoria] = useState<Categoria>([]);
 
+    const handleCategoriaClick = (categoria: string) => {
+            setSelectedCategoria((prev) => {
+                if(prev.includes(categoria)) {
+                        return prev.filter((cat) => cat !== categoria)
+                } else {
+                        return [...prev, categoria]
+                }
+            })
+    }
 
 
     return (
@@ -45,13 +57,14 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                             <Image className="Imagem_book" src={ImagemBook}alt="Book"/>
                         </div>                            
                                 <div className="input-group">
-                                    <input className="input-text" name="text" type="text" placeholder="Title Book" autoComplete="off"/>
-                                    <label className="input-text-label" htmlFor="text">Title Book</label>
+                                        <input className="input-text" name="text" type="text" placeholder="Title Book" autoComplete="off"/>
+                                        <label className="input-text-label" htmlFor="text">Title Book</label>
                                 </div> 
                                 <div className="seletc_catery">
                                     <ul>
                                         {categorias.map((categoria, index) => (
-                                            <li key={index}>{categoria}</li>
+                                            <li className={ selectedCategorias.includes(categoria) ? "selected": " " } key={index} 
+                                            onClick={() => handleCategoriaClick(categoria)}>{categoria}</li>
                                         ))}
                                     </ul>
                                 </div>

@@ -24,6 +24,12 @@
     align-content: center;
 }
 
+.selected {
+  font-weight: bold;
+  color: #0070f3;
+  cursor: pointer;
+}
+
 .Button {
     position: relative;
     left: 92%;
@@ -192,3 +198,4 @@
 .input-text:invalid {
     box-shadow: none;
 }
+

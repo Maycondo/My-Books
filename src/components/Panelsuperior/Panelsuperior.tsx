@@ -6,8 +6,7 @@ import { ImBooks } from "react-icons/im";
 export default function Panelsuperior() {
 
 
-    return (
-        <div className="Container">
+    return (        <div className="Container">
             <nav>
                     <h1 className="NameProject"><ImBooks/>My Books</h1>    
                 <ul>
