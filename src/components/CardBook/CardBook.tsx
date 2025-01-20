@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import ImagemBook from "@/Image/livros.jpeg"
-import "./style.css"
+import "./Style/style_1.css"
+import "./Style/style_2.css"
 import { JSX, useState } from "react";
 
 
@@ -57,16 +58,19 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                             <Image className="Imagem_book" src={ImagemBook}alt="Book"/>
                         </div>                            
                                 <div className="input-group">
-                                        <input className="input-text" name="text" type="text" placeholder="Title Book" autoComplete="off"/>
-                                        <label className="input-text-label" htmlFor="text">Title Book</label>
+                                        <input className="input-text" name="text" type="text" placeholder="Name Book" autoComplete="off"/>
+                                        <label className="input-text-label" htmlFor="text">Name Book</label>
                                 </div> 
                                 <div className="seletc_catery">
-                                    <ul>
-                                        {categorias.map((categoria, index) => (
-                                            <li className={ selectedCategorias.includes(categoria) ? "selected": " " } key={index} 
-                                            onClick={() => handleCategoriaClick(categoria)}>{categoria}</li>
-                                        ))}
-                                    </ul>
+                                    <p>Adicioner os cateoria do Livro</p>
+                                        <ul>
+                                            {categorias.map((categoria, index) => (
+                                                <li className={ selectedCategorias.includes(categoria) ? "selected": " " } key={index} 
+                                                onClick={() => handleCategoriaClick(categoria)}>{categoria}</li>
+                                            ))}
+                                        </ul>
+
+
                                 </div>
 
                     </form>
