@@ -113,7 +113,7 @@
     background-color: aliceblue;
 }
 
-.Card_Imagem {
+.Card_imagem {
     height: 600px;
     margin: 2rem;
     width: auto;
@@ -142,7 +142,7 @@
 }
 
 .input-text {
-    font-family: inherit;
+    font-family:  Josefin Sans;
     width: 30%;
     border: none;
     border-bottom: 2px solid #7f7f7f;
@@ -161,6 +161,7 @@
 
 .input-text:placeholder-shown ~ .input-text-label {
     font-size: 19px;
+    font-family:  Josefin Sans;
     cursor: text;
 }
 
@@ -168,6 +169,7 @@
     position: absolute;
     display: block;
     transition: 0.2s;
+    font-family:  Josefin Sans;
     font-size: 19px;
     color: #7f7f7f;
     pointer-events: none;
@@ -189,6 +191,7 @@
     position: absolute;
     display: block;
     transition: 0.2s;
+    font-family:  Josefin Sans;
     font-size: 15px;
     font-weight: 700;
     top: -17px;

@@ -1,8 +1,31 @@
 
 .seletc_catery {
+    height: 10rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#Text_catery {
+    font-size: 1.2rem;
+    margin: 1rem;
+    font-weight: bold;
+    font-family:  Josefin Sans;
+}
+
+.seletc_catery ul {
+    height: 60%;
+    display: flex;
+    gap: 1.5rem;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.seletc_catery li {
+    list-style: none;
+    font-size: 1.1rem;
+    font-family: Josefin Sans;
 }
