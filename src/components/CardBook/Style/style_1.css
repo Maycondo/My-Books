@@ -132,6 +132,7 @@
 
 .input-group {
     display: flex;
+    margin: 2rem 0rem;
     gap: 10px;
     justify-content: center;
     position: relative;

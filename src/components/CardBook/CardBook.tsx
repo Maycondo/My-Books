@@ -72,6 +72,10 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                                 <input className="input-text" name="text" type="text" placeholder="Author Book"/>
                                 <label className="input-text-label" htmlFor="text">Author Book</label>   
                             </div>
+                            <div className="input-discretion">
+                                <input className="input-text" name="text" type="text" placeholder="Discretion Book"/>
+                            </div>
+                                <button className="Button">Add Book</button>
                     </form>
             </div>
         </div>
