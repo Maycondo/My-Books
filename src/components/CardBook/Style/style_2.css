@@ -31,3 +31,19 @@
     font-size: 1.1rem;
     font-family: Josefin Sans;
 }
+
+
+.input-discretion {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Box_discretion {
+    height: 19rem;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+}

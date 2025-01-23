@@ -6,8 +6,19 @@ import "./Style/style_2.css"
 import { JSX, useState } from "react";
 
 
-type Categoria = Array<string>;
+type Categoria = string[];
 
+interface Information {
+    title: string;
+    description: string;
+    image: string;
+    categoria: Categoria;
+}
+
+interface CardBookAddProps { 
+    setAddbook: React.Dispatch<React.SetStateAction<boolean>>;  
+    onClose: () => void; 
+}
 
 const categorias: Categoria = [
     "Ação",
@@ -25,22 +36,36 @@ const categorias: Categoria = [
     "Vida Real",
     "Ficção Científica",
     "Documentário",
-]
+];
 
-interface CardBookAddProps { setAddbook: boolean;  onClose: () => void; }
+
 
 export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps): JSX.Element | null {
     if(!setAddbook) return null;
+    
+    const [titlebook, setTitlebook] = useState<string>("")
+    const [descriptionbook, setDescriptionbook] = useState<string>("");
     const [selectedCategorias, setSelectedCategoria] = useState<Categoria>([]);
 
     const handleCategoriaClick = (categoria: string) => {
-            setSelectedCategoria((prev) => {
-                if(prev.includes(categoria)) {
-                        return prev.filter((cat) => cat !== categoria)
-                } else {
-                        return [...prev, categoria]
-                }
-            })
+            setSelectedCategoria((prev) => 
+            prev.includes(categoria)
+                 ? prev.filter((cat) => cat !== categoria)
+                    : [...prev, categoria]
+            );
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const newBook: Information = {
+            title: titlebook,
+            description: descriptionbook,
+            image: ImagemBook.src,
+            categoria: selectedCategorias,
+        };
+        alert("Novo Livro Adicionado:");
+        console.log(newBook)
+        setAddbook(false);
     }
 
     return (
@@ -51,12 +76,12 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                     <span className="Y"></span>
                     <div className="close">Close</div>
                 </button>
-                    <form className="Form_card" action="">
+                    <form className="Form_card" action="" onSubmit={handleSubmit}>
                             <div className="Card_imagem">
                                 <Image className="Imagem_book" src={ ImagemBook }alt="Book"/>
                             </div>                            
                             <div className="input-group">
-                                <input className="input-text" name="text" type="text" placeholder="Name Book" autoComplete="off"/>
+                                <input className="input-text" name="text" type="text" placeholder="Name Book" autoComplete="off" onChange={(e) => setTitlebook(e.target.value)}/>
                                 <label className="input-text-label" htmlFor="text">Name Book</label>
                             </div> 
                             <div className="seletc_catery">
@@ -73,9 +98,10 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                                 <label className="input-text-label" htmlFor="text">Author Book</label>   
                             </div>
                             <div className="input-discretion">
-                                <input className="input-text" name="text" type="text" placeholder="Discretion Book"/>
+                                    <textarea className="Box_discretion" id="story" onChange={(e) => setDescriptionbook(e.target.value)}></textarea>
+                                    <label className="story">Discretion Book:</label>
                             </div>
-                                <button className="Button">Add Book</button>
+                                <button className="Button" type="submit">Add Book</button>
                     </form>
             </div>
         </div>
