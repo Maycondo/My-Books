@@ -46,4 +46,20 @@
     margin: 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-bottom: 2px solid #7f7f7f;
+    border-radius: 0 !important;
 }
+
+.Box_discretion::placeholder {
+    color: transparent;
+  }
+
+.Box_discretion:placeholder-shown ~ .input-text-discretion {
+    font-size: 19px;
+    font-family:  Josefin Sans;
+    cursor: text;
+}
+

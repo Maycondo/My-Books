@@ -99,7 +99,7 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                             </div>
                             <div className="input-discretion">
                                     <textarea className="Box_discretion" id="story" onChange={(e) => setDescriptionbook(e.target.value)}></textarea>
-                                    <label className="story">Discretion Book:</label>
+                                    <label className="input-text-discretion">Discretion Book:</label>
                             </div>
                                 <button className="Button" type="submit">Add Book</button>
                     </form>

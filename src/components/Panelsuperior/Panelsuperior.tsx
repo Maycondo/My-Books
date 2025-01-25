@@ -10,9 +10,9 @@ export default function Panelsuperior() {
             <nav>
                     <h1 className="NameProject"><ImBooks/>My Books</h1>    
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#perfil">Perfil</a></li>
+                    <li><a href="#livros">Livros</a></li>
+                    <li><a href="#favoritos">Favoritos</a></li>
                 </ul>
             </nav>
         </div>
