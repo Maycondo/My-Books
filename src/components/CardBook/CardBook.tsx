@@ -58,10 +58,10 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const newBook: Information = {
-            title: titlebook,
-            description: descriptionbook,
-            image: ImagemBook.src,
-            categoria: selectedCategorias,
+                title: titlebook,
+                description: descriptionbook,
+                image: ImagemBook.src,
+                categoria: selectedCategorias,
         };
         alert("Novo Livro Adicionado:");
         console.log(newBook)
@@ -97,13 +97,17 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                                 <input className="input-text" name="text" type="text" placeholder="Author Book"/>
                                 <label className="input-text-label" htmlFor="text">Author Book</label>   
                             </div>
-                            <div className="input-discretion">
-                                    <textarea className="Box_discretion" id="story" onChange={(e) => setDescriptionbook(e.target.value)}></textarea>
-                                    <label className="input-text-discretion">Discretion Book:</label>
+                            <div className="custom-box">
+                            <label className="input-text-discretion">Discretion Book:</label>
+                                    <textarea className="Box_discretion" id="story"  onChange={(e) => setDescriptionbook(e.target.value)}></textarea>
+                                    <span className="corner top-left"></span>
+                                    <span className="corner top-right"></span>
+                                    <span className="corner bottom-left"></span>
+                                    <span className="corner bottom-right"></span>
                             </div>
                                 <button className="Button" type="submit">Add Book</button>
                     </form>
             </div>
-        </div>
+        </div>  
     )
 }
