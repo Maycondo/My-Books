@@ -198,6 +198,10 @@
     top: -17px;
 }
 
+.error {
+  border-color: red;
+}
+
 .input-text:required,
 .input-text:invalid {
     box-shadow: none;

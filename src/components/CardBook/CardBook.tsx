@@ -10,6 +10,7 @@ type Categoria = string[];
 
 interface Information {
     title: string;
+    authorBook: string;
     description: string;
     image: string;
     categoria: Categoria;
@@ -43,8 +44,9 @@ const categorias: Categoria = [
 export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps): JSX.Element | null {
     if(!setAddbook) return null;
     
-    const [titlebook, setTitlebook] = useState<string>("")
+    const [titleBook, settitleBook] = useState<string>("")
     const [descriptionbook, setDescriptionbook] = useState<string>("");
+    const [authorBook, setAuthorBook] = useState<string>("")
     const [selectedCategorias, setSelectedCategoria] = useState<Categoria>([]);
 
     const handleCategoriaClick = (categoria: string) => {
@@ -55,10 +57,23 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
             );
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const validateForm = (): string | null => {
+        if(titleBook.trim() === "" || descriptionbook.trim() === "" || authorBook.trim() || selectedCategorias.length === 0) 
+            return "Todos os campos e obrigatorio"
+        return null;
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {e.preventDefault();
+
+        const errorMessagem = validateForm();
+        if(errorMessagem){
+            alert(errorMessagem);
+            return;
+        }
+
         const newBook: Information = {
-                title: titlebook,
+                title: titleBook,
+                authorBook: authorBook,
                 description: descriptionbook,
                 image: ImagemBook.src,
                 categoria: selectedCategorias,
@@ -76,25 +91,25 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                     <span className="Y"></span>
                     <div className="close">Close</div>
                 </button>
-                    <form className="Form_card" action="" onSubmit={handleSubmit}>
+                    <form className="Form_card" action="" onSubmit={ handleSubmit }>
                             <div className="Card_imagem">
                                 <Image className="Imagem_book" src={ ImagemBook }alt="Book"/>
                             </div>                            
                             <div className="input-group">
-                                <input className="input-text" name="text" type="text" placeholder="Name Book" autoComplete="off" onChange={(e) => setTitlebook(e.target.value)}/>
+                                <input className={`input-text ${!titleBook.trim() && "error"}`} name="text" type="text" placeholder="Name Book" autoComplete="off" onChange={(e) => settitleBook(e.target.value)}/>
                                 <label className="input-text-label" htmlFor="text">Name Book</label>
                             </div> 
                             <div className="seletc_catery">
                                 <p id="Text_catery">Cateorias do Livro</p>
                                     <ul>
                                         {categorias.map((categoria, index) => (
-                                            <li className={ selectedCategorias.includes(categoria) ? " selected ": "     " } key={index} 
+                                            <li className={ selectedCategorias.includes(categoria) ? " selected ": " " } key={index} 
                                             onClick={() => handleCategoriaClick( categoria )}>{ categoria }</li>
                                         ))}
                                     </ul>
                             </div>
                             <div className="input-group">
-                                <input className="input-text" name="text" type="text" placeholder="Author Book"/>
+                                <input className={`input-text ${!authorBook.trim() && "error"}`} name="text" type="text" placeholder="Author Book" onChange={(e) => setAuthorBook(e.target.value)}/>
                                 <label className="input-text-label" htmlFor="text">Author Book</label>   
                             </div>
                             <div className="custom-box">
@@ -105,7 +120,7 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                                     <span className="corner bottom-left"></span>
                                     <span className="corner bottom-right"></span>
                             </div>
-                                <button className="Button" type="submit">Add Book</button>
+                                <button className="Button_submit" type="submit">Add Book</button>
                     </form>
             </div>
         </div>  
