@@ -4,7 +4,7 @@ import ImagemBook from "@/Image/livros.jpeg"
 import "./Style/style_1.css"
 import "./Style/style_2.css"
 import { JSX, useState } from "react";
-
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 type Categoria = string[];
 
@@ -22,32 +22,19 @@ interface CardBookAddProps {
 }
 
 const categorias: Categoria = [
-    "Ação",
-    "Fantasia",
-    "Aventura",
-    "Romance",
-    "Terror",
-    "Biografia",
-    "Comédia",
-    "Drama",
-    "Ficção",
-    "Infantil",
-    "Mistério",
-    "Thriller",
-    "Vida Real",
-    "Ficção Científica",
-    "Documentário",
+    "Ação","Fantasia","Aventura","Romance","Terror","Biografia","Comédia","Drama","Ficção",
+    "Infantil","Mistério","Thriller","Vida Real","Ficção Científica","Documentário",
 ];
-
-
 
 export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps): JSX.Element | null {
     if(!setAddbook) return null;
     
     const [titleBook, settitleBook] = useState<string>("")
-    const [descriptionbook, setDescriptionbook] = useState<string>("");
     const [authorBook, setAuthorBook] = useState<string>("")
+    const [descriptionbook, setDescriptionbook] = useState<string>("");
     const [selectedCategorias, setSelectedCategoria] = useState<Categoria>([]);
+    const [erroMessage, seterroMessagem] = useState<boolean>(false)
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
     const handleCategoriaClick = (categoria: string) => {
             setSelectedCategoria((prev) => 
@@ -58,18 +45,18 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
     }
 
     const validateForm = (): string | null => {
-        if(titleBook.trim() === "" || descriptionbook.trim() === "" || authorBook.trim() || selectedCategorias.length === 0) 
-            return "Todos os campos e obrigatorio"
+        if (
+            titleBook.trim() === "" || descriptionbook.trim() === "" 
+            || authorBook.trim() || selectedCategorias.length === 0 
+        ) 
+            return "Todos os campos e obrigatorio";
         return null;
-    }
+    };  
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {e.preventDefault();
-
-        const errorMessagem = validateForm();
-        if(errorMessagem){
-            alert(errorMessagem);
-            return;
-        }
+        const error = validateForm();
+        if (error) { seterroMessagem(true); return }
+        seterroMessagem(false)
 
         const newBook: Information = {
                 title: titleBook,
@@ -78,7 +65,7 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                 image: ImagemBook.src,
                 categoria: selectedCategorias,
         };
-        alert("Novo Livro Adicionado:");
+        setSuccessMessage("Novo livro adicionado com sucesso!")
         console.log(newBook)
         setAddbook(false);
     }
@@ -94,6 +81,7 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                     <form className="Form_card" action="" onSubmit={ handleSubmit }>
                             <div className="Card_imagem">
                                 <Image className="Imagem_book" src={ ImagemBook }alt="Book"/>
+                                <button type="button" ><RiDeleteBin6Fill></RiDeleteBin6Fill></button>
                             </div>                            
                             <div className="input-group">
                                 <input className={`input-text ${!titleBook.trim() && "error"}`} name="text" type="text" placeholder="Name Book" autoComplete="off" onChange={(e) => settitleBook(e.target.value)}/>
@@ -104,7 +92,7 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                                     <ul>
                                         {categorias.map((categoria, index) => (
                                             <li className={ selectedCategorias.includes(categoria) ? " selected ": " " } key={index} 
-                                            onClick={() => handleCategoriaClick( categoria )}>{ categoria }</li>
+                                            onClick={() => handleCategoriaClick( categoria )}>{ categoria }</li>    
                                         ))}
                                     </ul>
                             </div>
@@ -115,13 +103,13 @@ export default function CardBookAdd ({ setAddbook, onClose }: CardBookAddProps):
                             <div className="custom-box">
                             <label className="input-text-discretion">Discretion Book:</label>
                                     <textarea className="Box_discretion" id="story"  onChange={(e) => setDescriptionbook(e.target.value)}></textarea>
-                                    <span className="corner top-left"></span>
-                                    <span className="corner top-right"></span>
-                                    <span className="corner bottom-left"></span>
-                                    <span className="corner bottom-right"></span>
+                                    <span className="corner top-left"></span><span className="corner top-right"></span>
+                                    <span className="corner bottom-left"></span><span className="corner bottom-right"></span>
                             </div>
                                 <button className="Button_submit" type="submit">Add Book</button>
                     </form>
+                    {erroMessage && (<div className="erro_messagem">ERRRROOOO</div>)}
+                    {successMessage && (<div className="success_messagem"></div>)}
             </div>
         </div>  
     )

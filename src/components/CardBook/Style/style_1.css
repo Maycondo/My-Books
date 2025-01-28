@@ -145,6 +145,7 @@
 .input-text {
     font-family:  Josefin Sans;
     width: 30%;
+    text-align: center;
     border: none;
     border-bottom: 2px solid #7f7f7f;
     border-radius: 0 !important;
@@ -199,7 +200,7 @@
 }
 
 .error {
-  border-color: red;
+  border-color: rgb(179, 5, 5);
 }
 
 .input-text:required,

@@ -36,17 +36,23 @@
     margin: 0rem 1rem;
     height: 100%;
     width: 95%;
-    background-color: #f1f1f1;
+    background-color: #eeeeee;
     position: relative;
     display: inline-block;
     padding: 10px;
   }
 
-  .custom-box textarea {
+.input-text-discretion {
+    font-size: 1rem;
+    font-family: Josefin Sans;
+    font-weight: 800;
+}
+
+.custom-box textarea {
     width: 100%;
     height: 100%;
     font-family:  Josefin Sans;
-    font-size: 2rem;
+    font-size: 3rem;
     background-color: transparent;
     border: none;
     outline: none;
@@ -54,18 +60,19 @@
     position: relative;
   }
 
-  .corner {
+.corner {
     position: absolute;
     background-color: rgb(27, 27, 27);
   }
-  
-  .top-left {
+
+.top-left {
     width: 15px;
     height: 4px;
     top: -1px;
     left: -1px;
   }
-  .top-left::after {
+
+.top-left::after {
     content: '';
     width: 4px;
     height: 15px;
@@ -73,15 +80,16 @@
     background-color: rgb(27, 27, 27);
     top: 0;
     left: 0;
-  }
+}
   
-  .top-right {
+.top-right {
     width: 15px;
     height: 4px;
     top: -1px;
     right: -1px;
-  }
-  .top-right::after {
+}
+  
+.top-right::after {
     content: '';
     width: 4px;
     height: 15px;
@@ -89,15 +97,16 @@
     background-color: rgb(27, 27, 27);
     top: 0;
     right: 0;
-  }
+}
   
-  .bottom-left {
+.bottom-left {
     width: 15px;
     height: 4px;
     bottom: -1px;
     left: -1px;
-  }
-  .bottom-left::after {
+}
+
+.bottom-left::after {
     content: '';
     width: 4px;
     height: 15px;
@@ -105,15 +114,16 @@
     background-color: rgb(27, 27, 27);
     bottom: 0;
     left: 0;
-  }
-  
-  .bottom-right {
+}
+
+.bottom-right {
     width: 15px;
     height: 4px;
     bottom: -1px;
     right: -1px;
-  }
-  .bottom-right::after {
+}
+
+.bottom-right::after {
     content: '';
     width: 4px;
     height: 15px;
@@ -121,15 +131,20 @@
     background-color: rgb(27, 27, 27);
     bottom: 0;
     right: 0;
-  }
+}
   
-  .Button_submit {
+.Button_submit {
     margin: 1rem;
     background-color: rgb(27, 27, 27);
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-
-  }
+}
   
+.erro_messagem {
+    color: red;
+    font-size: 4rem;
+    margin: 0.5rem;
+
+}
