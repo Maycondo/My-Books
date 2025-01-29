@@ -1,4 +1,4 @@
-.Card_opacity {
+.card_opacity {
     height: 110rem;
     width: 100%;
     z-index: 3;
@@ -15,7 +15,7 @@
     padding: 10px;
 }
 
-.Form_card {
+.form_card {
     height: 100%;
     width: 100%;
     display: flex;
@@ -102,7 +102,7 @@
     }
   }
 
-.Card_add_book {
+.card_add_book {
     height: 95rem;
     width: 50rem;
     z-index: inbde;
@@ -113,7 +113,7 @@
     background-color: aliceblue;
 }
 
-.Card_imagem {
+.card_imagem {
     height: 600px;
     margin: 2rem;
     width: auto;
@@ -123,7 +123,7 @@
     justify-content: center;
   }
 
-.Imagem_book {
+.imagem_book {
     width: 400px;
     height: 600px;
     border-radius: 0.5%;
@@ -199,7 +199,7 @@
     top: -17px;
 }
 
-.error {
+.error_ {
   border-color: rgb(179, 5, 5);
 }
 
