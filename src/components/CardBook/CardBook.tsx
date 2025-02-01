@@ -19,7 +19,7 @@ interface Information {
 }
 
 interface CardBookAddProps { 
-    onAddBook: React.Dispatch<React.SetStateAction<boolean>>;  
+    isOpen: React.Dispatch<React.SetStateAction<boolean>>;  
     onClose: () => void; 
 }
 
@@ -28,8 +28,8 @@ const categorias: Categoria = [
     "Infantil","Mistério","Thriller","Vida Real","Ficção Científica","Documentário",
 ];
 
-export default function CardBookAdd ({ onAddBook, onClose }: CardBookAddProps): JSX.Element | null {
-    if(!onAddBook) return null;
+export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX.Element | null {
+    if(!isOpen) return null;
     
     const [titleBook, settitleBook] = useState<string>("")
     const [authorBook, setAuthorBook] = useState<string>("")
@@ -52,14 +52,13 @@ export default function CardBookAdd ({ onAddBook, onClose }: CardBookAddProps): 
         return null;
     };  
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {e.preventDefault();
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => { e.preventDefault();
         const error = validateForm();
         if (error) { 
             seterroMessagem(true);
-            setTimeout(() => seterroMessagem(false), 2000);
+            setTimeout(() => seterroMessagem(false), 3000);
             return 
         }
-        seterroMessagem(false)
         setSuccessMessage("Livro adicionado com sucesso!")
 
         const newBook: Information = {
@@ -70,7 +69,7 @@ export default function CardBookAdd ({ onAddBook, onClose }: CardBookAddProps): 
                 categoria: selectedCategorias,
         };
         console.log(newBook)
-        setTimeout(() => onAddBook(false), 3000);
+        setTimeout(() => isOpen(false), 3000);
     }
 
     return (
@@ -113,7 +112,7 @@ export default function CardBookAdd ({ onAddBook, onClose }: CardBookAddProps): 
                     </form>
 
             </div>
-            {erroMessage && (<ErroMessagem/>)}
+            {erroMessage && (<ErroMessagem onClose={() => seterroMessagem(false)}/>)}
             {successMessage && (<div className="success_messagem">sdrgdgdrg</div>)}
         </div>  
     )
