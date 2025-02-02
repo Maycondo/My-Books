@@ -2,6 +2,7 @@
 import Image from "next/image";
 import ImagemBook from "@/Image/livros.jpeg"
 import ErroMessagem from "../MessagensBooks/ErroMessagemBook"
+import SuccessMessagem from "../MessagensBooks/SuccessMessagem";
 import { JSX, useState } from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
@@ -113,7 +114,7 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
 
             </div>
             {erroMessage && (<ErroMessagem onClose={() => seterroMessagem(false)}/>)}
-            {successMessage && (<div className="success_messagem">sdrgdgdrg</div>)}
+            {successMessage && (<SuccessMessagem onClose={() => setSuccessMessage(null)}/>)}
         </div>  
     )
 }
