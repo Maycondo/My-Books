@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import Image from "next/image";
-import ImagemBook from "@/Image/livros.jpeg"
+/* eslint-disable @next/next/no-img-element */
 import ErroMessagem from "../MessagensBooks/ErroMessagemBook"
 import SuccessMessagem from "../MessagensBooks/SuccessMessagem";
 import { JSX, useState } from "react";
@@ -9,13 +7,14 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import "./Style/style_1.css"
 import "./Style/style_2.css"
 
+
 type Categoria = string[];
 
 interface Information {
     title: string;
     authorBook: string;
     description: string;
-    image: string;
+    image: string | null;
     categoria: Categoria;
 }
 
@@ -30,14 +29,20 @@ const categorias: Categoria = [
 ];
 
 export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX.Element | null {
-    if(!isOpen) return null;
     
+    const [imagemBook, setImagemBook] = useState<string | null>(null)
     const [titleBook, settitleBook] = useState<string>("")
     const [authorBook, setAuthorBook] = useState<string>("")
     const [descriptionBook, setDescriptionbook] = useState<string>("");
     const [selectedCategorias, setSelectedCategoria] = useState<Categoria>([]);
     const [erroMessage, seterroMessagem] = useState<boolean>(false)
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            setImagemBook(URL.createObjectURL(e.target.files[0]))
+        }
+    }
 
     const handleCategoriaClick = (categoria: string) => {
             setSelectedCategoria((prev) => 
@@ -66,7 +71,7 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
                 title: titleBook,
                 authorBook: authorBook,
                 description: descriptionBook,
-                image: ImagemBook.src,
+                image: imagemBook,
                 categoria: selectedCategorias,
         };
         console.log(newBook)
@@ -83,9 +88,10 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
                 </button>
                     <form className="form_card" action="" onSubmit={ handleSubmit }>
                             <div className="card_imagem">
-                                <Image className="imagem_book" src={ ImagemBook }alt="Book"/>
-                                <button type="button"> <RiDeleteBin6Fill></RiDeleteBin6Fill> </button>
-                            </div>                            
+                                {imagemBook ? (<img className="imagem_book" src={imagemBook} alt="Book" /> ) : (<p>Sem imagem</p>)}
+                                <input type="file" onChange={handleFileChange}/>
+                                {imagemBook && ( <button type="button" onClick={() => setImagemBook(null)}><RiDeleteBin6Fill></RiDeleteBin6Fill></button>)}
+                            </div>                              
                             <div className="input-group">
                                 <input className={`input-text ${!titleBook.trim() && "error_"}`} name="text" type="text" placeholder="Name Book" autoComplete="off" onChange={(e) => settitleBook(e.target.value)}/>
                                 <label className="input-text-label" htmlFor="text">Name Book</label>
@@ -104,7 +110,7 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
                                 <label className="input-text-label" htmlFor="text">Author Book</label>   
                             </div>
                             <div className="custom-box">
-                            <label className="input-text-discretion">Discretion Book:</label>
+                                    <label className="input-text-discretion">Discretion Book:</label>
                                     <textarea className="Box_discretion" id="story"  onChange={(e) => setDescriptionbook(e.target.value)}></textarea>
                                     <span className="corner top-left"></span><span className="corner top-right"></span>
                                     <span className="corner bottom-left"></span><span className="corner bottom-right"></span>
