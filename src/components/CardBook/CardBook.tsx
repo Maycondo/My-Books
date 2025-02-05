@@ -2,6 +2,8 @@
 import ErroMessagem from "../MessagensBooks/ErroMessagemBook"
 import SuccessMessagem from "../MessagensBooks/SuccessMessagem";
 import { JSX, useState } from "react";
+
+import { FaBook } from "react-icons/fa";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
 import "./Style/style_1.css"
@@ -31,7 +33,7 @@ const categorias: Categoria = [
 export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX.Element | null {
     
     const [imagemBook, setImagemBook] = useState<string | null>(null)
-    const [titleBook, settitleBook] = useState<string>("")
+    const [titleBook, setTitleBook] = useState<string>("")
     const [authorBook, setAuthorBook] = useState<string>("")
     const [descriptionBook, setDescriptionbook] = useState<string>("");
     const [selectedCategorias, setSelectedCategoria] = useState<Categoria>([]);
@@ -88,12 +90,12 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
                 </button>
                     <form className="form_card" action="" onSubmit={ handleSubmit }>
                             <div className="card_imagem">
-                                {imagemBook ? (<img className="imagem_book" src={imagemBook} alt="Book" /> ) : (<p>Sem imagem</p>)}
-                                <input type="file" onChange={handleFileChange}/>
+                                {imagemBook ? (<img className="imagem_book" src={ imagemBook } alt="Book"/> ) : (<p><FaBook/></p>)}
+                                    <input type="file" onChange={handleFileChange}/>
                                 {imagemBook && ( <button type="button" onClick={() => setImagemBook(null)}><RiDeleteBin6Fill></RiDeleteBin6Fill></button>)}
                             </div>                              
                             <div className="input-group">
-                                <input className={`input-text ${!titleBook.trim() && "error_"}`} name="text" type="text" placeholder="Name Book" autoComplete="off" onChange={(e) => settitleBook(e.target.value)}/>
+                                <input className={`input-text ${!titleBook.trim() && "error_"}`} name="text" type="text" placeholder="Name Book" autoComplete="off" onChange={(e) => setTitleBook(e.target.value)}/>
                                 <label className="input-text-label" htmlFor="text">Name Book</label>
                             </div> 
                             <div className="seletc_catery">
