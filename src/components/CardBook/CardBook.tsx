@@ -4,7 +4,7 @@ import SuccessMessagem from "../MessagensBooks/SuccessMessagem";
 import { JSX, useState } from "react";
 
 import { FaBook } from "react-icons/fa";
-import { RiDeleteBin6Fill } from "react-icons/ri";
+import { ImBin } from "react-icons/im";
 
 import "./Style/style_1.css"
 import "./Style/style_2.css"
@@ -91,8 +91,8 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
                     <form className="form_card" action="" onSubmit={ handleSubmit }>
                             <div className="card_imagem">
                                 {imagemBook ? (<img className="imagem_book" src={ imagemBook } alt="Book"/> ) : (<p><FaBook/></p>)}
-                                    <input type="file" onChange={handleFileChange}/>
-                                {imagemBook && ( <button type="button" onClick={() => setImagemBook(null)}><RiDeleteBin6Fill></RiDeleteBin6Fill></button>)}
+                                {imagemBook ? (<br></br>) : (<input type="file" onChange={ handleFileChange }/>)}  
+                                {imagemBook && ( <button type="button" className="Button_dele_imagem" onClick={() => setImagemBook(null)}><ImBin/></button>)}
                             </div>                              
                             <div className="input-group">
                                 <input className={`input-text ${!titleBook.trim() && "error_"}`} name="text" type="text" placeholder="Name Book" autoComplete="off" onChange={(e) => setTitleBook(e.target.value)}/>
