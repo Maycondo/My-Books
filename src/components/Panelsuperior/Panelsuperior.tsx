@@ -10,11 +10,10 @@ export default function Panelsuperior() {
             <nav>  
                 <h1 className="NameProject"><ImBooks/> My Books</h1>    
                 <ul>  
-                    <li><a href="#perfil">Perfil</a></li>   
                     <li><a href="#livros">Livros</a></li>  
                     <li><a href="#favoritos">Favoritos</a></li>  
                 </ul>  
-                <Image className="Imagem_perfil" src={ PerfilImagem } alt="Imagem de perfil"/>  
+                    <Image className="Imagem_perfil" src={ PerfilImagem } alt="Imagem de perfil"/>  
             </nav>  
         </div>  
     );  
