@@ -26,7 +26,7 @@
 
 .selected {
   font-weight: bold;
-  color: #0070f3;
+  color: #1c1d1f;
   cursor: pointer;
 }
 
@@ -117,7 +117,7 @@
 
 .card_imagem {
     width: 400px;
-    height: 570px;
+    height: 570 px;
     margin: 1rem;
     position: relative;
     left: 21%;
@@ -125,12 +125,13 @@
     border-radius: 0.5%;
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center;
     justify-content: center;
 }
 
 .card_imagem p {
-    font-size: 22rem;
+    height: 80%;
+    font-size: 21rem;
     text-align: center;
 }
 
@@ -152,6 +153,31 @@
   bottom: 0;
   left: 90%;
   top: 88%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    width: 200px;
+    margin: 1rem;
+    background-color: #1f2020; 
+    font-family:  Josefin Sans;
+    font-weight: 900;
+    color: white; 
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.custom-file-upload:hover {
+    background-color: #2c2c2c;
 }
 
 .input-group {

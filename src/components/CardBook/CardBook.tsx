@@ -91,7 +91,9 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
                     <form className="form_card" action="" onSubmit={ handleSubmit }>
                             <div className="card_imagem">
                                 {imagemBook ? (<img className="imagem_book" src={ imagemBook } alt="Book"/> ) : (<p><FaBook/></p>)}
-                                {imagemBook ? (<br></br>) : (<input type="file" onChange={ handleFileChange }/>)}  
+                                {imagemBook ? (<br />) : (<label className="custom-file-upload">Select cover
+                                    <input type="file" className="Book-cover" onChange={ handleFileChange } />
+                                </label>)}
                                 {imagemBook && ( <button type="button" className="Button_dele_imagem" onClick={() => setImagemBook(null)}><ImBin/></button>)}
                             </div>                              
                             <div className="input-group">
@@ -99,7 +101,7 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
                                 <label className="input-text-label" htmlFor="text">Name Book</label>
                             </div> 
                             <div className="seletc_catery">
-                                <p id="Text_catery">Cateorias do Livro</p>
+                                <p id="Text_catery">Book Categories</p>
                                     <ul>
                                         {categorias.map((categoria, index) => (
                                             <li className={ selectedCategorias.includes(categoria) ? " selected ": " " } key={index} 
