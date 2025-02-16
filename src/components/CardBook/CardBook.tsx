@@ -54,6 +54,7 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
             );
     }
 
+
     const validateForm = (): string | null => {
         if (titleBook.trim() === "" || descriptionBook.trim() === "" || authorBook.trim() === "" || selectedCategorias.length === 0) 
             return "Erro: Todos os campos são obrigatórios!";

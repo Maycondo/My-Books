@@ -2,9 +2,9 @@
 
 import { useState , useEffect } from "react";
 import Loader from "@/components/Loader/Loader"
-import Panelsuperior from "@/components/Panelsuperior/Panelsuperior";
+import Panelsuperior from "@/components/Panelsuperior/Panelhome";
 import ButtomAddBooks from "@/components/ButtonAdd/ButtonAddBooks";
-import PanelBook from "@/components/PanelBooks/PanelBooks";
+
 
 
 const useLoader = (display: number) => {
@@ -29,7 +29,6 @@ export default function Home() {
     <div className="My_Book"> 
         <Panelsuperior />
         <ButtomAddBooks />
-        <PanelBook />
     </div>
   );
 }
