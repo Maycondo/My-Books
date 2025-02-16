@@ -91,7 +91,7 @@ export default function CardBookAdd ({ isOpen, onClose }: CardBookAddProps): JSX
                     <form className="form_card" action="" onSubmit={ handleSubmit }>
                             <div className="card_imagem">
                                 {imagemBook ? (<img className="imagem_book" src={ imagemBook } alt="Book"/> ) : (<p><FaBook/></p>)}
-                                {imagemBook ? (<br />) : (<label className="custom-file-upload">Select cover
+                                {imagemBook  ? (<br />) : (<label className="custom-file-upload">Select cover
                                     <input type="file" className="Book-cover" onChange={ handleFileChange } />
                                 </label>)}
                                 {imagemBook && ( <button type="button" className="Button_dele_imagem" onClick={() => setImagemBook(null)}><ImBin/></button>)}
