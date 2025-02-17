@@ -7,7 +7,7 @@
 }
 
 nav {
-    height: 5rem;
+    height: 4rem;
     width: 100%;
     display: flex;
     background-color: rgb(31, 28, 28);
@@ -29,7 +29,6 @@ nav {
 }
 
 ul {
-    height: 5rem;
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -38,6 +37,7 @@ ul {
 
 li {
     font-size: 1.3rem;
+    font-weight: bold;
     font-family: "Josefin Sans", serif;
     color: white;
     padding: 1rem;

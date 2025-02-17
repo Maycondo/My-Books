@@ -1,5 +1,6 @@
 import Image from "next/image";  
-import PerfilImagem from "@/Image/ImagemPerfil.jpeg";  
+import PerfilImagem from "@/Image/ImagemPerfil.jpeg";
+import PanelBook from "../PanelBooks/PanelBooks"; 
 import "./style.css";  
 
 import { ImBooks } from "react-icons/im";
@@ -12,7 +13,7 @@ type Categorias = {
 
 const categorias: Categorias = {
     Livros: "Livros",
-    Favoritos: "Favoritos"
+    Favoritos: "Favoritos"  
 };
 
 export default function Panelhome() {
@@ -21,7 +22,7 @@ export default function Panelhome() {
     const renderPanelContent = () => {
         switch (activeName) {
             case "Livros":
-                return <div>📚 Livros</div>;
+                return <PanelBook title={""} description={""} imageUrl={""} lastUpdated={""}/>
             case "Favoritos":
                 return <div>⭐ Favoritos</div>;
             default:
