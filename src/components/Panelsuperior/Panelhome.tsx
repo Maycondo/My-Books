@@ -22,7 +22,7 @@ export default function Panelhome() {
     const renderPanelContent = () => {
         switch (activeName) {
             case "Livros":
-                return <PanelBook title={""} description={""} imageUrl={""} lastUpdated={""}/>
+                return <PanelBook title={""} description={""}  />
             case "Favoritos":
                 return <div>⭐ Favoritos</div>;
             default:
@@ -33,15 +33,15 @@ export default function Panelhome() {
     return (  
         <div className="Container">  
             <nav>  
-                <h1 className="NameProject"><ImBooks/> My Books</h1>        
-                <ul>
-                    {Object.keys(categorias).map((categoria) => (
-                        <li  key={categoria} className={activeName === categoria ? "categoria_selected" : ""} onClick={() => setActiveName(categoria)} >
-                            {categorias[categoria as keyof Categorias]}
-                        </li>
-                    ))}
-                </ul>  
-                <Image className="Imagem_perfil" src={PerfilImagem} alt="Imagem de perfil"/>  
+                <h1><ImBooks/> My Books</h1>        
+                    <ul className="painel_navegion">
+                        {Object.keys(categorias).map((categoria) => (
+                            <li  key={categoria} className={activeName === categoria ? "categoria_selected" : ""} onClick={() => setActiveName(categoria)} >
+                                {categorias[categoria as keyof Categorias]}
+                            </li>
+                        ))}
+                        <Image className="Imagem_perfil" src={PerfilImagem} alt="Imagem de perfil"/>  
+                    </ul>  
             </nav>  
             <div className="panel-content">
                 {renderPanelContent()}

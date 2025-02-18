@@ -2,7 +2,8 @@
     width: 100%;
     display: flex;
     justify-content: end;
-    position: relative;
+    position: absolute;
+    top: 5%;
     margin: 20px 0;
 }
 

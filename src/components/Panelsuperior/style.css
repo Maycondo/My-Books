@@ -12,10 +12,10 @@ nav {
     display: flex;
     background-color: rgb(31, 28, 28);
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-.NameProject {
+nav h1 {
     height: 4rem;
     margin: 1rem;
     padding: 1rem;
@@ -24,25 +24,33 @@ nav {
     gap: 1rem;
     font-family: "Josefin Sans", serif;
     align-items: center;
-    width: 100%;
     color: white;
 }
 
-ul {
-    display: flex;
+.painel_navegion {
+    margin: 1rem;
     gap: 1rem;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-li {
-    font-size: 1.3rem;
+.categoria_selected {
     font-weight: bold;
+    color: white;
+    transition: all ease-in;
+    border-bottom: solid 3px white;
+    transition: all ease-in 3ms;
+}
+
+li {
+    font-size: 1.2rem;
     font-family: "Josefin Sans", serif;
     color: white;
     padding: 1rem;
     cursor: pointer;
     list-style: none;
+    color: rgb(98, 99, 99);
 }
 
 .Imagem_perfil {
@@ -50,4 +58,10 @@ li {
     height: 3.5rem;
     border-radius: 50%;
     margin: 1rem;
+}
+
+.panel-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
 }

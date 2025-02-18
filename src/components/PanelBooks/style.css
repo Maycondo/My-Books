@@ -1,5 +1,41 @@
 
 .Painel_Books {
-    height: 100%;
+    height: auto;
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
+.Card_Book {
+    height: 65rem;
+    width: 28rem;
+    display: flex;
+    border-radius: 2%;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    background-color: #ffffff;
+    border: solid 2px rgb(209, 209, 209);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.Card_Book_Imagem {     
+    height: 60%;
+    width: 100%;
+    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.Imagem_Book {
+    height: 600px;
+    width: 445px;
+    display: block;
+    overflow: hidden;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+    object-fit: cover;
 }

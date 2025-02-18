@@ -14,8 +14,7 @@ body {
 }
 
 .My_Book {
-  height: 100%;
-  width: 100%;
+  width: 100vw;
   margin-top: 0%;
   display: flex;
   flex-direction: column;
