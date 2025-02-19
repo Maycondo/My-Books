@@ -7,12 +7,13 @@
 }
 
 .Card_Book {
-    height: 65rem;
-    width: 28rem;
+    height: 56rem;
+    width: 30.2rem;
     display: flex;
-    border-radius: 2%;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
     margin: 1rem;
     background-color: #ffffff;
     border: solid 2px rgb(209, 209, 209);
@@ -20,7 +21,7 @@
 }
 
 .Card_Book_Imagem {     
-    height: 60%;
+    height: 62%;
     width: 100%;
     object-fit: cover;
     display: flex;
@@ -31,11 +32,17 @@
 
 
 .Imagem_Book {
-    height: 600px;
-    width: 445px;
+    height: 560px;
+    width: 480px;
     display: block;
     overflow: hidden;
     border-top-left-radius: 2%;
     border-top-right-radius: 2%;
     object-fit: cover;
+}
+
+.Card_Book_Titulo {
+    height: 3rem;
+    width: 100%;
+    background-color: rgb(228, 228, 228);
 }
