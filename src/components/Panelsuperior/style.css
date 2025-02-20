@@ -51,6 +51,7 @@ li {
     cursor: pointer;
     list-style: none;
     color: rgb(98, 99, 99);
+    transition: all 3ms;
 }
 
 .Imagem_perfil {

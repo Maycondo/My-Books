@@ -1,28 +1,23 @@
-import Image from "next/image";  
+import Image from "next/image";
 import PerfilImagem from "@/Image/ImagemPerfil.jpeg";
-import PanelBook from "../PanelBooks/PanelBooks"; 
-import "./style.css";  
-
+import PanelBook from "../PanelBooks/PanelBooks";
 import { ImBooks } from "react-icons/im";
 import { useState } from "react";
+import "./style.css";
 
-type Categorias = {
-    Livros: string;
-    Favoritos: string;
-};
-
-const categorias: Categorias = {
+const categorias = {
     Livros: "Livros",
-    Favoritos: "Favoritos"  
+    Favoritos: "Favoritos"
 };
 
 export default function Panelhome() {
-    const [activeName, setActiveName] = useState<string>("Livros");
+    const [activeCategory, setActiveCategory] = useState<string>("Livros"); 
+
 
     const renderPanelContent = () => {
-        switch (activeName) {
+        switch (activeCategory) {
             case "Livros":
-                return <PanelBook title={""} description={""}  />
+                return <PanelBook books={[]}/>;
             case "Favoritos":
                 return <div>⭐ Favoritos</div>;
             default:
@@ -30,22 +25,22 @@ export default function Panelhome() {
         }
     };
 
-    return (  
-        <div className="Container">  
-            <nav>  
-                <h1><ImBooks/> My Books</h1>        
-                    <ul className="painel_navegion">
-                        {Object.keys(categorias).map((categoria) => (
-                            <li  key={categoria} className={activeName === categoria ? "categoria_selected" : ""} onClick={() => setActiveName(categoria)} >
-                                {categorias[categoria as keyof Categorias]}
-                            </li>
-                        ))}
-                        <Image className="Imagem_perfil" src={PerfilImagem} alt="Imagem de perfil"/>  
-                    </ul>  
-            </nav>  
+    return (
+        <div className="Container">
+            <nav>
+                <h1><ImBooks /> My Books</h1>
+                <ul className="painel_navegion">
+                    {Object.keys(categorias).map((categoria) => (
+                        <li key={categoria} className={activeCategory === categoria ? "categoria_selected" : ""} onClick={() => setActiveCategory(categoria)}>
+                            {categorias[categoria as keyof typeof categorias]}
+                        </li>
+                    ))}
+                    <Image className="Imagem_perfil" src={PerfilImagem} alt="Imagem de perfil" />
+                </ul>
+            </nav> 
             <div className="panel-content">
                 {renderPanelContent()}
             </div>
-        </div>  
-    );  
+        </div>
+    );
 }
