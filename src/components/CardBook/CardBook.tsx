@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import ErroMessagem from "../MessagensBooks/ErroMessagemBook"
+import PanelBook from "../PanelBooks/PanelBooks";
 import SuccessMessagem from "../MessagensBooks/SuccessMessagem";
 import { JSX, useState } from "react";
 import { FaBook } from "react-icons/fa";
@@ -64,9 +65,8 @@ export default function CardBookAdd ({ isOpen, onClose}: CardBookAddProps): JSX.
             setTimeout(() => seterroMessagem(false), 3000);
             return 
         }
+        console.log("Livro armazenado:", bookData);
         setSuccessMessage("Livro adicionado com sucesso!")
-
-        console.log(bookData);
         setTimeout(() => isOpen(false), 3000);
     }
 
@@ -105,7 +105,7 @@ export default function CardBookAdd ({ isOpen, onClose}: CardBookAddProps): JSX.
                             </div>
                             <div className="custom-box">
                                     <label className="input-text-discretion">Discretion Book:</label>
-                                    <textarea className="Box_discretion" id="story"  onChange={(e) => setBookData({ ...bookData, authorBook: e.target.value})}></textarea>
+                                    <textarea className="Box_discretion" id="story"  onChange={(e) => setBookData({ ...bookData, description: e.target.value})}></textarea>
                                     <span className="corner top-left"></span><span className="corner top-right"></span>
                                     <span className="corner bottom-left"></span><span className="corner bottom-right"></span>
                             </div>
@@ -115,6 +115,7 @@ export default function CardBookAdd ({ isOpen, onClose}: CardBookAddProps): JSX.
             </div>
             {erroMessage && (<ErroMessagem onClose={() => seterroMessagem(false)}/>)}
             {successMessage && (<SuccessMessagem onClose={() => setSuccessMessage(null)}/>)}
+            <PanelBook book={[{ ...bookData, imageUrl: bookData.imageUrl || '' }]}/>
         </div>  
     )
 }

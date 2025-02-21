@@ -2,22 +2,24 @@ import Image from "next/image";
 import PerfilImagem from "@/Image/ImagemPerfil.jpeg";
 import PanelBook from "../PanelBooks/PanelBooks";
 import { ImBooks } from "react-icons/im";
-import { useState } from "react";
+import { JSX, useState } from "react";
 import "./style.css";
+
 
 const categorias = {
     Livros: "Livros",
     Favoritos: "Favoritos"
 };
 
-export default function Panelhome() {
+
+export default function Panelhome(): JSX.Element {
     const [activeCategory, setActiveCategory] = useState<string>("Livros"); 
 
 
     const renderPanelContent = () => {
         switch (activeCategory) {
             case "Livros":
-                return <PanelBook books={[]}/>;
+                return <PanelBook book={[]}/>;
             case "Favoritos":
                 return <div>⭐ Favoritos</div>;
             default:
