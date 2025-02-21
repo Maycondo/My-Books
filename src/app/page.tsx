@@ -2,6 +2,7 @@
 
 import { useState , useEffect } from "react";
 import Loader from "@/components/Loader/Loader"
+import { BookProvider } from "@/components/Panelsuperior/context/BookContext";
 import Panelsuperior from "@/components/Panelsuperior/Panelhome";
 import ButtomAddBooks from "@/components/ButtonAdd/ButtonAddBooks";
 
@@ -26,9 +27,11 @@ export default function Home() {
   }
 
   return (
-    <div className="My_Book"> 
-        <Panelsuperior />
-        <ButtomAddBooks />
-    </div>
+    <BookProvider>
+        <div className="My_Book"> 
+            <Panelsuperior />
+            <ButtomAddBooks />
+      </div>
+    </BookProvider>
   );
 }

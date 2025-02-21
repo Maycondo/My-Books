@@ -1,12 +1,13 @@
 .Card_Book {
     height: 56rem;
-    width: 30.2rem;
+    width: 32rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-top-left-radius: 2%;
     border-top-right-radius: 2%;
     margin: 1rem;
+    padding: 1rem;
     background-color: #ffffff;
     border: solid 2px rgb(26, 26, 26);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
