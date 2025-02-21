@@ -29,14 +29,7 @@ const categorias: Categoria = [
 
 export default function CardBookAdd ({ isOpen, onClose}: CardBookAddProps): JSX.Element | null {
     
-    const [bookData, setBookData]= useState<Information>({
-        title: "",
-        authorBook: "",
-        description: "",
-        imageUrl: null,
-        categoria: [],
-    });
-    
+    const [bookData, setBookData]= useState<Information>({ title: "", authorBook: "", description: "", imageUrl: null, categoria: [],});
     const [erroMessage, seterroMessagem] = useState<boolean>(false)
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
