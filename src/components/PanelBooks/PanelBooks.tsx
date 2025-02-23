@@ -1,52 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
-
 import "./style.css";
-
-
-
-const books = [
-  {
-    id: 1,
-    title: "O Senhor dos Anéis",
-    description: "O Senhor dos Anéis é um romance de fantasia criado pelo escritor, professor e filólogo britânico J. R. R. Tolkien.",
-    imageUrl: "https://images-na.ssl-images-amazon.com/images/I"
-  },
-
-  {
-    id: 2,
-    title: "Harry Potter",
-    description: "Harry Potter é uma série de sete romances de fantasia escrita pela autora britânica J. K. Rowling.",
-    imageUrl: "https://images-na.ssl-images-amazon.com/images/I"
-  },
-
-
-]
+import { useBook } from "../Panelsuperior/context/BookContext";
 
 
 export default function PanelBook() {
+  const { bookData } = useBook();
 
-
-  if (!books || books.length === 0 ) {
+  if (bookData.length === 0 ) {
     return <p>Nenhum livro disponível.</p>;
   }
-
+  
+  console.log(bookData);
   return (
     <>
-      {books.map((bookItem) => (
-        <div key={bookItem.id} className="Card_Book">
+      {bookData.map((book) => (
+        <div key={book.id} className="Card_Book">
           <div className="Card_Book_Item">
             <div className="Card_Book_Imagem">
-              <img 
-                src={bookItem.imageUrl} 
-                alt={bookItem.title || "Capa do livro"} 
-                loading="lazy" 
-              />
+              <img src={book.imageUrl || ""} alt={book.title || "Capa do livro"} loading="lazy" />
             </div>
             <div className="Card_Book_Titulo">
-              <h2>{bookItem.title}</h2>
+              <h2>{book.title}</h2>
             </div>
             <div className="Card_Book_Descricao">
-              <p>{bookItem.description}</p>
+              <p>{book.description}</p>
             </div>
             <div className="Card_Book_Button">
               <button className="readmore-btn">

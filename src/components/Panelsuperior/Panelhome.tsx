@@ -24,10 +24,7 @@ export default function Panelhome() {
                     <ul className="painel_navegion">
                         {categorias.map((categoria) => (
                             <li key={categoria}>
-                                <button 
-                                    className={activeCategory === categoria ? "categoria_selected" : ""}
-                                    onClick={() => setActiveCategory(categoria)}
-                                >
+                                <button className={activeCategory === categoria ? "categoria_selected" : "Buttons_panel "}  onClick={() => setActiveCategory(categoria)}>
                                     {categoria}
                                 </button>
                             </li>

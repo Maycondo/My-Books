@@ -36,22 +36,32 @@ nav h1 {
 }
 
 .categoria_selected {
+    font-size: 1.2rem;
     font-weight: bold;
-    color: white;
-    transition: all ease-in;
-    border-bottom: solid 3px white;
+    color: rgb(253, 253, 253);
     transition: all ease-in 3ms;
+    border: none;
+    border-bottom: 3px solid white;
+    background-color: transparent;
 }
 
 li {
     font-size: 1.2rem;
     font-family: "Josefin Sans", serif;
-    color: white;
     padding: 1rem;
     cursor: pointer;
     list-style: none;
-    color: rgb(98, 99, 99);
     transition: all 3ms;
+}
+
+.Buttons_panel {
+    font-size: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    color: rgb(122, 122, 122);
+    background-color: transparent;
+    border: none;
+    transition: all ease-in 3ms;
 }
 
 .Imagem_perfil {
@@ -66,5 +76,5 @@ li {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+    flex-wrap: inherit;
 }

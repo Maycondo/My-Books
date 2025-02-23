@@ -33,7 +33,7 @@
 .Button {
     position: relative;
     left: 92%;
-    margin: 1rem;
+    margin: 0.5rem 1rem;
     width: 2em;
     height: 2em;
     border: none;

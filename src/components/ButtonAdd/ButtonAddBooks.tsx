@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CardBook from "../CardBook/CardBook";
+import { BookProvider } from "../Panelsuperior/context/BookContext";
 import "./style.css";
 
 export default function AddBooks() {
