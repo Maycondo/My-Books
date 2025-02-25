@@ -6,14 +6,14 @@ import { ImBooks } from "react-icons/im";
 import { BookProvider } from "./context/BookContext";
 import "./style.css";
 
-const categorias = ["Livros", "Favoritos"] as const;
+const categorias = ["Books", "Favorites"] as const;
 
 export default function Panelhome() {
-    const [activeCategory, setActiveCategory] = useState<(typeof categorias)[number]>("Livros");
+    const [activeCategory, setActiveCategory] = useState<(typeof categorias)[number]>("Books");
 
     const panelContent: Record<(typeof categorias)[number], JSX.Element> = {
-        Livros: <PanelBook />,
-        Favoritos: <div>⭐ Favoritos</div>,
+        Books: <PanelBook />,
+        Favorites: <div>⭐ Favoritos</div>,
     };
 
     return (

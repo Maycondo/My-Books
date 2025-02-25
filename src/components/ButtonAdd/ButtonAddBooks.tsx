@@ -19,7 +19,7 @@ export default function AddBooks() {
       </div>
       {isAddingBook && (
         <CardBook
-          isOpen={setIsAddingBook} 
+          isOpen={isAddingBook} 
           onClose={() => toggleAddBook(false)} 
         />
       )}
