@@ -1,16 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import "./style.css";
+import { useState } from "react";
+import { Book } from "../Panelsuperior/context/BookContext";
 import { useBook } from "../Panelsuperior/context/BookContext";
-
+import CardBook from "../CardBook/CardBook";
 
 export default function PanelBook() {
+  const [isCardBookOpen, setIsCardBookOpen] = useState<boolean>(false);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const { bookData } = useBook();
 
-  if (bookData.length === 0 ) {
+  if (bookData.length === 0) {
     return <p>Nenhum livro disponível.</p>;
   }
-  
-  console.log(bookData);
+
   return (
     <>
       {bookData.map((book) => (
@@ -26,7 +29,7 @@ export default function PanelBook() {
               <p>{book.description}</p>
             </div>
             <div className="Card_Book_Button">
-              <button className="readmore-btn">
+              <button className="readmore-btn" onClick={() => { setSelectedBook(book); setIsCardBookOpen(true); }} >
                 <span className="book-wrapper">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="rgb(26, 26, 26)" viewBox="0 0 126 75" className="book">
                     <rect strokeWidth="3" stroke="#fff" rx="7.5" height="70" width="121" y="2.5" x="2.5" />
@@ -47,6 +50,14 @@ export default function PanelBook() {
           </div>
         </div>
       ))}
+
+      {isCardBookOpen && selectedBook && (
+        <CardBook
+          isOpen={isCardBookOpen}
+          onClose={() => setIsCardBookOpen(false)}
+          book={selectedBook} 
+        />
+      )}
     </>
   );
 }

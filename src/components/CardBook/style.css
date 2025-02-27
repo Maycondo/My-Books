@@ -1,0 +1,81 @@
+
+.card-book {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    z-index: 1000;
+    background-color: rgb(255, 255, 255);
+}
+
+.Button_1 {
+    position: relative;
+    left: 95%;
+    margin: 1rem 1rem;
+    width: 3em;
+    height: 3em;
+    border: none;
+    background: #2e2c2c;
+    transition: background 0.3s;
+  }
+  
+  .X_1 {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+    transform: translateX(-50%) rotate(45deg);
+  }
+  
+  .Y_1 {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2em;
+    height: 1px;
+    background-color: #fff;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+  
+  .close_1 {
+    position: absolute;
+    display: flex;
+    padding: 0.8rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    top: -70%;
+    left: 50%;
+    width: 3em;
+    height: 1.7em;
+    font-size: 12px;
+    background-color: rgb(19, 22, 24);
+    color: rgb(187, 229, 236);
+    border: none;
+    border-radius: 3px;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .Button:hover {
+    background-color: rgb(211, 21, 21);
+  }
+  
+  .Button:active {
+    background-color: rgb(130, 0, 0);
+  }
+  
+  .Button:hover > .close {
+    animation: close 0.2s forwards 0.25s;
+  }
+  
+  @keyframes close {
+    100% {
+      opacity: 1;
+    }
+  }
