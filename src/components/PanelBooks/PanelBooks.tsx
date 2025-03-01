@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import "./style.css";
 import { useState } from "react";
-import { Book } from "../Panelsuperior/context/BookContext";
-import { useBook } from "../Panelsuperior/context/BookContext";
+import { Book } from "../context/BookContext";
+import { useBook } from "../context/BookContext";
 import CardBook from "../CardBook/CardBook";
 
 export default function PanelBook() {

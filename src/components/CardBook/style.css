@@ -1,18 +1,31 @@
 
-.card-book {
-    width: 100vw;
-    height: 100vh;
+.card-book-open {
+    height: 100%;
+    width: 100%;
     display: flex;
-    position: absolute;
     flex-direction: column;
+    position: absolute;
+    top: 0;
     z-index: 1000;
     background-color: rgb(255, 255, 255);
 }
 
+.card-book-header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-book-header h1 {
+    font-size: 2.3rem;
+    font-weight: bold;
+    margin: 0rem 2rem;
+}
+
 .Button_1 {
     position: relative;
-    left: 95%;
-    margin: 1rem 1rem;
+    margin: 1rem;
     width: 3em;
     height: 3em;
     border: none;
@@ -79,3 +92,36 @@
       opacity: 1;
     }
   }
+
+.card-book__container {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: solid 2px black ;
+}
+
+.card-book__text {
+    width: 55rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    border-left: solid 2px black ;
+}
+
+.card-book__text h1 {
+  font-size: 2.3rem;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: 900;
+  font-family: "Josefin Sans", serif;
+}
+
+.card-book__text p {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 1rem;
+  font-family: "Josefin Sans", serif;
+}
+

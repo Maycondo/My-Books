@@ -3,7 +3,7 @@ import Image from "next/image";
 import PerfilImagem from "@/Image/ImagemPerfil.jpeg";
 import PanelBook from "../PanelBooks/PanelBooks";
 import { ImBooks } from "react-icons/im";
-import { BookProvider } from "./context/BookContext";
+import { BookProvider } from "../context/BookContext";
 import "./style.css";
 
 const categorias = ["Books", "Favorites"] as const;

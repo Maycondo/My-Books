@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
-import { useBook } from "../Panelsuperior/context/BookContext";
+import { useBook } from "../context/BookContext";
 import ErroMessagem from "../MessagensBooks/ErroMessagemBook";
 import SuccessMessagem from "../MessagensBooks/SuccessMessagem";
 import { useState } from "react";
