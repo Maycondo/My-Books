@@ -23,6 +23,13 @@
     margin: 0rem 2rem;
 }
 
+.valiacao {
+    font-size: 1.5rem;
+    font-weight: 400;
+    display: flex;
+    font-family: "Josefin Sans", serif;
+}
+
 .Button_1 {
     position: relative;
     margin: 1rem;
@@ -98,7 +105,6 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    border: solid 2px black ;
 }
 
 .card-book__text {
@@ -123,5 +129,21 @@
   font-weight: 400;
   margin: 1rem;
   font-family: "Josefin Sans", serif;
+}
+
+.card-book__image {
+  width: 35rem;
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-book__image img {
+  height: 33rem;
+  width: 26rem;
+  margin: 1rem;
+  border-radius: 7px;
+  display: flex;
 }
 
