@@ -24,10 +24,17 @@
 }
 
 .valiacao {
-    font-size: 1.5rem;
-    font-weight: 400;
     display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: start;
     font-family: "Josefin Sans", serif;
+}
+.valiacao h3{
+  font-size: 1.2rem;
+  margin: 1rem 0rem;
+  font-weight: 500;
+  font-family: "Josefin Sans", serif;
 }
 
 .Button_1 {
@@ -129,6 +136,7 @@
   font-weight: 400;
   margin: 1rem;
   font-family: "Josefin Sans", serif;
+  cursor: pointer;
 }
 
 .card-book__image {
