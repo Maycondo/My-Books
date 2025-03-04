@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import "./style.css";
+import "./style_1.css";
 import { useState, useEffect , useRef} from "react";
 import { IoBook } from "react-icons/io5";
 import { IoStarOutline } from "react-icons/io5";
@@ -89,9 +89,18 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                                 )}
                         </ul>
                         <h6>{formatDate(book.createdAt)}</h6>
-                    {isEdit ? (<><textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+                    {isEdit ? (<>
+                    <textarea className="text_edit" value={description} onChange={(e) => setDescription(e.target.value)} />
                         <button className="save-button" onClick={handleSave}>Save</button></>
-                    ): (<p>{description}<button className="Edit_text" onClick={toggleEdit}><MdEditNote/></button></p>)}
+                    ): (<p>
+                        {description.split("\n").map((line, index) => (
+                          <span key={index}>
+                            {line}
+                            <br />
+                          </span>
+                        ))}
+                        <button className="Button_Edit" onClick={toggleEdit}><MdEditNote /></button>
+                      </p>)}
                 </div>
                 <div className="card-book__image">
                     <img src={book.imageUrl} alt={book.title} />
