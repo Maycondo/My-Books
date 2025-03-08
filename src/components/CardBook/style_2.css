@@ -1,0 +1,51 @@
+.ard-book-discript {
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+}
+
+#Author {
+        height: 2.5rem;
+        width: auto;   
+        display: flex;
+        font-size: 1rem;
+        border-radius: 50px;
+        padding: 1rem;
+        font-weight: 900;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-family: "Josefin Sans", serif;
+        background-color: #f0f0f0;
+}
+
+#Author i {
+        color: #333;
+        margin: 0 0.5rem;
+        font-family: "Josefin Sans", serif;
+        font-style: italic;
+}
+
+#Category {
+        height: 2.5rem;
+        width: auto;   
+        display: flex;
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 50px;
+        font-weight: 900;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-family: "Josefin Sans", serif;
+        background-color: #f0f0f0;
+}
+
+#Category i {
+        color: #333;
+        margin: 0 0.5rem;
+        font-family: "Josefin Sans", serif;
+        font-style: italic;
+}

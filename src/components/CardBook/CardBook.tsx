@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import "./style_1.css";
 import { useState, useEffect , useRef} from "react";
 import { IoBook } from "react-icons/io5";
 import { IoStarOutline } from "react-icons/io5";
 import { IoStar } from "react-icons/io5";
-
 import { MdEditNote } from "react-icons/md";
+
+import "./style_1.css";
+import "./style_2.css";
 
 
 interface CardBookProps {
@@ -27,7 +28,6 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState(book.description);
     const [isEdit, setIsEdit] = useState(false);
-
     const descriptionLoaded = useRef(false);
         
     useEffect(() => {
@@ -88,15 +88,14 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                                     </li>
                                 )}
                         </ul>
-                        <h6>{formatDate(book.createdAt)}</h6>
+                        <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i></h6>
                     {isEdit ? (<>
-                    <textarea className="text_edit" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        <textarea className="text_edit" value={description} onChange={(e) => setDescription(e.target.value)} />
                         <button className="save-button" onClick={handleSave}>Save</button></>
                     ): (<p>
                         {description.split("\n").map((line, index) => (
                           <span key={index}>
                             {line}
-                            <br />
                           </span>
                         ))}
                         <button className="Button_Edit" onClick={toggleEdit}><MdEditNote /></button>
@@ -104,8 +103,10 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                 </div>
                 <div className="card-book__image">
                     <img src={book.imageUrl} alt={book.title} />
-                    <p>Author: <i>{book.authorBook}</i></p>
-                    <p>Category: <i>{book.categoria.join(', ')}</i></p>
+                    <div className="card-book-discript">
+                        <p id="Author">Author: <i>{book.authorBook}</i></p>
+                        <p id="Category">Category: <i>{book.categoria.join(', ')}</i></p>
+                    </div>
                 </div>
             </div>
         </div>

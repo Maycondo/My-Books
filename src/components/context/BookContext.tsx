@@ -7,6 +7,8 @@ export type Book = {
   description: string;
   imageUrl: string;
   categoria: string[];
+  rating: number;
+  createdAt: string;
 };
 
 type BookContextType = {
@@ -25,6 +27,8 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
       description:"O Senhor dos Anéis é um romance de fantasia criado pelo escritor, professor e filólogo britânico J.R.R. Tolkien.",
       imageUrl:"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX331_BO1,204,203,200_.jpg",
       categoria: ["Fantasia"],
+      rating: 5,
+      createdAt: "2022-01-01",
     },
 
     {
@@ -33,7 +37,9 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
       authorBook: "J. K. Rowling",
       description:"Harry Potter e a Pedra Filosofal é o primeiro livro dos sete volumes da série de fantasia Harry Potter, tanto em termos cronológicos como em ordem de publicação, da autora inglesa J. K. Rowling.",
       imageUrl:"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX331_BO1,204,203,200_.jpg",
-      categoria: ["Fantasia"],
+      categoria: ["Fantasia", "Aventura", "Drama"],
+      rating: 4.5,
+      createdAt: "2022-01-01",
     },
 
     {
@@ -42,7 +48,9 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
       authorBook: "Antoine de Saint-Exupéry",
       description:"O Pequeno Príncipe é uma obra do escritor e aviador francês Antoine de Saint-Exupéry.",
       imageUrl:"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX331_BO1,204,203,200_.jpg",
-      categoria: ["Ficção"],
+      categoria: ["Ficção", "Aventura", "Fantasia"],
+      rating: 4.5,
+      createdAt: "2022-01-01",
     },
 
   ]); 

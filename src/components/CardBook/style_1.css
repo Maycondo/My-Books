@@ -26,15 +26,30 @@
 .valiacao {
     display: flex;
     align-items: center;
-    width: 100%;
     justify-content: start;
+    margin: 0rem 1rem;
+    width: 100%;
     font-family: "Josefin Sans", serif;
 }
+
 .valiacao h3 {
-  font-size: 1.2rem;
-  margin: 1rem 0rem;
-  font-weight: 500;
-  font-family: "Josefin Sans", serif;
+    font-size: 1.1rem;
+    margin: 1rem 0rem;
+    font-weight: 500;
+    font-family: "Josefin Sans", serif;
+}
+
+#Publication_book {
+    width: auto;
+    gap: 0.4rem;
+    font-size: 1.1rem;
+    margin: 0.5rem 1rem;
+    color: #757575;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-weight: 500;
+    font-family: "Josefin Sans", serif;
 }
 
 .Button_1 {
@@ -183,7 +198,7 @@
 
 .card-book__image {
   width: 35rem;
-  height: 50rem;
+  height: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
