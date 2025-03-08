@@ -8,6 +8,14 @@ import { MdEditNote } from "react-icons/md";
 import "./style_1.css";
 import "./style_2.css";
 
+import { FiList } from "react-icons/fi";
+import { BiText } from "react-icons/bi";
+import { MdFormatColorText } from "react-icons/md";
+import { PiTextBBold } from "react-icons/pi";
+import { MdOutlineFormatListNumbered } from "react-icons/md";
+import { BsTypeH1 } from "react-icons/bs";
+import { BsTypeH2 } from "react-icons/bs";
+import { BsTypeH3 } from "react-icons/bs";
 
 interface CardBookProps {
     isOpen: boolean;
@@ -24,11 +32,24 @@ interface CardBookProps {
     }
 }
 
+const iconsMinContainer = [
+    { icon: FiList },
+    { icon: MdOutlineFormatListNumbered },
+    { icon: BiText },
+    { icon: MdFormatColorText },
+    { icon: PiTextBBold },
+    { icon: BsTypeH1 },
+    { icon: BsTypeH2 },
+    { icon: BsTypeH3 },
+]
+
 export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState(book.description);
+    const [minConteiner, setMinConteiner] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const descriptionLoaded = useRef(false);
+    
         
     useEffect(() => {
         const savedRating = localStorage.getItem(`@rating-${book.id}`);
@@ -46,7 +67,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         setRating(newRating);
         localStorage.setItem(`@rating-${book.id}`, newRating.toString());
     }
-
+    const toggleMincontainer = () => setMinConteiner(!minConteiner)
     const toggleEdit = () => setIsEdit(!isEdit);
     const handleSave = () => {
         localStorage.setItem(`@description-${book.id}`, description);
@@ -81,16 +102,24 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                     <h1>Review Book: <i>{book.title}</i></h1>
                         <ul className="valiacao">
                             <h3>Book Rating:</h3>
-                                {[...Array(5)].map((_, newRating) => 
-                                    <li key={newRating} className="star-icon" onClick={() => handleRating(newRating + 1)}  
-                                    style={{ cursor: "pointer", color: newRating < rating ? "#FFD700" : "#ccc"}}>
-                                        {newRating < rating ? <IoStar /> : <IoStarOutline />}
-                                    </li>
-                                )}
+                                {[...Array(5)].map((_, newRating) => (
+                                    <li key={newRating} className="star-icon" onClick={() => handleRating(newRating + 1)}
+                                    style={{ cursor: "pointer", color:  newRating < rating ? "#FFD700" : "#ccc"}}
+                                    >{newRating < rating ? <IoStar /> : <IoStarOutline />}</li>
+                                ))}
                         </ul>
                         <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i></h6>
                     {isEdit ? (<>
-                        <textarea className="text_edit" value={description} onChange={(e) => setDescription(e.target.value)} />
+                        <textarea className="text_edit" value={description} onClick={() => toggleMincontainer()} onChange={(e) => setDescription(e.target.value)} />
+                        {
+                            minConteiner ? (
+                                <div className="min-container">
+                                    {iconsMinContainer.map((item, index) => (
+                                        <button key={index} className="Button_icones"><item.icon/></button>
+                                    ))}
+                                </div>
+                            ) : null
+                        }
                         <button className="save-button" onClick={handleSave}>Save</button></>
                     ): (<p>
                         {description.split("\n").map((line, index) => (
@@ -102,7 +131,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                       </p>)}
                 </div>
                 <div className="card-book__image">
-                    <img src={book.imageUrl} alt={book.title} />
+                        <img src={book.imageUrl} alt={book.title} />
                     <div className="card-book-discript">
                         <p id="Author">Author: <i>{book.authorBook}</i></p>
                         <p id="Category">Category: <i>{book.categoria.join(', ')}</i></p>
