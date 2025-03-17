@@ -4,18 +4,11 @@ import { IoBook } from "react-icons/io5";
 import { IoStarOutline } from "react-icons/io5";
 import { IoStar } from "react-icons/io5";
 import { MdEditNote } from "react-icons/md";
+import Toolbar from "./Toolbar"
 
 import "./style_1.css";
 import "./style_2.css";
 
-import { FiList } from "react-icons/fi";
-import { BiText } from "react-icons/bi";
-import { MdFormatColorText } from "react-icons/md";
-import { PiTextBBold } from "react-icons/pi";
-import { MdOutlineFormatListNumbered } from "react-icons/md";
-import { BsTypeH1 } from "react-icons/bs";
-import { BsTypeH2 } from "react-icons/bs";
-import { BsTypeH3 } from "react-icons/bs";
 
 interface CardBookProps {
     isOpen: boolean;
@@ -32,21 +25,10 @@ interface CardBookProps {
     }
 }
 
-const iconsMinContainer = [
-    { icon: FiList },
-    { icon: MdOutlineFormatListNumbered },
-    { icon: BiText },
-    { icon: MdFormatColorText },
-    { icon: PiTextBBold },
-    { icon: BsTypeH1 },
-    { icon: BsTypeH2 },
-    { icon: BsTypeH3 },
-]
-
 export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState(book.description);
-    const [minConteiner, setMinConteiner] = useState(false);
+    const [toolbar, setToolbar] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const descriptionLoaded = useRef(false);
     
@@ -67,8 +49,8 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         setRating(newRating);
         localStorage.setItem(`@rating-${book.id}`, newRating.toString());
     }
-    const toggleMincontainer = () => setMinConteiner(!minConteiner)
-    const toggleEdit = () => setIsEdit(!isEdit);
+    const toggleMincontainer = () => setToolbar(prev => !prev)
+    const toggleEdit = () => setIsEdit(prev => !prev);
     const handleSave = () => {
         localStorage.setItem(`@description-${book.id}`, description);
         setIsEdit(false);
@@ -90,7 +72,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     return (
         <div className="card-book-open">
             <div className="card-book-header">  
-                <h1><IoBook /> Book Review</h1>              
+                <h1><IoBook/> Book Review</h1>              
                     <button className="Button_1" onClick={onClose}>
                         <span className="X_1"></span>
                         <span className="Y_1"></span>
@@ -108,27 +90,19 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                                     >{newRating < rating ? <IoStar /> : <IoStarOutline />}</li>
                                 ))}
                         </ul>
-                        <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i></h6>
+                        <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i> </h6>
                     {isEdit ? (<>
                         <textarea className="text_edit" value={description} onClick={() => toggleMincontainer()} onChange={(e) => setDescription(e.target.value)} />
-                        {
-                            minConteiner ? (
-                                <div className="min-container">
-                                    {iconsMinContainer.map((item, index) => (
-                                        <button key={index} className="Button_icones"><item.icon/></button>
-                                    ))}
-                                </div>
-                            ) : null
-                        }
+                            {toolbar && (<Toolbar></Toolbar> )}
                         <button className="save-button" onClick={handleSave}>Save</button></>
-                    ): (<p>
-                        {description.split("\n").map((line, index) => (
-                          <span key={index}>
-                            {line}
-                          </span>
-                        ))}
-                        <button className="Button_Edit" onClick={toggleEdit}><MdEditNote /></button>
-                      </p>)}
+                    ): (
+                        <div className="description-container">
+                            {description.split("\n").map((line, index) => (
+                                <span key={index}> {line} <br/>{}</span>
+                            ))}
+                            <button className="Button_Edit" onClick={toggleEdit}><MdEditNote/></button>
+                        </div>
+                      )}
                 </div>
                 <div className="card-book__image">
                         <img src={book.imageUrl} alt={book.title} />
