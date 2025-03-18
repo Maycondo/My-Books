@@ -93,13 +93,11 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                         <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i> </h6>
                     {isEdit ? (<>
                         <textarea className="text_edit" value={description} onClick={() => toggleMincontainer()} onChange={(e) => setDescription(e.target.value)} />
-                            {toolbar && (<Toolbar></Toolbar> )}
+                            {toolbar && (<Toolbar setDescription={setDescription} />)}
                         <button className="save-button" onClick={handleSave}>Save</button></>
                     ): (
-                        <div className="description-container">
-                            {description.split("\n").map((line, index) => (
-                                <span key={index}> {line} <br/>{}</span>
-                            ))}
+                        <div className="description-container" >
+                            <div dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, "<br>")}} /> 
                             <button className="Button_Edit" onClick={toggleEdit}><MdEditNote/></button>
                         </div>
                       )}

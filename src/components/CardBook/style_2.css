@@ -51,7 +51,7 @@
 }
 
 .toolbar {
-   height: 2.5rem;
+   height: 2rem;
    width: 20rem;
    border-radius: 10px;
    gap: 1.3rem;
@@ -65,7 +65,7 @@
    display: flex;
    align-items: center;
    justify-content: center;
-   font-size: 1.2rem;
+   font-size: 1rem;
    border: none;
    font: 900;
    font-family: "Josefin Sans", serif;
