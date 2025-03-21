@@ -20,9 +20,9 @@ export default function Toolbar ({ setDescription }: ToolbarProps ) {
                 if (format === "numbered-list") return prev + "\n\n1. Item \n2. Item \n3. Item";
                 if (format === "bold") return prev + "<b>Texto em negrito</b>";
                 if (format === "italic") return prev + "<i>Texto em itálico</i>";
-                if (format === "h1") return prev + "\n\n <h1># Título H1</h1>";
-                if (format === "h2") return prev + "\n\n## <h2># Título H1</h2>";
-                if (format === "h3") return prev + "\n\n<h3># Título H1</h3>";
+                if (format === "h1") return prev + "\n\n <h1>Título H1</h1>";
+                if (format === "h2") return prev + "\n\n<h2>Título H1</h2>";
+                if (format === "h3") return prev + "\n\n<h3>Título H1</h3>";
             return prev;
         })
     };

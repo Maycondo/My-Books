@@ -61,7 +61,7 @@
    background-color: #ececec;
 }
 
-.Button_icones {
+.toolbar button {
    display: flex;
    align-items: center;
    justify-content: center;
