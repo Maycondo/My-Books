@@ -33,7 +33,8 @@ export default function Panelhome() {
                     </ul>
                 </nav>
                 <div className="panel-content">
-                    {panelContent[activeCategory] ?? <div>Sem categorias selecionadas</div>}
+                    {panelContent[activeCategory] ?? 
+                    <div>Sem categorias selecionadas</div>}
                 </div>
             </div>
         </BookProvider>

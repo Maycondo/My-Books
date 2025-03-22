@@ -75,6 +75,6 @@ li {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: inherit;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }

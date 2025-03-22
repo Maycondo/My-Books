@@ -1,5 +1,5 @@
 .Card_Book {
-    height: 56rem;
+    height: auto;
     width: 32rem;
     display: flex;
     flex-direction: column;

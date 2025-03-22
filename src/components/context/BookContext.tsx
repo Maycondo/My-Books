@@ -53,6 +53,40 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
       createdAt: "2022-01-01",
     },
 
+    {
+      id: "4",
+      title: "Dom Quixote",
+      authorBook: "Miguel de Cervantes",
+      description
+      :"Dom Quixote de la Mancha é um livro escrito pelo espanhol Miguel de Cervantes.",
+      imageUrl:"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX331_BO1,204,203,200_.jpg",
+      categoria: ["Romance", "Aventura", "Comédia"],
+      rating: 4.5,
+      createdAt: "2022-01-01",
+    },
+
+    {
+      id: "5",
+      title: "Cem Anos de Solidão",
+      authorBook: "Gabriel Garcia Marquez",
+      description:"Cem Anos de Solidão é um romance do escritor colombiano Gabriel García Márquez.",
+      imageUrl:"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX331_BO1,204,203,200_.jpg",
+      categoria: ["Romance", "Ficção", "Drama"],
+      rating: 4.5,
+      createdAt: "2022-01-01",
+    },
+
+    {
+      id: "6",
+      title: "A Montanha Mágica",
+      authorBook: "Thomas Mann",
+      description:"A Montanha Mágica é um romance do escritor alemão Thomas Mann.",
+      imageUrl:"https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX331_BO1,204,203,200_.jpg",
+      categoria: ["Romance", "Ficção", "Drama"],
+      rating: 4.5,
+      createdAt: "2022-01-01",
+    }
+
   ]); 
 
   return (
