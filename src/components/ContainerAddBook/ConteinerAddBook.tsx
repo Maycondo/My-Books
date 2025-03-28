@@ -131,13 +131,13 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                     
                     <div className="seletc_catery">
                         <p id="Text_catery">Book Categories</p>
-                        <ul>
-                            {categorias.map((categoria) => (
-                                <li key={categoria}  className={newBook.categoria.includes(categoria) ? "selected" : ""} onClick={() => handleCategoriaClick(categoria)}>
-                                    {categoria}
-                                </li>
-                            ))}
-                        </ul>
+                            <ul>
+                                {categorias.map((categoria) => (
+                                    <li key={categoria}  className={newBook.categoria.includes(categoria) ? "selected" : ""} onClick={() => handleCategoriaClick(categoria)}>
+                                        {categoria}
+                                    </li>
+                                ))}
+                            </ul>
                     </div>
 
                     <div className="input-group">

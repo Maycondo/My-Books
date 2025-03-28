@@ -5,8 +5,8 @@
   position: fixed; 
   top: 0;
   left: 0;
-  overflow: auto; 
   display: flex;
+  overflow-y: auto;
   justify-content: center;
   align-items: center;
   background: rgba(1, 1, 1, 0.4);
@@ -107,7 +107,7 @@
     height: 95rem;
     width: 50rem;
     display: flex;
-    overflow-x: auto;
+    overflow-y: auto;
     justify-content: center;
     align-content: center;
     flex-direction: column;
