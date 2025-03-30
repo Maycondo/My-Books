@@ -1,7 +1,7 @@
 .success-message {
-  height: 100%;
+  height: auto;
   width: 100%;
-  position: absolute;
+  position: fixed;
   background: rgba(1, 1, 1, 0.4);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6.9px);

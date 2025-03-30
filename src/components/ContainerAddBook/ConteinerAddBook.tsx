@@ -106,7 +106,7 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                     <div className="close">Close</div>
                 </button>
                 
-                <form className="form_card" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className="card_imagem">
                         {newBook.imageUrl ? (
                             <img className="imagem_book" src={newBook.imageUrl} alt="Book"/>
@@ -122,39 +122,41 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                                 <ImBin/>
                             </button>
                         )}
+
+                        <div className="input-group">
+                            <input  className={`input-text ${!newBook.title.trim() ? "error_" : ""}`}  name="title"  type="text"  placeholder="Name Book"  autoComplete="off" value={newBook.title} onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}/>
+                            <label className="input-text-label">Name Book</label>
+                        </div>
+
+                        <div className="input-group">
+                            <input className={`input-text ${!newBook.authorBook.trim() ? "error_" : ""}`} name="author" type="text" placeholder="Author Book" value={newBook.authorBook}onChange={(e) => setNewBook({ ...newBook, authorBook: e.target.value })}/>
+                            <label className="input-text-label">Author Book</label>
+                        </div>
                     </div>
 
-                    <div className="input-group">
-                        <input  className={`input-text ${!newBook.title.trim() ? "error_" : ""}`}  name="title"  type="text"  placeholder="Name Book"  autoComplete="off" value={newBook.title} onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}/>
-                        <label className="input-text-label">Name Book</label>
-                    </div>
-                    
-                    <div className="seletc_catery">
-                        <p id="Text_catery">Book Categories</p>
-                            <ul>
-                                {categorias.map((categoria) => (
-                                    <li key={categoria}  className={newBook.categoria.includes(categoria) ? "selected" : ""} onClick={() => handleCategoriaClick(categoria)}>
-                                        {categoria}
-                                    </li>
-                                ))}
-                            </ul>
-                    </div>
+                    <div className="card_discretion">
+                        <div className="seletc_catery">
+                            <p id="Text_catery">Select Categories</p>
+                                <ul>
+                                    {categorias.map((categoria) => (
+                                        <li key={categoria}  className={newBook.categoria.includes(categoria) ? "selected" : ""} onClick={() => handleCategoriaClick(categoria)}>
+                                            {categoria}
+                                        </li>
+                                    ))}
+                                </ul>
+                        </div>
 
-                    <div className="input-group">
-                        <input className={`input-text ${!newBook.authorBook.trim() ? "error_" : ""}`} name="author" type="text" placeholder="Author Book" value={newBook.authorBook}onChange={(e) => setNewBook({ ...newBook, authorBook: e.target.value })}/>
-                        <label className="input-text-label">Author Book</label>
-                    </div>
-
-                    <div className="custom-box">
                         <label className="input-text-discretion">Discretion Book:</label>
-                        <textarea className="Box_discretion" value={newBook.description} onChange={(e) => setNewBook({ ...newBook, description: e.target.value })}></textarea>
-                        <span className="corner top-left"></span>
-                        <span className="corner top-right"></span>
-                        <span className="corner bottom-left"></span>
-                        <span className="corner bottom-right"></span>
+                        <div className="custom-box">
+                            <textarea className="Box_discretion" value={newBook.description} onChange={(e) => setNewBook({ ...newBook, description: e.target.value })}></textarea>
+                            <span className="corner top-left"></span>
+                            <span className="corner top-right"></span>
+                            <span className="corner bottom-left"></span>
+                            <span className="corner bottom-right"></span>
+                        </div>
+                        <button className="Button_submit" type="submit">Add Book</button>
                     </div>
 
-                    <button className="Button_submit" type="submit">Add Book</button>
                 </form>
             </div>
 
