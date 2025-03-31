@@ -91,8 +91,8 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
         });
     
         setTimeout(() => {
-            setSuccessMessage(null);
             onClose();
+            setSuccessMessage(null);
         }, 3000);
     };
     
@@ -122,16 +122,19 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                                 <ImBin/>
                             </button>
                         )}
+                        
+                        <div className="input-center">
+                            <div className="input-group">
+                                <input  className={`input-text ${!newBook.title.trim() ? "error_" : ""}`}  name="title"  type="text"  placeholder="Name Book"  autoComplete="off" value={newBook.title} onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}/>
+                                <label className="input-text-label">Name Book</label>
+                            </div>
 
-                        <div className="input-group">
-                            <input  className={`input-text ${!newBook.title.trim() ? "error_" : ""}`}  name="title"  type="text"  placeholder="Name Book"  autoComplete="off" value={newBook.title} onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}/>
-                            <label className="input-text-label">Name Book</label>
+                            <div className="input-group">
+                                <input className={`input-text ${!newBook.authorBook.trim() ? "error_" : ""}`} name="author" type="text" placeholder="Author Book" value={newBook.authorBook}onChange={(e) => setNewBook({ ...newBook, authorBook: e.target.value })}/>
+                                <label className="input-text-label">Author Book</label>
+                            </div>
                         </div>
 
-                        <div className="input-group">
-                            <input className={`input-text ${!newBook.authorBook.trim() ? "error_" : ""}`} name="author" type="text" placeholder="Author Book" value={newBook.authorBook}onChange={(e) => setNewBook({ ...newBook, authorBook: e.target.value })}/>
-                            <label className="input-text-label">Author Book</label>
-                        </div>
                     </div>
 
                     <div className="card_discretion">
@@ -147,13 +150,13 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                         </div>
 
                         <label className="input-text-discretion">Discretion Book:</label>
-                        <div className="custom-box">
-                            <textarea className="Box_discretion" value={newBook.description} onChange={(e) => setNewBook({ ...newBook, description: e.target.value })}></textarea>
-                            <span className="corner top-left"></span>
-                            <span className="corner top-right"></span>
-                            <span className="corner bottom-left"></span>
-                            <span className="corner bottom-right"></span>
-                        </div>
+                            <div className="custom-box">
+                                <textarea className="Box_discretion" value={newBook.description} onChange={(e) => setNewBook({ ...newBook, description: e.target.value })}></textarea>
+                                <span className="corner top-left"></span>
+                                <span className="corner top-right"></span>
+                                <span className="corner bottom-left"></span>
+                                <span className="corner bottom-right"></span>
+                            </div>
                         <button className="Button_submit" type="submit">Add Book</button>
                     </div>
 

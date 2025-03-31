@@ -1,3 +1,14 @@
+.input-center {
+    height: 40%;
+    width: 100%;
+    margin: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
 .card_discretion {
     height: 100%;
     width: 70%;
