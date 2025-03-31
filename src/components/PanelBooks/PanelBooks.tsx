@@ -1,23 +1,59 @@
 /* eslint-disable @next/next/no-img-element */
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Book } from "../context/BookContext";
 import { useBook } from "../context/BookContext";
 import CardBook from "../CardBook/CardBook";
 
+import { MdFavoriteBorder } from "react-icons/md"; 
+import { MdFavorite } from "react-icons/md";
+
 export default function PanelBook() {
   const [isCardBookOpen, setIsCardBookOpen] = useState<boolean>(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [favorites, setFavorites] = useState<Record<string, boolean>>({});
   const { bookData } = useBook();
+
+
+  useEffect(() => {
+    try {
+      const storedFavorites = localStorage.getItem("@favorites");
+      if (storedFavorites) {
+        setFavorites(JSON.parse(storedFavorites));
+      }
+    } catch (error) {
+      console.error("Erro ao carregar favoritos:", error);
+      localStorage.removeItem("@favorites");
+    }
+  }, []); 
+  
+  useEffect(() => {
+    if (Object.keys(favorites).length > 0) {
+      try {
+        localStorage.setItem("@favorites", JSON.stringify(favorites));
+      } catch (error) {
+        console.error("Erro ao salvar favoritos:", error);
+      }
+    }
+  }, [favorites]); 
 
   if (bookData.length === 0) {
     return <p>Nenhum livro disponível.</p>;
   }
 
+  const handleFavoriteClick = (bookId: string) => {
+    setFavorites(prev => {
+      const newState = !prev[bookId];
+      alert(newState ? "Livro adicionado aos favoritos!" : "Livro removido dos favoritos!");
+      return { ...prev, [bookId]: newState };
+    })
+  };
+
   return (
     <>
       {bookData.map((book) => (
         <div key={book.id} className="Card_Book">
+          <button className="save-book-favorite" onClick={() => handleFavoriteClick(book.id)}>{favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}</button>
           <div className="Card_Book_Item">
             <div className="Card_Book_Imagem">
               <img src={book.imageUrl || ""} alt={book.title || "Capa do livro"} loading="lazy" />
