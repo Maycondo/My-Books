@@ -36,7 +36,7 @@
 }
 
 .seletc_catery ul {
-    height: 85%;
+    height: 90%;
     width: 51rem;
     display: flex;
     margin: 1rem ;
@@ -49,6 +49,9 @@
 
 .seletc_catery li {
     height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     list-style: none;
     font-size: 1.1rem;
     color: black;

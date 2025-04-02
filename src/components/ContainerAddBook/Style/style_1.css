@@ -105,6 +105,8 @@
 .selected {
   font-weight: bold;
   color: #1c1d1f;
+  background-color: #b1b1b1;
+  border-radius: 50px;  
   cursor: pointer;
 }
 

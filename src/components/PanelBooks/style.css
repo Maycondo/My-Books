@@ -13,6 +13,15 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
+.save-book-favorite {
+    height: 2rem;
+    width: 2rem;
+    font-size: 2rem;          
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
 .Card_Book_Imagem {     
     height: 62%;
     width: 100%;

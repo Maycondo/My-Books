@@ -16,25 +16,25 @@ export default function PanelBook() {
 
 
   useEffect(() => {
-    try {
-      const storedFavorites = localStorage.getItem("@favorites");
-      if (storedFavorites) {
-        setFavorites(JSON.parse(storedFavorites));
+      try {
+        const storedFavorites = localStorage.getItem("@favorites");
+        if (storedFavorites) {
+          setFavorites(JSON.parse(storedFavorites));
+        }
+      } catch (error) {
+        console.error("Erro ao carregar favoritos:", error);
+        localStorage.removeItem("@favorites");
       }
-    } catch (error) {
-      console.error("Erro ao carregar favoritos:", error);
-      localStorage.removeItem("@favorites");
-    }
   }, []); 
   
   useEffect(() => {
-    if (Object.keys(favorites).length > 0) {
-      try {
-        localStorage.setItem("@favorites", JSON.stringify(favorites));
-      } catch (error) {
-        console.error("Erro ao salvar favoritos:", error);
+      if (Object.keys(favorites).length > 0) {
+        try {
+          localStorage.setItem("@favorites", JSON.stringify(favorites));
+        } catch (error) {
+          console.error("Erro ao salvar favoritos:", error);
+        }
       }
-    }
   }, [favorites]); 
 
   if (bookData.length === 0) {
