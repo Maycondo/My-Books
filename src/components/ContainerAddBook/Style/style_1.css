@@ -138,14 +138,10 @@
 }
 
 .Button_dele_imagem {
-  position: absolute;
   background: transparent;
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   font-size: 2rem;
-  bottom: 0;
-  left: 90%;
-  top: 88%;
 }
 
 input[type="file"] {

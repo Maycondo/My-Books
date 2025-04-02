@@ -11,7 +11,7 @@ import { MdFavorite } from "react-icons/md";
 export default function PanelBook() {
   const [isCardBookOpen, setIsCardBookOpen] = useState<boolean>(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
-  const [favorites, setFavorites] = useState<Record<string, boolean>>({});
+  const [favorites, setFavorites] = useState<Record<string, Book>>({});
   const { bookData } = useBook();
 
 
@@ -41,19 +41,39 @@ export default function PanelBook() {
     return <p>Nenhum livro disponível.</p>;
   }
 
-  const handleFavoriteClick = (bookId: string) => {
+  const handleFavoriteClick = (book: Book) => {
     setFavorites(prev => {
-      const newState = !prev[bookId];
-      alert(newState ? "Livro adicionado aos favoritos!" : "Livro removido dos favoritos!");
-      return { ...prev, [bookId]: newState };
-    })
+      const isFavorite = prev[book.id] !== undefined; 
+  
+      const updatedFavorites = { ...prev };
+  
+      if (isFavorite) {
+        delete updatedFavorites[book.id];
+        alert("Livro removido dos favoritos!");
+      } else {
+        updatedFavorites[book.id] = {
+          id: book.id,
+          title: book.title,
+          authorBook: book.authorBook,
+          description: book.description,
+          imageUrl: book.imageUrl,
+          categoria: book.categoria,
+          rating: book.rating,
+          createdAt: book.createdAt
+        };
+        alert("Livro adicionado aos favoritos!");
+      }
+  
+      console.log("updatedFavorites", updatedFavorites);
+      return updatedFavorites;
+    });
   };
 
   return (
     <>
       {bookData.map((book) => (
         <div key={book.id} className="Card_Book">
-          <button className="save-book-favorite" onClick={() => handleFavoriteClick(book.id)}>{favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}</button>
+          <button className="save-book-favorite" onClick={() => handleFavoriteClick(book)}>{favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}</button>
           <div className="Card_Book_Item">
             <div className="Card_Book_Imagem">
               <img src={book.imageUrl || ""} alt={book.title || "Capa do livro"} loading="lazy" />
