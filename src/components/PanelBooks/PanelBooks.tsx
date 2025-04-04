@@ -1,14 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import "./style.css";
 import { useEffect, useState } from "react";
 import { Book } from "../context/BookContext";
 import { useBook } from "../context/BookContext";
 import CardBook from "../CardBook/CardBook";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md"; 
 
-import { MdFavoriteBorder } from "react-icons/md"; 
-import { MdFavorite } from "react-icons/md";
+interface PanelBookProps {
+  onFavoritesUpdate: (favorites: Record<string, Book>) => void;
+}
 
-export default function PanelBook() {
+export default function PanelBook({ onFavoritesUpdate }: PanelBookProps) {
   const [isCardBookOpen, setIsCardBookOpen] = useState<boolean>(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
   const [favorites, setFavorites] = useState<Record<string, Book>>({});
@@ -16,62 +19,42 @@ export default function PanelBook() {
 
 
   useEffect(() => {
-      try {
-        const storedFavorites = localStorage.getItem("@favorites");
-        if (storedFavorites) {
-          setFavorites(JSON.parse(storedFavorites));
-        }
-      } catch (error) {
-        console.error("Erro ao carregar favoritos:", error);
-        localStorage.removeItem("@favorites");
+     try {
+      const storedFavorites = localStorage.getItem("@favorites");
+      if(storedFavorites) {
+        const parsedFavorites = JSON.parse(storedFavorites);
+        setFavorites(parsedFavorites);
+        onFavoritesUpdate(parsedFavorites);
       }
-  }, []); 
-  
-  useEffect(() => {
-      if (Object.keys(favorites).length > 0) {
-        try {
-          localStorage.setItem("@favorites", JSON.stringify(favorites));
-        } catch (error) {
-          console.error("Erro ao salvar favoritos:", error);
-        }
-      }
-  }, [favorites]); 
+     } catch (error) {
+      console.error("Erro ao carregar favoritos:", error);
+     }
+  }, []);
 
-  if (bookData.length === 0) {
-    return <p>Nenhum livro disponível.</p>;
-  }
+  useEffect(() => {
+    localStorage.setItem("@favorites", JSON.stringify(favorites));
+    onFavoritesUpdate(favorites);
+  }, [favorites]);
 
   const handleFavoriteClick = (book: Book) => {
     setFavorites(prev => {
       const isFavorite = prev[book.id] !== undefined; 
-  
       const updatedFavorites = { ...prev };
   
       if (isFavorite) {
         delete updatedFavorites[book.id];
-        alert("Livro removido dos favoritos!");
       } else {
-        updatedFavorites[book.id] = {
-          id: book.id,
-          title: book.title,
-          authorBook: book.authorBook,
-          description: book.description,
-          imageUrl: book.imageUrl,
-          categoria: book.categoria,
-          rating: book.rating,
-          createdAt: book.createdAt
-        };
-        alert("Livro adicionado aos favoritos!");
+        updatedFavorites[book.id] = book;
       }
-  
-      console.log("updatedFavorites", updatedFavorites);
       return updatedFavorites;
     });
   };
 
   return (
     <>
-      {bookData.map((book) => (
+      {bookData.length === 0 ? (
+        <p>Carregando...</p>
+      ) : (bookData.map((book) => (
         <div key={book.id} className="Card_Book">
           <button className="save-book-favorite" onClick={() => handleFavoriteClick(book)}>{favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}</button>
           <div className="Card_Book_Item">
@@ -105,7 +88,8 @@ export default function PanelBook() {
             </div>
           </div>
         </div>
-      ))}
+      ))
+      )}
 
       {isCardBookOpen && selectedBook && (
         <CardBook

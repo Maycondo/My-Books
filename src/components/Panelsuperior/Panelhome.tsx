@@ -2,6 +2,7 @@ import { JSX, useState } from "react";
 import Image from "next/image";
 import PerfilImagem from "@/Image/ImagemPerfil.jpeg";
 import PanelBook from "../PanelBooks/PanelBooks";
+import FavoritesBooks from "../PanelBooks/FavoritesBooks";
 import { ImBooks } from "react-icons/im";
 import { BookProvider } from "../context/BookContext";
 import "./style.css";
@@ -10,10 +11,11 @@ const categorias = ["Books", "Favorites"] as const;
 
 export default function Panelhome() {
     const [activeCategory, setActiveCategory] = useState<(typeof categorias)[number]>("Books");
+    const [favorites, setFavorites] = useState({});
 
     const panelContent: Record<(typeof categorias)[number], JSX.Element> = {
-        Books: <PanelBook />,
-        Favorites: <div>⭐ Favoritos</div>,
+        Books: <PanelBook onFavoritesUpdate={setFavorites} />,
+        Favorites: <FavoritesBooks favorites={favorites} />,
     };
 
     return (
