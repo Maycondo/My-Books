@@ -1,62 +1,47 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 /* eslint-disable @next/next/no-img-element */
 import "./style.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Book } from "../context/BookContext";
 import { useBook } from "../context/BookContext";
 import CardBook from "../CardBook/CardBook";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md"; 
+import { motion } from "framer-motion";
 
 interface PanelBookProps {
   onFavoritesUpdate: (favorites: Record<string, Book>) => void;
+  favorites: Record<string, Book>;
 }
-
-export default function PanelBook({ onFavoritesUpdate }: PanelBookProps) {
+export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookProps) {
   const [isCardBookOpen, setIsCardBookOpen] = useState<boolean>(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
-  const [favorites, setFavorites] = useState<Record<string, Book>>({});
   const { bookData } = useBook();
 
 
-  useEffect(() => {
-     try {
-      const storedFavorites = localStorage.getItem("@favorites");
-      if(storedFavorites) {
-        const parsedFavorites = JSON.parse(storedFavorites);
-        setFavorites(parsedFavorites);
-        onFavoritesUpdate(parsedFavorites);
-      }
-     } catch (error) {
-      console.error("Erro ao carregar favoritos:", error);
-     }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("@favorites", JSON.stringify(favorites));
-    onFavoritesUpdate(favorites);
-  }, [favorites]);
-
   const handleFavoriteClick = (book: Book) => {
-    setFavorites(prev => {
-      const isFavorite = prev[book.id] !== undefined; 
-      const updatedFavorites = { ...prev };
+      const updatedFavorites = { ...favorites };
   
-      if (isFavorite) {
+      if (updatedFavorites[book.id]) {
         delete updatedFavorites[book.id];
       } else {
         updatedFavorites[book.id] = book;
       }
-      return updatedFavorites;
-    });
+
+    onFavoritesUpdate(updatedFavorites);
   };
+
+
 
   return (
     <>
       {bookData.length === 0 ? (
         <p>Carregando...</p>
-      ) : (bookData.map((book) => (
-        <div key={book.id} className="Card_Book">
-          <button className="save-book-favorite" onClick={() => handleFavoriteClick(book)}>{favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}</button>
+      ) : (
+        bookData.map((book, index) => (
+        <motion.div key={book.id} className="Card_Book" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 * index }}>   
+          <motion.button className="save-book-favorite" onClick={() => handleFavoriteClick(book)} whileTap={{ scale: 1.3 }} transition={{ type: "spring", stiffness: 300 }} >
+            {favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}
+          </motion.button>
           <div className="Card_Book_Item">
             <div className="Card_Book_Imagem">
               <img src={book.imageUrl || ""} alt={book.title || "Capa do livro"} loading="lazy" />
@@ -87,17 +72,17 @@ export default function PanelBook({ onFavoritesUpdate }: PanelBookProps) {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))
       )}
 
       {isCardBookOpen && selectedBook && (
-        <CardBook
-          isOpen={isCardBookOpen}
-          onClose={() => setIsCardBookOpen(false)}
-          book={selectedBook} 
-        />
+          <CardBook
+            isOpen={isCardBookOpen}
+            onClose={() => setIsCardBookOpen(false)}
+            book={selectedBook}
+          />
       )}
-    </>
+    </> 
   );
 }

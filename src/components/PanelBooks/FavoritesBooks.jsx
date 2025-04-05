@@ -1,14 +1,24 @@
 import { useState } from "react";
 import { MdFavorite } from "react-icons/md";
+import { motion } from "framer-motion";
 
 export default function FavoritesBooks({ favorites }) {
+
+
+
   return (
     <>
       {Object.keys(favorites).length === 0 ? (
         <p>Nenhum favorito adicionado ainda.</p>
       ) : (
-        Object.values(favorites).map((book) => (
-          <div key={book.id} className="Card_Book">
+        Object.values(favorites).map((book, index) => (
+          <motion.div
+            key={book.id}
+            className="Card_Book"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 * index }} // se quiser um delay por card
+          >
             <button className="save-book-favorite">
               <MdFavorite />
             </button>
@@ -42,7 +52,7 @@ export default function FavoritesBooks({ favorites }) {
               </button>
             </div>
             </div>
-          </div>
+          </motion.div>
         ))
       )}
     </>

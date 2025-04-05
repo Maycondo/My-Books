@@ -5,6 +5,7 @@ import { IoStarOutline } from "react-icons/io5";
 import { IoStar } from "react-icons/io5";
 import { MdEditNote } from "react-icons/md";
 import Toolbar from "./Toolbar"
+import { motion } from "framer-motion";
 
 import "./style_1.css";
 import "./style_2.css";
@@ -69,8 +70,15 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
 
     if (!isOpen) return null;
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, scale: 1, transition: { duration: 0.5, type: "spring"} },
+        exit: { opacity: 0, y: -50, transition: { duration: 0.5 } },
+      }
+    
+
     return (
-        <div className="card-book-open">
+        <motion.div className="card-book-open" variants={containerVariants} initial="hidden" animate="visible"exit="exit">
             <div className="card-book-header">  
                 <h1><IoBook/> Book Review</h1>              
                     <button className="Button_1" onClick={onClose}>
@@ -110,6 +118,6 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }

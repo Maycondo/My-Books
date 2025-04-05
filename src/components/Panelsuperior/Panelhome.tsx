@@ -1,4 +1,4 @@
-import { JSX, useState } from "react";
+import { JSX, useState, useEffect } from "react";
 import Image from "next/image";
 import PerfilImagem from "@/Image/ImagemPerfil.jpeg";
 import PanelBook from "../PanelBooks/PanelBooks";
@@ -14,9 +14,20 @@ export default function Panelhome() {
     const [favorites, setFavorites] = useState({});
 
     const panelContent: Record<(typeof categorias)[number], JSX.Element> = {
-        Books: <PanelBook onFavoritesUpdate={setFavorites} />,
+        Books: <PanelBook onFavoritesUpdate={setFavorites} favorites={favorites}/>,
         Favorites: <FavoritesBooks favorites={favorites} />,
     };
+
+    useEffect(() => {
+        const storedFavorites = localStorage.getItem("@favorites");
+        if (storedFavorites) {
+            setFavorites(JSON.parse(storedFavorites));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("@favorites", JSON.stringify(favorites));
+    }, [favorites]);
 
     return (
         <BookProvider>
