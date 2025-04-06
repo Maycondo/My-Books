@@ -30,8 +30,6 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
     onFavoritesUpdate(updatedFavorites);
   };
 
-
-
   return (
     <>
       {bookData.length === 0 ? (

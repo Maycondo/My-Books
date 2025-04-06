@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { MdFavorite } from "react-icons/md";
 import { motion } from "framer-motion";
+import CardBook from "../CardBook/CardBook";
+
 
 export default function FavoritesBooks({ favorites }) {
+  const [isCardBookOpen, setIsCardBookOpen] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
 
 
 
@@ -54,6 +58,17 @@ export default function FavoritesBooks({ favorites }) {
             </div>
           </motion.div>
         ))
+      )}
+
+      {isCardBookOpen && selectedBook && (
+        <CardBook
+          book={selectedBook}
+          isOpen={isCardBookOpen}
+          onClose={() => {
+            setIsCardBookOpen(false);
+            setSelectedBook(null);
+          }}
+        />
       )}
     </>
   );
