@@ -1,3 +1,42 @@
+.loading {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loading h1 {
+    font-size: 20rem;
+    color: rgb(26, 26, 26);
+}
+
+.loading h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: "Josefin Sans", serif;
+    color: rgb(26, 26, 26);
+}
+
+.favorites-empty {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.favorites-empty h1 {
+    font-size: 20rem;
+    color: rgb(26, 26, 26);
+}
+.favorites-empty h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: "Josefin Sans", serif;
+    color: rgb(26, 26, 26);
+}
+
 .Card_Book {
     height: auto;
     width: 32rem;

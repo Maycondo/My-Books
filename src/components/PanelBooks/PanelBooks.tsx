@@ -7,6 +7,7 @@ import { useBook } from "../context/BookContext";
 import CardBook from "../CardBook/CardBook";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md"; 
 import { motion } from "framer-motion";
+import { ImBooks } from "react-icons/im";
 
 interface PanelBookProps {
   onFavoritesUpdate: (favorites: Record<string, Book>) => void;
@@ -33,7 +34,12 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
   return (
     <>
       {bookData.length === 0 ? (
-        <p>Carregando...</p>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} >
+          <div className="loading">
+              <h1><ImBooks></ImBooks></h1>
+              <h2>Add your books</h2>
+          </div>  
+      </motion.div>
       ) : (
         bookData.map((book, index) => (
         <motion.div key={book.id} className="Card_Book" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 * index }}>   

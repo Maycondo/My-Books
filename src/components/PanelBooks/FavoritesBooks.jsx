@@ -1,8 +1,10 @@
+import "./style.css";
 import { useState } from "react";
 import { MdFavorite } from "react-icons/md";
 import { motion } from "framer-motion";
 import CardBook from "../CardBook/CardBook";
 
+import { RiHeartAddFill } from "react-icons/ri";
 
 export default function FavoritesBooks({ favorites }) {
   const [isCardBookOpen, setIsCardBookOpen] = useState(false);
@@ -13,16 +15,15 @@ export default function FavoritesBooks({ favorites }) {
   return (
     <>
       {Object.keys(favorites).length === 0 ? (
-        <p>Nenhum favorito adicionado ainda.</p>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} >
+              <div className="favorites-empty">
+                <h1><RiHeartAddFill></RiHeartAddFill></h1>
+                <h2>Add books to favorites</h2>
+            </div>
+          </motion.div>
       ) : (
         Object.values(favorites).map((book, index) => (
-          <motion.div
-            key={book.id}
-            className="Card_Book"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 * index }} // se quiser um delay por card
-          >
+          <motion.div key={book.id} className="Card_Book" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 * index }}  >
             <button className="save-book-favorite">
               <MdFavorite />
             </button>
