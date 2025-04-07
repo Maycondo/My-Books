@@ -4,7 +4,7 @@ import PerfilImagem from "@/Image/ImagemPerfil.jpeg";
 import PanelBook from "../PanelBooks/PanelBooks";
 import FavoritesBooks from "../PanelBooks/FavoritesBooks";
 import { ImBooks } from "react-icons/im";
-import { BookProvider } from "../context/BookContext";
+import { BookProvider } from "../Context/BookContext";
 import "./style.css";
 
 const categorias = ["Books", "Favorites"] as const;

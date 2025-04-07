@@ -2,8 +2,8 @@
 /* eslint-disable @next/next/no-img-element */
 import "./style.css";
 import { useState } from "react";
-import { Book } from "../context/BookContext";
-import { useBook } from "../context/BookContext";
+import { Book } from "../Context/BookContext";
+import { useBook } from "../Context/BookContext";
 import CardBook from "../CardBook/CardBook";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md"; 
 import { motion } from "framer-motion";
