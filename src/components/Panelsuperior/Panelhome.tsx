@@ -6,6 +6,7 @@ import FavoritesBooks from "../PanelBooks/FavoritesBooks";
 import { ImBooks } from "react-icons/im";
 import { BookProvider } from "../Context/BookContext";
 import "./style.css";
+import "./ButtonToggle.css";
 
 const categorias = ["Books", "Favorites"] as const;
 
@@ -33,17 +34,28 @@ export default function Panelhome() {
         <BookProvider>
             <div className="Container">
                 <nav>
-                    <h1><ImBooks /> My Books</h1>
-                    <ul className="painel_navegion">
-                        {categorias.map((categoria) => (
-                            <li key={categoria}>
-                                <button className={activeCategory === categoria ? "categoria_selected" : "Buttons_panel "}  onClick={() => setActiveCategory(categoria)}>
-                                    {categoria}
-                                </button>
-                            </li>
-                        ))}
+                    <div className="Name-project-icone">
+                        <ImBooks className="Icone" />
+                        <h1>My Books</h1>
+                    </div>
+                    <label className="burger" htmlFor="burger">
+                        <input type="checkbox" id="burger" />
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </label>
+                    <div className="painel_navegion">
+                        <ul>
+                            {categorias.map((categoria) => (
+                                <li key={categoria}>
+                                    <button className={activeCategory === categoria ? "categoria_selected" : "Buttons_panel "}  onClick={() => setActiveCategory(categoria)}>
+                                        {categoria}
+                                    </button>
+                                </li>
+                            ))}
+                        </ul>
                         <Image className="Imagem_perfil" src={PerfilImagem} alt="Perfil do usuário" width={50} height={50} />
-                    </ul>
+                    </div>
                 </nav>
                 <div className="panel-content">
                     {panelContent[activeCategory] ?? 
