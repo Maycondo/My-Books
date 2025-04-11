@@ -44,7 +44,7 @@ export default function Panelhome() {
                             <span></span>
                             <span></span>
                         </label>
-                    <div className="painel_navegion">
+                    <div className="painel_navegion_active">
                         <ul>
                             {categorias.map((categoria) => (
                                 <li key={categoria}>
