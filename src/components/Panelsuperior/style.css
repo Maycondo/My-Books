@@ -48,17 +48,9 @@ nav {
     justify-content: center;
 }
 
-.painel_navegion ul {
-    height: auto;
-    margin: 1rem;
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-}
 
-.categoria_selected {
-    font-size: calc(0.9rem, 0.5vw);
+.categoria_selected_active {
+    font-size: calc(1rem, 0.7vw);
     font-weight: bold;
     color: rgb(253, 253, 253);
     transition: all ease-in 3ms;
@@ -67,23 +59,28 @@ nav {
     background-color: transparent;
 }
 
-.painel_navegion ul {
+.conteiner_bts {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 2rem;
+    margin: 1rem;
 }
 
-li {
-    font-size: 1.2rem;
-    font-family: "Josefin Sans", serif;
-    padding: 1rem;
-    cursor: pointer;
-    list-style: none;
-    transition: all 3ms;
+.categoria_selected_close {
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    gap: 1rem;
+    color: rgb(122, 122, 122);
+    background-color: transparent;
+    border: none;
+    transition: all ease-in 3ms;
 }
 
-.Buttons_panel {
-    font-size: 1.2rem;
+.categoria_selected_desative {
+    font-size: 1rem;
+    font-weight: bold;
     display: flex;
     gap: 1rem;
     color: rgb(122, 122, 122);
@@ -112,11 +109,11 @@ li {
         font-size: 1.5rem;
     }
     
-    .painel_navegion {
+    .categoria_selected_close {
         display: none;  
     }
 
-    .painel_navegion_active {
+    .menu_selected_active {
         position: absolute;
         background-color: rgb(31, 28, 28);
         height: 30%;
@@ -129,11 +126,42 @@ li {
         justify-content: center;
     }
 
-    .painel_navegion_active ul {
+    .conteiner_bts {
         height: 50%;
-        width: 100%;
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin: 1rem;
+    }
 
+    .categoria_selected_active {
+        font-size: calc(1.5rem, 1vw);
+        font-weight: bold;
+        color: rgb(253, 253, 253);
+        transition: all ease-in 3ms;
+        border: none;
+        border-bottom: 3px solid white;
+        background-color: transparent;
+    }
+
+    .categoria_selected_desative {
+        font-size: 1rem;
+        font-weight: bold;
+        display: flex;
+        gap: 1rem;
+        color: rgb(122, 122, 122);
+        background-color: transparent;
+        border: none;
+        transition: all ease-in 3ms;
+    }
+
+    .Imagem_perfil {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        margin: 1rem 0rem;
     }
 
     .Buttons_panel {

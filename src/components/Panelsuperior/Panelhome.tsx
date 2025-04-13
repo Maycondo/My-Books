@@ -12,11 +12,16 @@ const categorias = ["Books", "Favorites"] as const;
 
 export default function Panelhome() {
     const [activeCategory, setActiveCategory] = useState<(typeof categorias)[number]>("Books");
+    const [isOpen, setIsOpen] = useState(false);
     const [favorites, setFavorites] = useState({});
 
     const panelContent: Record<(typeof categorias)[number], JSX.Element> = {
         Books: <PanelBook onFavoritesUpdate={setFavorites} favorites={favorites}/>,
         Favorites: <FavoritesBooks favorites={favorites} />,
+    };
+
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
     };
 
     useEffect(() => {
@@ -38,23 +43,21 @@ export default function Panelhome() {
                         <ImBooks className="Icone" />
                         <h1>My Books</h1>
                     </div>
-                    <label className="burger" htmlFor="burger">
+                    <button onClick={handleToggle} className="burger" aria-expanded={isOpen}>
                         <input type="checkbox" id="burger" />
                             <span></span>
                             <span></span>
                             <span></span>
-                        </label>
-                    <div className="painel_navegion_active">
-                        <ul>
+                        </button>
+                    <div className={isOpen ? "menu_selected_active" : "categoria_selected_close"}>
+                        <div className="conteiner_bts">
                             {categorias.map((categoria) => (
-                                <li key={categoria}>
-                                    <button className={activeCategory === categoria ? "categoria_selected" : "Buttons_panel "}  onClick={() => setActiveCategory(categoria)}>
+                                    <button key={categoria} className={activeCategory === categoria ? "categoria_selected_active" : "categoria_selected_desative"}  onClick={() => setActiveCategory(categoria)}>
                                         {categoria}
                                     </button>
-                                </li>
-                            ))}
-                        </ul>
-                        <Image className="Imagem_perfil" src={PerfilImagem} alt="Perfil do usuário" width={50} height={50} />
+                                ))}
+                        </div>
+                        <Image className="Imagem_perfil" src={PerfilImagem} alt="Perfil do usuário" />
                     </div>
                 </nav>
                 <div className="panel-content">

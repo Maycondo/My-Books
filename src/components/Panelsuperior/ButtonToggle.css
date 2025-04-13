@@ -11,6 +11,7 @@
 @media (max-width: 480px) {
   .burger {
     margin: 2rem;
+    border: none;
     position: relative;
     width: 40px;
     height: 25px;
