@@ -43,12 +43,13 @@ export default function Panelhome() {
                         <ImBooks className="Icone" />
                         <h1>My Books</h1>
                     </div>
-                    <button onClick={handleToggle} className="burger" aria-expanded={isOpen}>
-                        <input type="checkbox" id="burger" />
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
+                        <label htmlFor="burger" onClick={handleToggle} className="burger">
+                            <input id="burger" type="checkbox" />
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                        </label>
+
                     <div className={isOpen ? "menu_selected_active" : "categoria_selected_close"}>
                         <div className="conteiner_bts">
                             {categorias.map((categoria) => (
