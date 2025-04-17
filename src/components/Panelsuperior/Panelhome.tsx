@@ -43,10 +43,10 @@ export default function Panelhome() {
                         <ImBooks className="Icone" />
                         <h1>My Books</h1>
                     </div>
-                    <button className="toggle_button" onClick={handleToggle}>
-                            <span className={`toggle${isOpen ? "_active" : ""}` } ></span>
-                            <span className={`toggle${isOpen ? "_active" : ""}` } ></span>
-                            <span className={`toggle${isOpen ? "_active" : ""}` } ></span>
+                    <button className={isOpen ? "toggle_button_active" : "toggle_button"} onClick={ handleToggle }>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </button>
                     <div className={isOpen ? "menu_selected_active" : "categoria_selected_close"}>
                         <div className="conteiner_bts">
