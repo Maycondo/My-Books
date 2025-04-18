@@ -51,7 +51,9 @@ export default function Panelhome() {
                     <div className={isOpen ? "menu_selected_active" : "categoria_selected_close"}>
                         <div className="conteiner_bts">
                             {categorias.map((categoria) => (
-                                    <button key={categoria} className={activeCategory === categoria ? "categoria_selected_active" : "categoria_selected_desative"}  onClick={() => setActiveCategory(categoria)}>
+                                    <button key={categoria} className={activeCategory === categoria ? "categoria_selected_active" : "categoria_selected_desative"}  onClick={() => {setActiveCategory(categoria)
+                                    setIsOpen(false)
+                                    }}>
                                         {categoria}
                                     </button>
                                 ))}
