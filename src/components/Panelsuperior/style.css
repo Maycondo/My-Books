@@ -11,6 +11,7 @@ nav {
     width: 100%;
     display: flex;
     background-color: rgb(31, 28, 28);
+    box-shadow: rgba(0, 0, 0, 0.23) 0px 6px 6px;
     align-items: center;
     justify-content: space-between;
 }
@@ -118,6 +119,9 @@ nav {
         background-color: rgb(31, 28, 28);
         height: 30%;
         width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        transition: height 0.3s ease-in-out;
+        overflow: hidden;
         top: 64px;
         left: 0;
         display: flex;

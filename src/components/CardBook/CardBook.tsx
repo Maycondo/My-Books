@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 
 import "./style_1.css";
 import "./style_2.css";
+import "./Style_mobile/Style_1.css";
 
 
 interface CardBookProps {

@@ -7,13 +7,17 @@
     align-items: center;
 }
 .loading h1 {
-    font-size: 20rem;
+    font-size: calc(3rem, 4rem);
     color: rgb(26, 26, 26);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .loading h2 {
-    font-size: 3rem;
+    font-size: calc(3rem, 4rem);
     font-weight: bold;
+    text-align: center;
     font-family: "Josefin Sans", serif;
     color: rgb(26, 26, 26);
 }
@@ -27,12 +31,13 @@
     align-items: center;
 }
 .favorites-empty h1 {
-    font-size: 20rem;
+    font-size: calc(3rem, 4rem);
     color: rgb(26, 26, 26);
 }
 .favorites-empty h2 {
-    font-size: 3rem;
+    font-size: calc(2rem, 3rem);
     font-weight: bold;
+    text-align: center;
     font-family: "Josefin Sans", serif;
     color: rgb(26, 26, 26);
 }
@@ -62,7 +67,7 @@
 }
 
 .Card_Book_Imagem {     
-    height: 62%;
+    height: 559px;
     width: 100%;
     object-fit: cover;
     display: flex;
