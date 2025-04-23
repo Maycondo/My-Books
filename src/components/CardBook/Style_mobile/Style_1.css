@@ -3,6 +3,7 @@
       font-size: calc(1.5rem + 1vw);
       margin: 10px 0;
   }  
+  
   .card-book__container {
       display: flex;
       flex-direction: column;
@@ -16,17 +17,21 @@
       text-align: center;
       padding: 10px;
   }  
+
   .card-book__text h1 {
       font-size: calc(1.2rem + 1vw);
       margin: 10px 0;
   }  
+
   .Button_Edit {
       display: none;
   }  
+
   .card-book__image {
       height: 40%;
       width: 100%;
   }  
+
   .card-book__image img {
       width: 100%;
       border-radius: 10px;
