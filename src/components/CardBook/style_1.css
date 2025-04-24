@@ -1,141 +1,154 @@
 
 .card-book-open {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    background-color: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: rgb(255, 255, 255);
 }
 
 .card-book-header {
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card-book-header h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0rem 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0rem 2rem;
 }
 
 .valiacao {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin: 0rem 1rem;
-    width: 100%;
-    font-family: "Josefin Sans", serif;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 0rem 1rem;
+  width: 100%;
+  font-family: "Josefin Sans", serif;
 }
 
 .valiacao h3 {
-    font-size: 1.1rem;
-    margin: 1rem 0rem;
-    font-weight: 500;
-    font-family: "Josefin Sans", serif;
+  font-size: 1.1rem;
+  margin: 1rem 0rem;
+  font-weight: 500;
+  font-family: "Josefin Sans", serif;
 }
 
+.valiacao li {
+  list-style: none;
+  margin: 0.5rem 1rem;
+  font-size: 1.1rem;
+  color: #757575;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-weight: 500;
+  font-family: "Josefin Sans", serif;
+}
+
+
 #Publication_book {
-    width: auto;
-    gap: 0.4rem;
-    font-size: 1.1rem;
-    margin: 0.5rem 1rem;
-    color: #757575;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    font-weight: 500;
-    font-family: "Josefin Sans", serif;
+  width: auto;
+  gap: 0.4rem;
+  font-size: 1.1rem;
+  margin: 0.5rem 1rem;
+  color: #757575;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-weight: 500;
+  font-family: "Josefin Sans", serif;
 }
 
 .Button_1 {
-    position: relative;
-    margin: 1rem;
-    width: 2.5em;
-    height: 2.5em;
-    border: none;
-    background: #2e2c2c;
-    transition: background 0.3s;
-  }
+  position: relative;
+  margin: 0.5rem;
+  width: 2.5em;
+  height: 2.5em;
+  border: none;
+  background: #2e2c2c;
+  transition: background 0.3s;
+}
   
-  .X_1 {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 2em;
-    height: 1px;
-    background-color: rgb(255, 255, 255);
-    transform: translateX(-50%) rotate(45deg);
-  }
+.X_1 {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2em;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+  transform: translateX(-50%) rotate(45deg);
+}
   
-  .Y_1 {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 2em;
-    height: 1px;
-    background-color: #fff;
-    transform: translateX(-50%) rotate(-45deg);
-  }
+.Y_1 {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2em;
+  height: 1px;
+  background-color: #fff;
+  transform: translateX(-50%) rotate(-45deg);
+}
   
-  .close_1 {
-    position: absolute;
-    display: flex;
-    padding: 0.8rem 1.5rem;
-    align-items: center;
-    justify-content: center;
-    transform: translateX(-50%);
-    top: -70%;
-    left: 50%;
-    width: 3em;
-    height: 1.7em;
-    font-size: 12px;
-    background-color: rgb(19, 22, 24);
-    color: rgb(187, 229, 236);
-    border: none;
-    border-radius: 3px;
-    pointer-events: none;
-    opacity: 0;
-  }
+.close_1 {
+  position: absolute;
+  display: flex;
+  padding: 0.8rem 1.5rem;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  top: -70%;
+  left: 50%;
+  width: 3em;
+  height: 1.7em;
+  font-size: 12px;
+  background-color: rgb(19, 22, 24);
+  color: rgb(187, 229, 236);
+  border: none;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+}
   
-  .Button:hover {
-    background-color: rgb(211, 21, 21);
-  }
+.Button:hover {
+  background-color: rgb(211, 21, 21);
+}
   
-  .Button:active {
-    background-color: rgb(130, 0, 0);
-  }
+.Button:active {
+  background-color: rgb(130, 0, 0);
+}
   
-  .Button:hover > .close {
-    animation: close 0.2s forwards 0.25s;
-  }
+.Button:hover > .close {
+  animation: close 0.2s forwards 0.25s;
+}
   
-  @keyframes close {
-    100% {
-      opacity: 1;
-    }
+@keyframes close {
+  100% {
+    opacity: 1;
   }
+}
 
 .card-book__container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .card-book__text {
-    width: 55rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1rem;
-    border-left: solid 2px black ;
+  width: 55rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  border-left: solid 2px black ;
 }
 
 .card-book__text h1 {

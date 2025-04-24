@@ -56,7 +56,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const handleSave = () => {
         localStorage.setItem(`@description-${book.id}`, description);
         setIsEdit(false);
-     }
+    }
 
     const formatDate = (isoString: string) => {
         const date = new Date(isoString);

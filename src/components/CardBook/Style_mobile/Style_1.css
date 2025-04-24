@@ -1,39 +1,156 @@
 @media (max-width: 480px) {
-  .card-book-header h1 {
-      font-size: calc(1.5rem + 1vw);
-      margin: 10px 0;
-  }  
+.card-book-header {
+    height: 5%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-book-header h1 {
+    font-size: calc(1rem + 0.8vw);
+    margin: 0.2rem;
+}  
+
+.Button_1 {
+    position: relative;
+    margin: 1rem;
+    width: 2em;
+    height: 2em;
+    border: none;
+    background: #2e2c2c;
+    transition: background 0.3s;
+}
+
+.X_1 {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5em;
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+    transform: translateX(-50%) rotate(45deg);
+}
   
-  .card-book__container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-  }
+.Y_1 {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.5em;
+    height: 1px;
+    background-color: #fff;
+    transform: translateX(-50%) rotate(-45deg);
+}
+  
+.card-book__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
 
-  .card-book__text {
-      height: 60%;
-      text-align: center;
-      padding: 10px;
-  }  
+.card-book__text {
+    height: 70%;
+    width: 100%;
+    text-align: center;
+    padding: 4px;
+}  
 
-  .card-book__text h1 {
-      font-size: calc(1.2rem + 1vw);
-      margin: 10px 0;
-  }  
+.card-book__text h1 {
+    font-size: calc(1.2rem + 1vw);
+    margin: 10px 0;
+}
 
-  .Button_Edit {
-      display: none;
-  }  
+.valiacao {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
 
-  .card-book__image {
-      height: 40%;
-      width: 100%;
-  }  
+.valiacao li {
+    list-style: none;
+    cursor: none;
+    margin: 0.5rem 0.3rem;
+    font-size: 1rem;
+    color: #757575;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-weight: 500;
+    font-family: "Josefin Sans", serif;
+}
+  
+#Publication_book {
+    width: auto;
+    gap: 0.4rem;
+    font-size: 1rem;
+    margin: 0.5rem 0.3rem;
+    color: #757575;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-weight: 500;
+    font-family: "Josefin Sans", serif;
+}
 
-  .card-book__image img {
-      width: 100%;
-      border-radius: 10px;
-    }
+.description-container {
+    display: flex;
+    padding: 0.5rem;
+}
+
+.description-container div {
+    font-size: calc(0.8rem + 0.5vw);
+}
+
+.Button_Edit {
+    display: none;
+}  
+
+.card-book__image {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}  
+.card-book__image img {
+    height: 260px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+.card-book-discript {
+    width: auto;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.card-book-discript p {
+    font-size: calc(0.1rem + 0.1rem);
+    color: #757575;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-weight: 500;
+    font-family: "Josefin Sans", serif;
+}
+
+.card-book-discript i {
+    font-size: calc(0.5rem + 0.2rem);
+    color: #1d1d1d;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-weight: 500;
+    font-family: "Josefin Sans", serif;
+}
+
+
 }   
