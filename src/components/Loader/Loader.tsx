@@ -7,31 +7,31 @@ import "./style.css"
 export default function Loader () {
 
     const [messageIndex, setMessageIndex] = useState<number>(0)
-    const [messagens] = useState<string[]>( [ "Olá! Seja muito bem-vindo.", "Veja um pouco dos livros que estou lendo." ] )
+    const [messages] = useState<string[]>([ "Hello! Welcome.", "My current reads."]);
     const [displayedText, setDisplayedText] = useState<string>("")
     const [charIndex, setCharIndex] = useState<number>(0)
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setMessageIndex((prevIndex) => (prevIndex + 1) % messagens.length)
+            setMessageIndex((prevIndex) => (prevIndex + 1) % messages.length)
             setDisplayedText("")
             setCharIndex(0) 
         }, 5000)
 
         return () => clearInterval(intervalId)
-    }, [messagens.length])
+    }, [messages.length])
 
     useEffect(() => {   
-        if (charIndex < messagens[messageIndex].length) {
+        if (charIndex < messages[messageIndex].length) {
             const timeoutId = setTimeout(() => {
-                setDisplayedText((prev) => prev + messagens[messageIndex][charIndex])
+                setDisplayedText((prev) => prev + messages[messageIndex][charIndex])
                 setCharIndex((prev) => prev + 1)
             }, 100)
 
             return () => clearInterval(timeoutId)
         }
 
-    }, [charIndex, messageIndex, messagens])
+    }, [charIndex, messageIndex, messages])
 
 
     const bounceAnimation = {

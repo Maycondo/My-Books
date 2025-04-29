@@ -17,5 +17,11 @@
     font-weight: bolder;
     color: #2e2c2c;
     border-right: 0.8rem solid #2e2c2c;
-    font-size: 5rem;
+    font-size: 8rem;
+}
+
+@media (max-width: 480px) {
+    #Name-Perso {
+        font-size: 3.2rem;
+    }
 }
