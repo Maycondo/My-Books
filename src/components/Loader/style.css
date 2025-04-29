@@ -16,8 +16,23 @@
     font-family: "Josefin Sans", serif;
     font-weight: bolder;
     color: #2e2c2c;
-    border-right: 0.8rem solid #2e2c2c;
     font-size: 8rem;
+}
+
+#Name-Perso:after {
+    content: '|';
+    margin-left: 8px;
+    opacity: 1;
+    animation: pisca .7s infinite;
+   }
+
+   @keyframes pisca{
+    0%, 100%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
 }
 
 @media (max-width: 480px) {
