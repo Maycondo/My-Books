@@ -50,6 +50,8 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
       rating: 4.7,
       createdAt: "2023-10-03",
     }
+
+    // Adicione mais livros conforme necessário
   ]); 
 
   return (
