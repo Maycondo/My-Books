@@ -102,39 +102,31 @@
   display: flex;
 }
 
-.selected {
-  font-weight: bold;
-  color: #1c1d1f;
-  background-color: #b1b1b1;
-  border-radius: 50px;  
-  cursor: pointer;
-}
-
 .card_imagem {
-    height: 100%;
-    width: 30%;
-    margin: 1rem;
-    object-fit: cover;
-    border-radius: 0.5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 100%;
+  width: 30%;
+  margin: 1rem;
+  object-fit: cover;
+  border-radius: 0.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .card_imagem p {
-    height: 80%;
-    font-size: 21rem;
-    text-align: center;
+  height: 80%;
+  font-size: 21rem;
+  text-align: center;
 }
 
 .imagem_book {
-    width: 400px;
-    height: 570px;
-    display: block;
-    overflow: hidden;
-    border-radius: 0.5%;
-    object-fit: cover;
+  width: 400px;
+  height: 570px;
+  display: block;
+  overflow: hidden;
+  border-radius: 0.5%;
+  object-fit: cover;
 }
 
 .Button_dele_imagem {
@@ -145,98 +137,98 @@
 }
 
 input[type="file"] {
-    display: none;
+  display: none;
 }
 
 .custom-file-upload {
-    width: 200px;
-    margin: 1rem;
-    background-color: #1f2020; 
-    font-family:  Josefin Sans;
-    font-weight: 900;
-    color: white; 
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;
-    text-align: center;
-    transition: background 0.3s;
+  width: 200px;
+  margin: 1rem;
+  background-color: #1f2020; 
+  font-family:  Josefin Sans;
+  font-weight: 900;
+  color: white; 
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  transition: background 0.3s;
 }
 
 .custom-file-upload:hover {
-    background-color: #2c2c2c;
+  background-color: #2c2c2c;
 }
 
 .input-group {
-    height: 3rem;
-    display: flex;
-    margin: 2rem 0rem;
-    gap: 10px;
-    justify-content: center;
-    position: relative;
-    padding: 7px 0 0;
-    width: 80%;
-    margin-bottom: 10px;
-    margin-top: 2px;
+  height: 3rem;
+  display: flex;
+  margin: 2rem 0rem;
+  gap: 10px;
+  justify-content: center;
+  position: relative;
+  padding: 7px 0 0;
+  width: 80%;
+  margin-bottom: 10px;
+  margin-top: 2px;
 }
 
 .input-text {
-    font-family:  Josefin Sans;
-    width: 45%;
-    text-align: center;
-    border: none;
-    border-bottom: 2px solid #7f7f7f;
-    border-radius: 0 !important;
-    outline: 0;
-    font-size: 19px;
-    color: #7f7f7f;
-    padding: 7px 0;
-    background: transparent;
-    transition: border-color 0.2s;
+  font-family:  Josefin Sans;
+  width: 45%;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid #7f7f7f;
+  border-radius: 0 !important;
+  outline: 0;
+  font-size: 19px;
+  color: #7f7f7f;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
 }
 
 .input-text::placeholder {
-    color: transparent;
-  }
+  color: transparent;
+}
 
 .input-text:placeholder-shown ~ .input-text-label {
-    font-size: 19px;
-    font-family:  Josefin Sans;
-    cursor: text;
+  font-size: 19px;
+  font-family:  Josefin Sans;
+  cursor: text;
 }
 
 .input-text-label {
-    position: absolute;
-    display: block;
-    transition: 0.2s;
-    font-family:  Josefin Sans;
-    font-size: 19px;
-    color: #7f7f7f;
-    pointer-events: none;
+  position: absolute;
+  display: block;
+  transition: 0.2s;
+  font-family:  Josefin Sans;
+  font-size: 19px;
+  color: #7f7f7f;
+  pointer-events: none;
 }
 
 .input-text:focus {
-    padding-bottom: 6px;
-    border-width: 3px;
-    border-image: linear-gradient(to right, #000000, #000000);
-    border-image-slice: 1;
+  padding-bottom: 6px;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #000000, #000000);
+  border-image-slice: 1;
 }
 
 .input-text:focus ~ .input-text-label {
-    color: #000000;
+  color: #000000;
 }
 
 .input-text:not(:placeholder-shown) ~ .input-text-label,
 .input-text:focus ~ .input-text-label {
-    position: absolute;
-    display: block;
-    transition: 0.2s;
-    font-family:  Josefin Sans;
-    font-size: 15px;
-    font-weight: 700;
-    top: -17px;
+  position: absolute;
+  display: block;
+  transition: 0.2s;
+  font-family:  Josefin Sans;
+  font-size: 15px;
+  font-weight: 700;
+  top: -17px;
 }
 
 .error_ {
@@ -245,6 +237,6 @@ input[type="file"] {
 
 .input-text:required,
 .input-text:invalid {
-    box-shadow: none;
+  box-shadow: none;
 }
 
