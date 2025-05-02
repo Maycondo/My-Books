@@ -1,166 +1,171 @@
 .loading {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .loading h1 {
-    font-size: calc(3rem, 4rem);
-    color: rgb(26, 26, 26);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-size: calc(3rem, 4rem);
+  color: rgb(26, 26, 26);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loading h2 {
-    font-size: calc(3rem, 4rem);
-    font-weight: bold;
-    text-align: center;
-    font-family: "Josefin Sans", serif;
-    color: rgb(26, 26, 26);
+  font-size: calc(3rem, 4rem);
+  font-weight: bold;
+  text-align: center;
+  font-family: "Josefin Sans", serif;
+  color: rgb(26, 26, 26);
 }
 
 .favorites-empty {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .favorites-empty h1 {
-    font-size: calc(3rem, 4rem);
-    color: rgb(26, 26, 26);
+  font-size: calc(3rem, 4rem);
+  color: rgb(26, 26, 26);
 }
 .favorites-empty h2 {
-    font-size: calc(2rem, 3rem);
-    font-weight: bold;
-    text-align: center;
-    font-family: "Josefin Sans", serif;
-    color: rgb(26, 26, 26);
+  font-size: calc(2rem, 3rem);
+  font-weight: bold;
+  text-align: center;
+  font-family: "Josefin Sans", serif;
+  color: rgb(26, 26, 26);
 }
 
 .Card_Book {
-    height: auto;
-    width: 32rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
-    margin: 1rem;
-    padding: 1rem;
-    background-color: #ffffff;
-    border: solid 2px rgb(26, 26, 26);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  height: auto;
+  width: 32rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top-left-radius: 2%;
+  border-top-right-radius: 2%;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: solid 2px rgb(26, 26, 26);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
 }
 
 .save-book-favorite {
-    height: 2rem;
-    width: 2rem;
-    font-size: 2rem;          
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
+  height: 2rem;
+  width: 2rem;
+  font-size: 2rem;          
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
 .Card_Book_Imagem {     
-    height: 559px;
-    width: 100%;
-    object-fit: cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  height: 559px;
+  width: 100%;
+  object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 } 
 
 .Imagem_Book {
-    height: 559px;
-    width: 479px;
-    display: block;
-    overflow: hidden;
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
-    object-fit: cover;
+  height: 559px;
+  width: 479px;
+  display: block;
+  overflow: hidden;
+  border-top-left-radius: 2%;
+  border-top-right-radius: 2%;
+  object-fit: cover;
 }
 
 .Card_Book_Titulo {
-    height: 5%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(240, 240, 240);
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(240, 240, 240);
 }
 
 .Card_Book_Titulo h2 {
-    margin: 1rem 0rem;
-    font-size: 1.2rem;
-    font-weight: 900;
-    font-family: "Josefin Sans", serif;
-    text-align: center;
+  margin: 1rem 0rem;
+  font-size: 1.2rem;
+  font-weight: 900;
+  font-family: "Josefin Sans", serif;
+  text-align: center;
 }
 
 .Card_Book_Descricao {
-    height: 15.5rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  height: 15.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .Card_Book_Descricao p {
-    margin: 1rem;
-    font-weight: 400;
-    font-family: "Josefin Sans", serif;
-    text-align: center;
+  margin: 1rem;
+  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  text-align: center;
 }
 
 .Card_Book_Button {
-    height: 5%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(240, 240, 240);
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(240, 240, 240);
 }
 
 .readmore-btn {
-    width: fit-contentd;
-    height: 3rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background-color: rgb(26, 26, 26);
-    border: none;
-    padding: 0px 15px;
-    gap: 0px;
-    transition: all 0.4s;
-  }
-  .book-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-    width: 45px;
-    height: 100%;
-  }
-  .book-wrapper .book-page {
-    width: 50%;
-    height: auto;
-    position: absolute;
-  }
-  .readmore-btn:hover .book-page {
-    animation: paging 0.4s linear infinite;
-    transform-origin: left;
-  }
-  .readmore-btn:hover {
-    background-color: rgb(63, 63, 63);
-  }
-  @keyframes paging {
+  width: fit-contentd;
+  height: 3rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgb(26, 26, 26);
+  border: none;
+  padding: 0px 15px;
+  gap: 0px;
+  transition: all 0.4s;
+}
+
+.book-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  width: 45px;
+  height: 100%;
+}
+
+.book-wrapper .book-page {
+  width: 50%;
+  height: auto;
+  position: absolute;
+}
+
+.readmore-btn:hover .book-page {
+  animation: paging 0.4s linear infinite;
+  transform-origin: left;
+}
+
+.readmore-btn:hover {
+  background-color: rgb(63, 63, 63);
+}
+
+@keyframes paging {
     0% {
       transform: rotateY(0deg) skewY(0deg);
     }
