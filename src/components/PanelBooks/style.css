@@ -6,6 +6,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .loading h1 {
   font-size: calc(3rem, 4rem);
   color: rgb(26, 26, 26);
@@ -30,10 +31,12 @@
   justify-content: center;
   align-items: center;
 }
+
 .favorites-empty h1 {
   font-size: calc(3rem, 4rem);
   color: rgb(26, 26, 26);
 }
+
 .favorites-empty h2 {
   font-size: calc(2rem, 3rem);
   font-weight: bold;
@@ -166,13 +169,13 @@
 }
 
 @keyframes paging {
-    0% {
-      transform: rotateY(0deg) skewY(0deg);
-    }
-    50% {
-      transform: rotateY(90deg) skewY(-20deg);
-    }
-    100% {
-      transform: rotateY(180deg) skewY(0deg);
-    }
+  0% {
+    transform: rotateY(0deg) skewY(0deg);
   }
+  50% {
+    transform: rotateY(90deg) skewY(-20deg);
+  }
+  100% {
+    transform: rotateY(180deg) skewY(0deg);
+  }
+}
