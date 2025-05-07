@@ -1,5 +1,6 @@
 import { useState } from "react";
-import CardBook from "../ContainerAddBook/ConteinerAddBook";
+
+import CarsPassword from "../CardBook/CardPassWord/CardPassWord";
 import "./style.css";
 
 export default function AddBooks() {
@@ -18,9 +19,9 @@ export default function AddBooks() {
         </button>
       </div>
       {isAddingBook && (
-        <CardBook
+        <CarsPassword
           isOpen={isAddingBook} 
-          onClose={() => toggleAddBook(false)} 
+          onClose={() => toggleAddBook(false)}
         />
       )}
     </>
