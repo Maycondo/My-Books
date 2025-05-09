@@ -1,4 +1,3 @@
-
 import "./cardPassWord.css";
 
 interface CardPasswordProps {
