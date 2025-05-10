@@ -14,7 +14,7 @@ export default function Cardpassword({ isOpen, onClose }: CardPasswordProps) {
             <div className="painel_password">
                 <div className="cardpassword">
                     <div className="card_add_book">
-                        <button className="Button" onClick={onClose}>
+                        <button className="Button_" onClick={onClose}>
                             <span className="X"></span>
                             <span className="Y"></span>
                             <div className="close">Close</div>
