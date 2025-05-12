@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./cardPassWord.css";
-import { PASSWORD_ADMIN } from "../../../app/constante";
+import { PASSWORD_ADMIN } from "../../../app/password";
 
 
 
