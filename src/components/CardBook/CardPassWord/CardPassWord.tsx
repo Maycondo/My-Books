@@ -1,6 +1,10 @@
 import { useState } from "react";
 import "./cardPassWord.css";
 import { PASSWORD_ADMIN } from "../../../app/constante";
+
+
+
+
 interface CardPasswordProps {
     isOpen: boolean;
     onClose: () => void;
@@ -10,13 +14,22 @@ export default function Cardpassword({ isOpen, onClose }: CardPasswordProps) {
     const [inputPassword, setInputPassword] = useState("");
    if (!isOpen) return null;
 
-    const handlePasswordChange = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (inputPassword === PASSWORD_ADMIN) {
+
+   const valitePassword = (password: string) => {
+        if (password === PASSWORD_ADMIN) {
             alert("Password is correct");
+            onClose();
+
+        } else if (password === "") {
+            alert("Password required");
         } else {
             alert("Password is incorrect");
         }
+   }
+
+    const handlePasswordChange = (e: React.FormEvent) => {
+        e.preventDefault();
+        valitePassword(inputPassword);
     }
 
     return (
@@ -30,15 +43,15 @@ export default function Cardpassword({ isOpen, onClose }: CardPasswordProps) {
                             <div className="close">Close</div>
                         </button>
                     </div>
-                    <form onSubmit={handlePasswordChange}>
+                    <form className="Password_admin" onSubmit={handlePasswordChange}>   
                         <h1>Enter the password</h1>
-                        <input type="password" placeholder="Password admin" 
-                        onChange={(e) => setInputPassword(e.target.value)}
-                        />
+                        <input className="input_password" type="password" placeholder="Password admin" 
+                        onChange={(e) => setInputPassword(e.target.value)}/>
+                        {inputPassword !== PASSWORD_ADMIN && <p className="error_password">Password is incorrect</p>}
                         <button className="btn_password">Confirm</button>
                     </form>
                 </div>
             </div>
         </>
     )
-}
+}   
