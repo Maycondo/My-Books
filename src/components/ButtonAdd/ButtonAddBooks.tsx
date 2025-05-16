@@ -10,6 +10,7 @@ export default function AddBooks() {
   const [inputPassword, setInputPassword] = useState<string>("");
   const [submitted, setSubmitted] = useState(false);
 
+  const isAuthorized = inputPassword === PASSWORD_ADMIN;
   const toggleAddBook = (state: boolean) => {
     setIsAddingBook(state);
   };
@@ -23,8 +24,8 @@ export default function AddBooks() {
         </button>
       </div>
       {isAddingBook && (
-        inputPassword === PASSWORD_ADMIN && submitted ? (
-          <CardBookAdd
+        isAuthorized ? (
+          <CardBookAdd  
             isOpen={isAddingBook}
             onClose={() => {
               toggleAddBook(false);

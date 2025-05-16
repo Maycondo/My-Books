@@ -34,7 +34,7 @@ export default function CardPassword({ isOpen, onClose, submitted, setSubmitted,
   return (
     <div className="painel_password">
       <div className="cardpassword">
-        <div className="card_add_book">
+        <div className={isOpen ? "header_password" : "header_password_close"}>
           <button className="Button_" onClick={onClose}>
             <span className="X"></span>
             <span className="Y"></span>
