@@ -35,18 +35,20 @@ export default function AddBooks() {
           />
         ) : (
           <CardPassword
-            isOpen={isAddingBook}
-            onClose={() => {
-              toggleAddBook(false);
-              setSubmitted(false);
-              setInputPassword("");
-            }}
-            submitted={submitted}
-            setSubmitted={setSubmitted}
-            inputPassword={inputPassword}
-            setInputPassword={setInputPassword}
-            passwordAdmin={PASSWORD_ADMIN}
-          />
+              isOpen={isAddingBook}
+              onClose={() => {
+                toggleAddBook(false);
+                setSubmitted(false);
+                setInputPassword("");
+
+              } }
+              submitted={submitted}
+              setSubmitted={setSubmitted}
+              inputPassword={inputPassword}
+              setInputPassword={setInputPassword}
+              passwordAdmin={PASSWORD_ADMIN} onSuccess={function (): void {
+                throw new Error("Function not implemented.");
+              } }          />
         )
       )}
 
