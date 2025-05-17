@@ -8,6 +8,7 @@ interface CardPasswordProps {
   inputPassword: string;
   setInputPassword: React.Dispatch<React.SetStateAction<string>>;
   passwordAdmin: string;
+  onSuccess: () => void;
 }
 
 export default function CardPassword({ isOpen, onClose, submitted, setSubmitted, inputPassword, setInputPassword, passwordAdmin,
