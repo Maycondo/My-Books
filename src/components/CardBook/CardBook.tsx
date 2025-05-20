@@ -6,6 +6,9 @@ import { IoStar } from "react-icons/io5";
 import { MdEditNote } from "react-icons/md";
 import Toolbar from "./Toolbar"
 import { motion } from "framer-motion";
+import { PASSWORD_ADMIN } from "../../app/password";        
+import CardPassword from "../CardPassWord/CardPassWord";
+
 
 import "./style_1.css";
 import "./style_2.css";
@@ -28,6 +31,10 @@ interface CardBookProps {
 }
 
 export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
+
+    const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
+    const [inputPassword, setInputPassword] = useState<string>("");
+    const [submitted, setSubmitted] = useState<boolean>(false);
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState(book.description);
     const [toolbar, setToolbar] = useState(false);
@@ -52,7 +59,10 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         localStorage.setItem(`@rating-${book.id}`, newRating.toString());
     }
     const toggleMincontainer = () => setToolbar(prev => !prev)
-    const toggleEdit = () => setIsEdit(prev => !prev);
+    const toggleEdit = () => {
+        setShowPasswordModal(true);
+        setSubmitted(false);
+    };
     const handleSave = () => {
         localStorage.setItem(`@description-${book.id}`, description);
         setIsEdit(false);
@@ -79,46 +89,81 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     
 
     return (
-        <motion.div className="card-book-open" variants={containerVariants} initial="hidden" animate="visible"exit="exit">
-            <div className="card-book-header">  
-                <h1><IoBook/> Book Review</h1>              
-                    <button className="Button_1" onClick={onClose}>
-                        <span className="X_1"></span>
-                        <span className="Y_1"></span>
-                        <div className="close_1">Close</div>
-                    </button>
-            </div>
-            <div className="card-book__container">
-                <div className="card-book__text">
-                    <h1>Review Book: <i>{book.title}</i></h1>
-                        <ul className="valiacao">
-                            <h3>Book Rating:</h3>
-                                {[...Array(5)].map((_, newRating) => (
-                                    <li key={newRating} className="star-icon" onClick={() => handleRating(newRating + 1)}
-                                    style={{ cursor: "pointer", color:  newRating < rating ? "#FFD700" : "#ccc"}}
-                                    >{newRating < rating ? <IoStar /> : <IoStarOutline />}</li>
-                                ))}
-                        </ul>
-                        <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i> </h6>
-                    {isEdit ? (<>
-                        <textarea className="text_edit" value={description} onClick={() => toggleMincontainer()} onChange={(e) => setDescription(e.target.value)} />
-                            {toolbar && (<Toolbar setDescription={setDescription} />)}
-                        <button className="save-button" onClick={handleSave}>Save</button></>
-                    ): (
-                        <div className="description-container" >
-                            <div dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, "<br>")}} /> 
-                            <button className="Button_Edit" onClick={toggleEdit}><MdEditNote/></button>
-                        </div>
-                      )}
+        <>
+            <motion.div className="card-book-open" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
+                <div className="card-book-header">  
+                    <h1><IoBook/> Book Review</h1>              
+                        <button className="Button_1" onClick={onClose}>
+                            <span className="X_1"></span>
+                            <span className="Y_1"></span>
+                            <div className="close_1">Close</div>
+                        </button>
                 </div>
-                <div className="card-book__image">
-                        <img src={book.imageUrl} alt={book.title} />
-                    <div className="card-book-discript">
-                        <p id="Author">Author: <i>{book.authorBook}</i></p>
-                        <p id="Category">Category: <i>{book.categoria.join(', ')}</i></p>
+                <div className="card-book__container">
+                    <div className="card-book__text">
+                        <h1>Review Book: <i>{book.title}</i></h1>
+                            <ul className="valiacao">
+                                <h3>Book Rating:</h3>
+                                    {[...Array(5)].map((_, newRating) => (
+                                        <li key={newRating} className="star-icon" onClick={() => handleRating(newRating + 1)}
+                                        style={{ cursor: "pointer", color:  newRating < rating ? "#FFD700" : "#ccc"}}
+                                        >{newRating < rating ? <IoStar /> : <IoStarOutline />}</li>
+                                    ))}
+                            </ul>
+                            <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i> </h6>
+                      {inputPassword === PASSWORD_ADMIN ? (
+                            isEdit ? (
+                                <><textarea className="text_edit" value={description} onClick={toggleMincontainer} onChange={(e) => setDescription(e.target.value)}/>
+                                    {toolbar && <Toolbar setDescription={setDescription} />}
+                                    <button className="save-button" onClick={handleSave}>Save</button>
+                                </>
+                            ) : (
+                                <div className="description-container">
+                                    <div dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, "<br>") }} />
+                                    <button className="Button_Edit" onClick={() => setIsEdit(true)}>
+                                        <MdEditNote />
+                                    </button>
+                                </div>
+                            )
+                            ) : (
+                            <div className="description-container">
+                                <div dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, "<br>") }} />
+                                <button className="Button_Edit" onClick={toggleEdit}>
+                                <MdEditNote />
+                                </button>
+                            </div>
+                            )}
+
+                    </div>
+                    <div className="card-book__image">
+                            <img src={book.imageUrl} alt={book.title} />
+                        <div className="card-book-discript">
+                            <p id="Author">Author: <i>{book.authorBook}</i></p>
+                            <p id="Category">Category: <i>{book.categoria.join(', ')}</i></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+            {showPasswordModal && (
+                <CardPassword
+                isOpen={true}
+                onClose={() => {
+                    setShowPasswordModal(false);
+                    setInputPassword("");
+                }}
+                submitted={submitted}
+                setSubmitted={setSubmitted}
+                inputPassword={inputPassword}
+                setInputPassword={setInputPassword}
+                passwordAdmin={PASSWORD_ADMIN}
+                onSuccess={() => {
+                    setIsEdit(true);
+                    setSubmitted(true);
+                    setShowPasswordModal(false);
+                }}
+                />
+                )
+            }
+        </>
     )
 }

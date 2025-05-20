@@ -26,7 +26,7 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
   useEffect(() => {
-    if (submitted && pendingBook) {
+    if(submitted && pendingBook) {
       const updated = { ...favorites };
       if (updated[pendingBook.id]) {
         delete updated[pendingBook.id];
