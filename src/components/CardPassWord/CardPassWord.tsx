@@ -8,10 +8,10 @@ interface CardPasswordProps {
   inputPassword: string;
   setInputPassword: React.Dispatch<React.SetStateAction<string>>;
   passwordAdmin: string;
-  onSuccess?: () => void
+  onSuccess?: () => void;
 }
 
-export default function CardPassword({ isOpen, onClose, submitted, setSubmitted, inputPassword, setInputPassword, passwordAdmin,
+export default function CardPassword({ isOpen, onClose, submitted, setSubmitted, inputPassword, setInputPassword, passwordAdmin, onSuccess,
 }: CardPasswordProps) {
     if (!isOpen) return null;
 
@@ -23,13 +23,15 @@ export default function CardPassword({ isOpen, onClose, submitted, setSubmitted,
         return;
     }
 
-    if (inputPassword === passwordAdmin) {
-        setSubmitted(true); // permite exibir o CardBookAdd
-    } else {
-        alert("Password is incorrect");
-        setSubmitted(false); // impede exibir o CardBookAdd
-    }
-    };
+  if (inputPassword === passwordAdmin) {
+      setSubmitted(true);
+    if (onSuccess) onSuccess(); // <-- chama a função passada
+        onClose();
+  } else {
+    alert("Password is incorrect");
+    setSubmitted(false); // impede exibir o CardBookAdd
+  }
+};
 
 
   return (
@@ -62,3 +64,4 @@ export default function CardPassword({ isOpen, onClose, submitted, setSubmitted,
     </div>
   );
 }
+

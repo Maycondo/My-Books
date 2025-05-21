@@ -39,6 +39,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const [description, setDescription] = useState(book.description);
     const [toolbar, setToolbar] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
+    const [isAuthorized, setIsAuthorized] = useState(false);
     const descriptionLoaded = useRef(false);
     
         
@@ -59,10 +60,12 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         localStorage.setItem(`@rating-${book.id}`, newRating.toString());
     }
     const toggleMincontainer = () => setToolbar(prev => !prev)
+
     const toggleEdit = () => {
         setShowPasswordModal(true);
         setSubmitted(false);
     };
+
     const handleSave = () => {
         localStorage.setItem(`@description-${book.id}`, description);
         setIsEdit(false);
@@ -111,7 +114,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                                     ))}
                             </ul>
                             <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i> </h6>
-                      {inputPassword === PASSWORD_ADMIN ? (
+                      {isAuthorized ? (
                             isEdit ? (
                                 <><textarea className="text_edit" value={description} onClick={toggleMincontainer} onChange={(e) => setDescription(e.target.value)}/>
                                     {toolbar && <Toolbar setDescription={setDescription} />}
@@ -157,9 +160,10 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                 setInputPassword={setInputPassword}
                 passwordAdmin={PASSWORD_ADMIN}
                 onSuccess={() => {
-                    setIsEdit(true);
-                    setSubmitted(true);
-                    setShowPasswordModal(false);
+                        setIsEdit(true);
+                        setSubmitted(true);
+                        setShowPasswordModal(false);
+                        setIsAuthorized(true); 
                 }}
                 />
                 )
