@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import "./style.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Book } from "../Context/BookContext";
 import { useBook } from "../Context/BookContext";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -25,25 +25,27 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
   const [isCardBookOpen, setIsCardBookOpen] = useState<boolean>(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
-  useEffect(() => {
-    if(submitted && pendingBook) {
-      const updated = { ...favorites };
-      if (updated[pendingBook.id]) {
-        delete updated[pendingBook.id];
-      } else {
-        updated[pendingBook.id] = pendingBook;
-      }
-      onFavoritesUpdate(updated);
-      setPendingBook(null);
-      setInputPassword("");
-      setSubmitted(false);
-      setShowPasswordModal(false);
-    }
-  }, [submitted, pendingBook, favorites, onFavoritesUpdate]);
 
   const handleFavoriteClick = (book: Book) => {
     setPendingBook(book);
     setShowPasswordModal(true);
+  };
+
+
+  const handlePasswordSuccess = () => {
+    if (!pendingBook) return;
+
+    const updated = { ...favorites };
+    if (updated[pendingBook.id]) {
+      delete updated[pendingBook.id];
+    } else {
+      updated[pendingBook.id] = pendingBook;
+    }
+
+    onFavoritesUpdate(updated);
+    setPendingBook(null);
+    setInputPassword("");
+    setShowPasswordModal(false);
   };
 
   const handleOpenCard = (book: Book) => {
@@ -118,10 +120,11 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
           }}
           submitted={submitted}
           setSubmitted={setSubmitted}
-          inputPassword={inputPassword}
+          inputPassword={inputPassword} 
           setInputPassword={setInputPassword}
           passwordAdmin={PASSWORD_ADMIN}
-          onSuccess={() => {}}
+          onSuccess={handlePasswordSuccess}
+
         />
       )}
     </>
