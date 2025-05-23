@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Book } from "../Context/BookContext";
 import { useBook } from "../Context/BookContext";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { FaTrashAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { ImBooks } from "react-icons/im";
 import CardBook from "../CardBook/CardBook";
@@ -16,8 +17,9 @@ interface PanelBookProps {
 }
 
 export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookProps) {
-  const { bookData } = useBook();
+  const { bookData, removeBook } = useBook();
 
+  const [actionType , setActionType] = useState<"favorite" | "remove" | null>(null);
   const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
   const [inputPassword, setInputPassword] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -28,12 +30,20 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
 
   const handleFavoriteClick = (book: Book) => {
     setPendingBook(book);
+    setActionType("favorite");
     setShowPasswordModal(true);
+    setSubmitted(false);
   };
 
+  const handleRemoveClick = (book: Book) => {
+    setPendingBook(book);
+    setActionType("remove");
+    setShowPasswordModal(true);
+    setSubmitted(false);
+  };
 
   const handlePasswordSuccess = () => {
-    if (!pendingBook) return;
+    if (!pendingBook || !actionType ) return;
 
     const updated = { ...favorites };
     if (updated[pendingBook.id]) {
@@ -42,6 +52,10 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
       updated[pendingBook.id] = pendingBook;
     }
 
+    if (actionType === "remove") {
+      removeBook(pendingBook.id);
+    } 
+    
     onFavoritesUpdate(updated);
     setPendingBook(null);
     setInputPassword("");
@@ -68,6 +82,9 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
             <motion.button className="save-book-favorite" onClick={() => handleFavoriteClick(book)} whileTap={{ scale: 1.3 }} transition={{ type: "spring", stiffness: 300 }}>
               {favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}
             </motion.button>
+            <button className="delete-book" onClick={() => handleRemoveClick(book)}>
+              <FaTrashAlt />
+            </button>
             <div className="Card_Book_Item">
               <div className="Card_Book_Imagem">
                 <img src={book.imageUrl || ""} alt={book.title || "Capa do livro"} loading="lazy" />
@@ -117,6 +134,7 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
             setShowPasswordModal(false);
             setInputPassword("");
             setPendingBook(null);
+            setActionType(null);
           }}
           submitted={submitted}
           setSubmitted={setSubmitted}

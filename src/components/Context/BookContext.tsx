@@ -14,11 +14,15 @@ export type Book = {
 type BookContextType = {
   bookData: Book[];
   setBookData: React.Dispatch<React.SetStateAction<Book[]>>;
+  removeBook: (id: string) => void;
 };
 
 const BookContext = createContext<BookContextType | undefined>(undefined);
 
 export const BookProvider = ({ children }: { children: ReactNode }) => {
+  const removeBook =  (id: string) => {
+    setBookData((prevBooks) => prevBooks.filter((book) => book.id !== id));
+  } 
   const [bookData, setBookData] = useState<Book[]>([
     {
       id: "1",
@@ -55,7 +59,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
   ]); 
 
   return (
-    <BookContext.Provider value={{ bookData, setBookData }}>
+    <BookContext.Provider value={{ bookData, setBookData, removeBook }}>
       {children}
     </BookContext.Provider>
   );

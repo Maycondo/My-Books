@@ -18,6 +18,8 @@ export default function CardPassword({ isOpen, onClose, submitted, setSubmitted,
     const handlePasswordChange = (e: React.FormEvent) => {
     e.preventDefault();
 
+    
+
     if (inputPassword.trim() === "") {
         alert("Password is required");
         return;
