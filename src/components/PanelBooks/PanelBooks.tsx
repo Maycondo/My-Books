@@ -79,12 +79,14 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
       ) : (
         bookData.map((book, i) => (
           <motion.div key={book.id} className="Card_Book" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 * i }}>
-            <motion.button className="save-book-favorite" onClick={() => handleFavoriteClick(book)} whileTap={{ scale: 1.3 }} transition={{ type: "spring", stiffness: 300 }}>
-              {favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}
-            </motion.button>
-            <button className="delete-book" onClick={() => handleRemoveClick(book)}>
-              <FaTrashAlt />
-            </button>
+           <div className="Card_Book_Buttons">
+              <motion.button className="save-book-favorite" onClick={() => handleFavoriteClick(book)} whileTap={{ scale: 1.3 }} transition={{ type: "spring", stiffness: 300 }}>
+                {favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}
+              </motion.button>
+              <button className="delete-book" onClick={() => handleRemoveClick(book)}>
+                <FaTrashAlt />
+              </button>
+           </div>
             <div className="Card_Book_Item">
               <div className="Card_Book_Imagem">
                 <img src={book.imageUrl || ""} alt={book.title || "Capa do livro"} loading="lazy" />
