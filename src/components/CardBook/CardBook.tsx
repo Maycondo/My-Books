@@ -31,6 +31,7 @@ interface CardBookProps {
 }
 
 export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
+    
 
     const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
     const [inputPassword, setInputPassword] = useState<string>("");
@@ -41,6 +42,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const [isEdit, setIsEdit] = useState(false);
     const [isAuthorized, setIsAuthorized] = useState(false);
     const descriptionLoaded = useRef(false);
+
     
         
     useEffect(() => {
@@ -55,15 +57,15 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         
     }, [book.id]);
 
-    const handleRating = (newRating: number) => {
-        setRating(newRating);
-        localStorage.setItem(`@rating-${book.id}`, newRating.toString());
-    }
     const toggleMincontainer = () => setToolbar(prev => !prev)
 
     const toggleEdit = () => {
-        setShowPasswordModal(true);
-        setSubmitted(false);
+        if (!isAuthorized) {
+            setShowPasswordModal(true);
+            setSubmitted(false);
+            return;
+        }
+        setIsEdit(prev => !prev);
     };
 
     const handleSave = () => {
@@ -107,10 +109,10 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                         <h1>Review Book: <i>{book.title}</i></h1>
                             <ul className="valiacao">
                                 <h3>Book Rating:</h3>
-                                    {[...Array(5)].map((_, newRating) => (
-                                        <li key={newRating} className="star-icon" onClick={() => handleRating(newRating + 1)}
-                                        style={{ cursor: "pointer", color:  newRating < rating ? "#FFD700" : "#ccc"}}
-                                        >{newRating < rating ? <IoStar /> : <IoStarOutline />}</li>
+                                    {[...Array(5)].map((_, index) => (
+                                        <li key={index} className="star-icon"
+                                        style={{ color: index < rating ? "#FFD700" : "#ccc" }}
+                                        >{book.rating < rating ? <IoStarOutline /> : <IoStar />}</li>
                                     ))}
                             </ul>
                             <h6 id="Publication_book">Publication:  <i>{formatDate(book.createdAt)}</i> </h6>
@@ -160,14 +162,13 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                 setInputPassword={setInputPassword}
                 passwordAdmin={PASSWORD_ADMIN}
                 onSuccess={() => {
-                        setIsEdit(true);
-                        setSubmitted(true);
-                        setShowPasswordModal(false);
-                        setIsAuthorized(true); 
+                    setIsEdit(true);
+                    setSubmitted(true);
+                    setShowPasswordModal(false);
+                    setIsAuthorized(true); 
                 }}
                 />
-                )
-            }
+            )}
         </>
     )
 }
