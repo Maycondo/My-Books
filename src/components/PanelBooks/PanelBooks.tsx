@@ -42,25 +42,32 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
     setSubmitted(false);
   };
 
-  const handlePasswordSuccess = () => {
-    if (!pendingBook || !actionType ) return;
+const handlePasswordSuccess = () => {
+  if (!pendingBook || !actionType) return;
 
-    const updated = { ...favorites };
+  const updated = { ...favorites };
+
+  if (actionType === "favorite") {
     if (updated[pendingBook.id]) {
       delete updated[pendingBook.id];
     } else {
       updated[pendingBook.id] = pendingBook;
     }
-
-    if (actionType === "remove") {
-      removeBook(pendingBook.id);
-    } 
-    
     onFavoritesUpdate(updated);
-    setPendingBook(null);
-    setInputPassword("");
-    setShowPasswordModal(false);
-  };
+  }
+
+  if (actionType === "remove") {
+    removeBook(pendingBook.id);
+    if (updated[pendingBook.id]) {
+      delete updated[pendingBook.id];
+      onFavoritesUpdate(updated);
+    }
+  }
+
+  setPendingBook(null);
+  setInputPassword("");
+  setShowPasswordModal(false);
+};
 
   const handleOpenCard = (book: Book) => {
     setSelectedBook(book);
