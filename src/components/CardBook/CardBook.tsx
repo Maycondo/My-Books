@@ -134,7 +134,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                             <div className="description-container">
                                 <div dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, "<br>") }} />
                                 <button className="Button_Edit" onClick={toggleEdit}>
-                                <MdEditNote />
+                                    <MdEditNote />
                                 </button>
                             </div>
                             )}
