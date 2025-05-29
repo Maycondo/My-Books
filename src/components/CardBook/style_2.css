@@ -53,6 +53,7 @@
 .toolbar {
   height: 2rem;
   width: 20rem;
+  z-index: 1000;
   position: absolute;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
