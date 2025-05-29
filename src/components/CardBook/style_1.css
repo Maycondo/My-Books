@@ -194,6 +194,7 @@
 .description-container {
   height: 95%;
   width: 98%;
+  overflow-y: auto;
   font-size: 1.2rem;
   font-weight: 400;
   margin: 0rem 1.5rem;
