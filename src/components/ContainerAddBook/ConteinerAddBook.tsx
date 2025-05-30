@@ -90,7 +90,7 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
             title: newBook.title,
             authorBook: newBook.authorBook,
             description: newBook.description,
-            imageUrl: newBook.imageUrl || "",
+            imageUrl: newBook.imageUrl ?? "", // Ensure string type
             categoria: newBook.categoria,
             rating: rating,
             createdAt: new Date().toISOString() // Current timestamp
