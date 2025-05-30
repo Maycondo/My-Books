@@ -197,3 +197,36 @@
     transform: rotateY(180deg) skewY(0deg);
   }
 }
+
+
+@media (max-width: 480px) {
+  .Card_Book {
+    width: 100%;
+    margin: 0.5rem;
+  }
+
+  .Card_Book_Imagem {
+    height: auto;
+    width: 100%;
+  }
+
+  .Imagem_Book {
+    margin-top: 0.6rem;
+    height: 535px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+    object-fit: cover;
+  }
+
+  .Card_Book_Titulo h2 {
+    font-size: 1rem;
+  }
+
+  .Card_Book_Descricao p {
+    font-size: 0.9rem;
+  }
+}
