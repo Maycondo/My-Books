@@ -17,10 +17,17 @@
   align-items: center;
 }
 
-#Titulo-Book
+#Titulo-Book {
+  margin-top: 1.5rem;
+  font-size: calc(1.8rem , 0.5vw, 2.5rem);
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: 900;
+  font-family: "Josefin Sans", serif;
 
-.card-book-header, #Icone-Book-review {
-  font-size: 2rem;
+}
+#Icone-Book-review {
+  font-size: calc(1.8rem, 0.5vw, 2rem);
   font-weight: bold;
   margin: 0rem 2rem;
 }
@@ -52,7 +59,6 @@
   font-weight: 500;
   font-family: "Josefin Sans", serif;
 }
-
 
 #Publication_book {
   width: auto;
@@ -153,13 +159,7 @@
   border-left: solid 2px black ;
 }
 
-#Titulo-Book {
-  font-size: 2.3rem;
-  background-color: #1a1a1a;
-  color: #fff;
-  font-weight: 900;
-  font-family: "Josefin Sans", serif;
-}
+
 
 .List_buttons {
   display: flex;
