@@ -29,6 +29,7 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
     const { bookData, setBookData } = useBook();
     const [rating, setRating] = useState(0);
     const [erroMessage, setErroMessagem] = useState(false);
+    const [URLimagem, setURLimagem] = useState<string | null>(null);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
 
@@ -38,12 +39,14 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
         description: "",
         imageUrl: null as string | null,
         categoria: [] as string[],
+        rating: 0,
     });
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files?.[0]) {
             const fileUrl = URL.createObjectURL(e.target.files[0]);
             setNewBook((prev) => ({ ...prev, imageUrl: fileUrl }));
+            setURLimagem(null);
         }
     };
 
@@ -59,6 +62,10 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
     const handleRating = (newRating: number) => {
         setRating(newRating);
         setNewBook((prev) => ({ ...prev, rating: newRating }));
+    }
+
+    const handleImageUpload = () => {
+        setURLimagem((prev) => (prev ? null : "upload"));
     }
 
     const validateForm = (): string | null => {
@@ -96,8 +103,9 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
             title: "",
             authorBook: "",
             description: "",
-            imageUrl: null,
+            imageUrl: "",
             categoria: [],
+            rating: 0,
         });
     
         setTimeout(() => {
@@ -122,17 +130,26 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                             <img className="imagem_book" src={newBook.imageUrl} alt="Book"/>
                         ) : (<p><FaBook/></p>)}
                         {!newBook.imageUrl && (
-                            <label className="custom-file-upload">
-                                Select cover
-                                <input type="file" className="Book-cover" onChange={handleFileChange} />
-                            </label>
+                            <button className="Button_add_imagem" type="button" onClick={() => handleImageUpload()}>
+                                <span className="add_imagem">Add Cover</span>
+                            </button>
                         )}
                         {newBook.imageUrl && (
-                            <button type="button"  className="Button_dele_imagem" onClick={() => setNewBook((prev) => ({ ...prev, imageUrl: null }))}>
+                            <button type="button" className="Button_dele_imagem" onClick={() => setNewBook((prev) => ({ ...prev, imageUrl: null }))}>
                                 <ImBin/>
                             </button>
                         )}
-                        
+                        {URLimagem && (
+                            <div className="Content_upload">
+                                <div className="Contente-URl-image">
+                                   <label className="label-URL-imagem">Upload URL Image</label>
+                                    <input id="url-image" type="text" placeholder="https://exemplo.com/imagem.jpg" value={newBook.imageUrl ?? ""} 
+                                    onChange={(e) => setNewBook((prev) => ({ ...prev, imageUrl: e.target.value }))} className="input-URL-image"/>
+                                    <button type="button" className="Button_upload-URL" onClick={() => setURLimagem(null)}>Confimar</button>
+                                </div>
+                            </div>
+                        )}
+
                         <div className="input-center">
                             <div className="input-group">
                                 <input  className={`input-text ${!newBook.title.trim() ? "error_" : ""}`}  name="title"  type="text"  placeholder="Name Book"  autoComplete="off" value={newBook.title} onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}/>
