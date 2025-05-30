@@ -86,7 +86,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         <>
             <motion.div className="card-book-open" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
                 <div className="card-book-header">  
-                    <h1><IoBook/> Book Review</h1>              
+                    <h1 id="Icone-Book-review"><IoBook/> Book Review</h1>              
                     <button className="Button_1" onClick={onClose}>
                         <span className="X_1"></span>
                         <span className="Y_1"></span>
@@ -95,7 +95,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                 </div>
                 <div className="card-book__container">
                     <div className="card-book__text">
-                        <h1>Review Book: <i>{book.title}</i></h1>
+                        <h1 id="Titulo-Book">Review Book: <i>{book.title}</i></h1>
                         <ul className="valiacao">
                             <h3>Book Rating:</h3>
                             {[...Array(5)].map((_, index) => (

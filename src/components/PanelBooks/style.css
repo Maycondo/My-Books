@@ -97,10 +97,11 @@
 } 
 
 .Imagem_Book {
-  height: 559px;
-  width: 479px;
-  display: block;
-  overflow: hidden;
+  height: 555px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top-left-radius: 2%;
   border-top-right-radius: 2%;
   object-fit: cover;

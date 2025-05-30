@@ -29,7 +29,7 @@ export default function FavoritesBooks({ favorites }) {
             </button>
             <div className="Card_Book_Item">
               <div className="Card_Book_Imagem">
-                <img src={book.imageUrl || ""} alt={book.title} loading="lazy" />
+                <img className="Imagem_Book" src={book.imageUrl || ""} alt={book.title} loading="lazy" />
               </div>
               <div className="Card_Book_Titulo">
                 <h2>{book.title}</h2>
