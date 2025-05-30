@@ -15,7 +15,7 @@ import "./Style/style_2.css";
 const categorias = [
     "Ação", "Fantasia", "Aventura", "Romance", "Terror", "Biografia", "Comédia", "Drama",
     "Ficção", "Infantil", "Mistério", "Thriller", "Vida Real", "Científica",
-    "Ficção Científica", "Documentário"
+    "Ficção Científica", "Documentário", "História", "Política",
 ] as const;
 
 interface CardBookAddProps { 

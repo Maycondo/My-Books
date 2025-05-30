@@ -75,10 +75,18 @@
 }
 
 .input-text-rating {
-    font-size: 1.5rem;
-    margin: 0rem 1.5rem;
+    font-size: 1.2rem;
+    margin: 0rem 1rem;
     font-family: Josefin Sans;
     font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.input-text-rating label {
+    margin: 0rem 1.5rem;
 }
 
 .star-icon-enviar {
@@ -96,11 +104,13 @@
     position: relative; 
     display: inline-block;  
     padding: 10px;
-  }
+}
+
+
 
 .input-text-discretion {
     font-size: 1.5rem;
-    margin: 1.5rem;
+    margin: 1rem;
     font-family: Josefin Sans;
     font-weight: 800;
 }
