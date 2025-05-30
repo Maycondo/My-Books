@@ -22,7 +22,6 @@ interface CardBookProps {
         imageUrl: string;
         categoria: string[];
         rating: number;
-        createdAt: string;
     };
 }
 
@@ -63,16 +62,6 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         setIsEdit(false);
     };
 
-    const formatDate = (isoString: string) => {
-        const date = new Date(isoString);
-        return date.toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    };
 
     if (!isOpen) return null;
 
@@ -104,7 +93,6 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                                 </li>
                             ))}
                         </ul>
-                        <h6 id="Publication_book">Publication: <i>{formatDate(book.createdAt)}</i></h6>
 
                         {isAuthorized ? (
                             isEdit ? (
@@ -147,7 +135,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                         <img src={book.imageUrl} alt={book.title} />
                         <div className="card-book-discript">
                             <p id="Author">Author: <i>{book.authorBook}</i></p>
-                            <p id="Category">Category: <i>{book.categoria.join(', ')}</i></p>
+                            <p id="Category">Category: <i>{book.categoria.join(', ') || "Categoria não definida"}</i></p>
                         </div>
                     </div>
                 </div>
