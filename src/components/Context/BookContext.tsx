@@ -27,7 +27,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
   const [bookData, setBookData] = useState<Book[]>([]); 
 
   useEffect(() => {
-    axios.get("http://localhost:4000/Books")                                                                                                                                                                                                                                              
+    axios.get("http://localhost:8000/Books")                                                                                                                                                                                                                                              
       .then((res) => setBookData(res.data))
       .catch((err) => console.error("Erro ao buscar livros:", err));
   }, []);

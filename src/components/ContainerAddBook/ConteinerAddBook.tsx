@@ -90,10 +90,9 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
             title: newBook.title,
             authorBook: newBook.authorBook,
             description: newBook.description,
-            imageUrl: newBook.imageUrl ?? "", // Ensure string type
+            imageUrl: newBook.imageUrl ?? "", 
             categoria: newBook.categoria,
             rating: rating,
-            createdAt: new Date().toISOString() // Current timestamp
         };
          
         setBookData((prev) => [...prev, newBookData]);

@@ -9,15 +9,15 @@ import ButtomAddBooks from "@/components/ButtonAdd/ButtonAddBooks";
 
 
 
-const useLoader = (display: number) => {
+const useLoader = (display: number = 1000) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const timer = setTimeout(() => setLoading(false), display)
-        return () => clearTimeout(timer)
-    }, [display])
+        const timer = setTimeout(() => setLoading(false), display);
+        return () => clearTimeout(timer);
+    }, [display]);
 
-    return loading
+    return loading;
 }
 
 export default function Home() {

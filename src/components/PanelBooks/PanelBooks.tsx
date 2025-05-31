@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Book } from "../Context/BookContext";
 import { useBook } from "../Context/BookContext";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
@@ -19,14 +19,18 @@ interface PanelBookProps {
 export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookProps) {
   const { bookData, removeBook } = useBook();
 
-  const [actionType , setActionType] = useState<"favorite" | "remove" | null>(null);
-  const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
-  const [inputPassword, setInputPassword] = useState<string>("");
-  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [actionType, setActionType] = useState<"favorite" | "remove" | null>(null);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [inputPassword, setInputPassword] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const [pendingBook, setPendingBook] = useState<Book | null>(null);
-  const [isCardBookOpen, setIsCardBookOpen] = useState<boolean>(false);
+  const [isCardBookOpen, setIsCardBookOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const [hydrated, setHydrated] = useState(false); // 👈 controle de hidratação
 
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const handleFavoriteClick = (book: Book) => {
     setPendingBook(book);
@@ -42,32 +46,32 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
     setSubmitted(false);
   };
 
-const handlePasswordSuccess = () => {
-  if (!pendingBook || !actionType) return;
+  const handlePasswordSuccess = () => {
+    if (!pendingBook || !actionType) return;
 
-  const updated = { ...favorites };
+    const updated = { ...favorites };
 
-  if (actionType === "favorite") {
-    if (updated[pendingBook.id]) {
-      delete updated[pendingBook.id];
-    } else {
-      updated[pendingBook.id] = pendingBook;
-    }
-    onFavoritesUpdate(updated);
-  }
-
-  if (actionType === "remove") {
-    removeBook(pendingBook.id);
-    if (updated[pendingBook.id]) {
-      delete updated[pendingBook.id];
+    if (actionType === "favorite") {
+      if (updated[pendingBook.id]) {
+        delete updated[pendingBook.id];
+      } else {
+        updated[pendingBook.id] = pendingBook;
+      }
       onFavoritesUpdate(updated);
     }
-  }
 
-  setPendingBook(null);
-  setInputPassword("");
-  setShowPasswordModal(false);
-};
+    if (actionType === "remove") {
+      removeBook(pendingBook.id);
+      if (updated[pendingBook.id]) {
+        delete updated[pendingBook.id];
+        onFavoritesUpdate(updated);
+      }
+    }
+
+    setPendingBook(null);
+    setInputPassword("");
+    setShowPasswordModal(false);
+  };
 
   const handleOpenCard = (book: Book) => {
     setSelectedBook(book);
@@ -86,14 +90,14 @@ const handlePasswordSuccess = () => {
       ) : (
         bookData.map((book, i) => (
           <motion.div key={book.id} className="Card_Book" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 * i }}>
-           <div className="Card_Book_Buttons">
+            <div className="Card_Book_Buttons">
               <motion.button className="save-book-favorite" onClick={() => handleFavoriteClick(book)} whileTap={{ scale: 1.3 }} transition={{ type: "spring", stiffness: 300 }}>
                 {favorites[book.id] ? <MdFavorite /> : <MdFavoriteBorder />}
               </motion.button>
               <button className="delete-book" onClick={() => handleRemoveClick(book)}>
                 <FaTrashAlt />
               </button>
-           </div>
+            </div>
             <div className="Card_Book_Item">
               <div className="Card_Book_Imagem">
                 <img className="Imagem_Book" src={book.imageUrl || ""} alt={book.title || "Capa do livro"} loading="lazy" />
@@ -102,7 +106,7 @@ const handlePasswordSuccess = () => {
                 <h2>{book.title}</h2>
               </div>
               <div className="Card_Book_Descricao">
-                <p>{book.description}</p>
+                {hydrated && <p>{book.description}</p>}
               </div>
               <div className="Card_Book_Button">
                 <button className="readmore-btn" onClick={() => handleOpenCard(book)}>
@@ -128,7 +132,7 @@ const handlePasswordSuccess = () => {
         ))
       )}
 
-      {isCardBookOpen && selectedBook && (
+      {selectedBook && (
         <CardBook
           isOpen={isCardBookOpen}
           onClose={() => setIsCardBookOpen(false)}
@@ -147,11 +151,10 @@ const handlePasswordSuccess = () => {
           }}
           submitted={submitted}
           setSubmitted={setSubmitted}
-          inputPassword={inputPassword} 
+          inputPassword={inputPassword}
           setInputPassword={setInputPassword}
           passwordAdmin={PASSWORD_ADMIN}
           onSuccess={handlePasswordSuccess}
-
         />
       )}
     </>

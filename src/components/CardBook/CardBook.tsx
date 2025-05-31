@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect , useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IoBook, IoStarOutline, IoStar } from "react-icons/io5";
 import { MdEditNote } from "react-icons/md";
 import Toolbar from "./Toolbar";
@@ -26,6 +26,8 @@ interface CardBookProps {
 }
 
 export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
+
+    const [hydrated, setHydrated] = useState(false);
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [inputPassword, setInputPassword] = useState("");
     const [submitted, setSubmitted] = useState(false);
@@ -38,6 +40,8 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const descriptionLoaded = useRef(false);
 
     useEffect(() => {
+        setHydrated(true); // garante que o conteúdo será renderizado só no client
+
         const savedRating = localStorage.getItem(`@rating-${book.id}`);
         if (savedRating) setRating(parseInt(savedRating, 10));
 
@@ -62,7 +66,6 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         setIsEdit(false);
     };
 
-
     if (!isOpen) return null;
 
     const containerVariants = {
@@ -75,7 +78,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         <>
             <motion.div className="card-book-open" variants={containerVariants} initial="hidden" animate="visible" exit="exit">
                 <div className="card-book-header">  
-                    <h1 id="Icone-Book-review"><IoBook/> Book Review</h1>              
+                    <h1 id="Icone-Book-review"><IoBook /> Book Review</h1>              
                     <button className="Button_1" onClick={onClose}>
                         <span className="X_1"></span>
                         <span className="Y_1"></span>
@@ -85,32 +88,32 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                 <div className="card-book__container">
                     <div className="card-book__text">
                         <h1 id="Titulo-Book">Review Book: <i>{book.title}</i></h1>
-                        <ul className="valiacao">
-                            <h3>Book Rating:</h3>
-                            {[...Array(5)].map((_, index) => (
-                                <li key={index} className="star-icon" style={{ color: index < rating ? "#FFD700" : "#ccc" }}>
-                                    {book.rating < rating ? <IoStarOutline /> : <IoStar />}
-                                </li>
-                            ))}
-                        </ul>
 
-                        {isAuthorized ? (
+                        {hydrated && (
+                            <ul className="valiacao">
+                                <h3>Book Rating:</h3>
+                                {[...Array(5)].map((_, index) => (
+                                    <li key={index} className="star-icon" style={{ color: index < rating ? "#FFD700" : "#ccc" }}>
+                                        {book.rating < rating ? <IoStarOutline /> : <IoStar />}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
+                        {hydrated && isAuthorized ? (
                             isEdit ? (
                                 <>
                                     <textarea
                                         className="text_edit"
-                                            value={description}
-                                            onClick={(e) => {
-                                                setToolbar((prev) => !prev); // alterna visibilidade
-                                                setToolbarPosition({ x: e.clientX, y: e.clientY }); // define posição do clique
-                                            }}
+                                        value={description}
+                                        onClick={(e) => {
+                                            setToolbar((prev) => !prev);
+                                            setToolbarPosition({ x: e.clientX, y: e.clientY });
+                                        }}
                                         onChange={(e) => setDescription(e.target.value)}
                                     />
                                     {toolbar && (
-                                        <Toolbar
-                                            setDescription={setDescription}
-                                            position={toolbarPosition}
-                                        />
+                                        <Toolbar setDescription={setDescription} position={toolbarPosition} />
                                     )}
                                     <button className="save-button" onClick={handleSave}>Save</button>
                                 </>
@@ -123,12 +126,14 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                                 </div>
                             )
                         ) : (
-                            <div className="description-container">
-                                <div dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, "<br>") }} />
-                                <button className="Button_Edit" onClick={toggleEdit}>
-                                    <MdEditNote />
-                                </button>
-                            </div>
+                            hydrated && (
+                                <div className="description-container">
+                                    <div dangerouslySetInnerHTML={{ __html: description.replace(/\n/g, "<br>") }} />
+                                    <button className="Button_Edit" onClick={toggleEdit}>
+                                        <MdEditNote />
+                                    </button>
+                                </div>
+                            )
                         )}
                     </div>
                     <div className="card-book__image">
