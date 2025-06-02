@@ -16,24 +16,43 @@ type BookContextType = {
   bookData: Book[];
   setBookData: React.Dispatch<React.SetStateAction<Book[]>>;
   removeBook: (id: string) => void;
+  addBook: (newBook: Book) => void;
 };
 
 const BookContext = createContext<BookContextType | undefined>(undefined);                                                                                                                                                                                                              
 
 export const BookProvider = ({ children }: { children: ReactNode }) => {
-  const removeBook =  (id: string) => {
-    setBookData((prevBooks) => prevBooks.filter((book) => book.id !== id));
-  } 
+
   const [bookData, setBookData] = useState<Book[]>([]); 
 
   useEffect(() => {
-    axios.get("http://localhost:8000/Books")                                                                                                                                                                                                                                              
+    axios.get("http://localhost:5000/Books")                                                                                                                                                                                                                                              
       .then((res) => setBookData(res.data))
       .catch((err) => console.error("Erro ao buscar livros:", err));
   }, []);
 
+
+  // Função para remover um livro pelo ID
+  const removeBook = (id: string) => {
+    axios.delete(`http://localhost:5000/delete${id}`)
+      .then(() => {
+        setBookData((prevBooks) => prevBooks.filter((book) => book.id !== id));
+      })
+      .catch((err) => console.error("Erro ao remover livro:", err,console.log(`Erro ao remover livro: ${id}`)));
+  };
+
+  // Função para adicionar um livro
+  const addBook = (newBook: Book) => {
+    axios.post("http://localhost:5000/Bookadd", newBook)
+      .then((res) => {
+        setBookData((prevBooks) => [...prevBooks, res.data]);
+      })
+      .catch((err) => console.error("Erro ao adicionar livro:", err, console.log(`Erro ao adicionar livro: ${newBook.title}`)));
+  }
+
+
   return (
-    <BookContext.Provider value={{ bookData, setBookData, removeBook }}>
+    <BookContext.Provider value={{ bookData, setBookData, removeBook, addBook }}>
       {children}
     </BookContext.Provider>
   );

@@ -40,7 +40,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const descriptionLoaded = useRef(false);
 
     useEffect(() => {
-        setHydrated(true); // garante que o conteúdo será renderizado só no client
+        setHydrated(true); 
 
         const savedRating = localStorage.getItem(`@rating-${book.id}`);
         if (savedRating) setRating(parseInt(savedRating, 10));
@@ -140,7 +140,10 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                         <img src={book.imageUrl} alt={book.title} />
                         <div className="card-book-discript">
                             <p id="Author">Author: <i>{book.authorBook}</i></p>
-                            <p id="Category">Category: <i>{book.categoria.join(', ') || "Categoria não definida"}</i></p>
+                            <p id="Category">
+                            Category: <i>{Array.isArray(book.categoria) ? book.categoria.join(', ') : "Categoria não definida"}</i>
+                            </p>
+
                         </div>
                     </div>
                 </div>
