@@ -20,7 +20,6 @@ const categorias = [
 interface CardBookAddProps {
   isOpen: boolean;
   onClose: () => void;
-  
 }
 
 export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {

@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { IoBook, IoStarOutline, IoStar } from "react-icons/io5";
 import { MdEditNote } from "react-icons/md";
+import { useBook } from "../Context/BookContext";
 import Toolbar from "./Toolbar";
 import { motion } from "framer-motion";
 import { PASSWORD_ADMIN } from "../../app/password";       
@@ -27,6 +28,8 @@ interface CardBookProps {
 
 export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
 
+    const { updateBookdescription } = useBook(); 
+
     const [hydrated, setHydrated] = useState(false);
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [inputPassword, setInputPassword] = useState("");
@@ -37,7 +40,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const [toolbarPosition, setToolbarPosition] = useState({ x: 0, y: 0 });
     const [isEdit, setIsEdit] = useState(false);
     const [isAuthorized, setIsAuthorized] = useState(false);
-    const descriptionLoaded = useRef(false);
+
 
     useEffect(() => {
         setHydrated(true); 
@@ -45,12 +48,13 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         const savedRating = localStorage.getItem(`@rating-${book.id}`);
         if (savedRating) setRating(parseInt(savedRating, 10));
 
-        if (!descriptionLoaded.current) {
-            const savedDescription = localStorage.getItem(`@description-${book.id}`);
-            if (savedDescription) setDescription(savedDescription);
-            descriptionLoaded.current = true;
+        const savedDescription = localStorage.getItem(`@description-${book.id}`);
+        if (savedDescription) {
+            setDescription(savedDescription);
+        } else {
+            setDescription(book.description); // <- Isso garante atualização por nova prop
         }
-    }, [book.id]);
+    }, [book.id, book.description]);
 
     const toggleEdit = () => {
         if (!isAuthorized) {
@@ -63,6 +67,8 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
 
     const handleSave = () => {
         localStorage.setItem(`@description-${book.id}`, description);
+        const updatedBook = { ...book, description };   
+        updateBookdescription(updatedBook);
         setIsEdit(false);
     };
 
@@ -103,14 +109,11 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                         {hydrated && isAuthorized ? (
                             isEdit ? (
                                 <>
-                                    <textarea
-                                        className="text_edit"
-                                        value={description}
-                                        onClick={(e) => {
+                                    <textarea className="text_edit" value={description} onClick={(e) => {
                                             setToolbar((prev) => !prev);
                                             setToolbarPosition({ x: e.clientX, y: e.clientY });
                                         }}
-                                        onChange={(e) => setDescription(e.target.value)}
+                                        onChange={(e) => (e.target.value)}
                                     />
                                     {toolbar && (
                                         <Toolbar setDescription={setDescription} position={toolbarPosition} />

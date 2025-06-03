@@ -17,6 +17,7 @@ type BookContextType = {
   setBookData: React.Dispatch<React.SetStateAction<Book[]>>;
   removeBook: (id: string) => void;
   addBook: (newBook: Book) => void;
+  updateBookdescription: (updateBookdescription: Book) => void;
 };
 
 const BookContext = createContext<BookContextType | undefined>(undefined);                                                                                                                                                                                                              
@@ -26,7 +27,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
   const [bookData, setBookData] = useState<Book[]>([]); 
 
   useEffect(() => {
-    axios.get("http://localhost:5000/Books")                                                                                                                                                                                                                                              
+    axios.get("http://localhost:7000/Books")                                                                                                                                                                                                                                              
       .then((res) => setBookData(res.data))
       .catch((err) => console.error("Erro ao buscar livros:", err));
   }, []);
@@ -34,7 +35,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
 
   // Função para remover um livro pelo ID
   const removeBook = (id: string) => {
-    axios.delete(`http://localhost:5000/delete${id}`)
+    axios.delete(`http://localhost:7000/delete${id}`)
       .then(() => {
         setBookData((prevBooks) => prevBooks.filter((book) => book.id !== id));
       })
@@ -43,16 +44,28 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
 
   // Função para adicionar um livro
   const addBook = (newBook: Book) => {
-    axios.post("http://localhost:5000/Bookadd", newBook)
+    axios.post("http://localhost:7000/Bookadd", newBook)
       .then((res) => {
         setBookData((prevBooks) => [...prevBooks, res.data]);
       })
       .catch((err) => console.error("Erro ao adicionar livro:", err, console.log(`Erro ao adicionar livro: ${newBook.title}`)));
   }
 
+  // Função para atualizar discrição um livro
+  const updateBookdescription = (updatedBook: Book) => {
+    axios.put(`http://localhost:7000/update${updatedBook.id}`, updatedBook)
+      .then((res) => {
+        setBookData((prevBooks) =>
+          prevBooks.map((book) => (book.id === updatedBook.id ? res.data : book))
+        );
+      })
+      .catch((err) => console.error("Erro ao atualizar livro:", err, console.log(`Erro ao atualizar livro: ${updatedBook.title}`)));
+  }
+
+
 
   return (
-    <BookContext.Provider value={{ bookData, setBookData, removeBook, addBook }}>
+    <BookContext.Provider value={{ bookData, setBookData, removeBook, addBook, updateBookdescription }}>
       {children}
     </BookContext.Provider>
   );
