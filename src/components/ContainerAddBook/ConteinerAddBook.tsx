@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/rules-of-hooks */
 
+import { useEffect, useState } from "react";
 import { useBook } from "../Context/BookContext";
 import ErroMessagem from "../MessagensBooks/ErroMessagemBook";
 import SuccessMessagem from "../MessagensBooks/SuccessMessagem";
 import { IoStarOutline, IoStar } from "react-icons/io5";
-import { useState } from "react";
 import { FaBook } from "react-icons/fa";
 import { ImBin } from "react-icons/im";
+import { v4 as uuidv4 } from "uuid";
 import "./Style/style_1.css";
 import "./Style/style_2.css";
 
@@ -27,7 +28,6 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
 
   const { addBook } = useBook();
 
-  const [rating, setRating] = useState(0);
   const [erroMessage, setErroMessagem] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [URLimagem, setURLimagem] = useState<string | null>(null);
@@ -40,6 +40,21 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
     categories: [] as string[],
     rating: 0,
   });
+
+  useEffect(() => {
+    if (!isOpen) {
+      setURLimagem(null);
+    }
+  }, [isOpen]);
+
+  const isValidUrl = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,11 +72,6 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
         ? prev.categories.filter((cat) => cat !== categoria)
         : [...prev.categories, categoria],
     }));
-  };
-
-  const handleRating = (newRating: number) => {
-    setRating(newRating);
-    setNewBook((prev) => ({ ...prev, rating: newRating }));
   };
 
   const handleImageUpload = () => {
@@ -87,19 +97,20 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
     }
 
     const newBookData = {
+      id: uuidv4(),
       title: newBook.title,
       author: newBook.author,
+      authorBook: newBook.author,
       description: newBook.description,
       imageUrl: newBook.imageUrl ?? "",
       categories: newBook.categories,
-      rating: rating,
+      categoria: newBook.categories,
+      rating: newBook.rating,
     };
 
-    // ✅ Corrigido: chamada direta com objeto Book
     addBook(newBookData);
     setSuccessMessage("Livro adicionado com sucesso!");
 
-    // Limpa os campos
     setNewBook({
       title: "",
       author: "",
@@ -108,7 +119,6 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
       categories: [],
       rating: 0,
     });
-    setRating(0);
 
     setTimeout(() => {
       onClose();
@@ -140,12 +150,16 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
             )}
 
             {newBook.imageUrl && (
-              <button type="button" className="Button_dele_imagem" onClick={() => setNewBook((prev) => ({ ...prev, imageUrl: null }))}>
+              <button
+                type="button"
+                className="Button_dele_imagem"
+                onClick={() => setNewBook((prev) => ({ ...prev, imageUrl: null }))}
+              >
                 <ImBin />
               </button>
             )}
 
-            {URLimagem && (
+            {URLimagem === "upload" && (
               <div className="Content_upload">
                 <div className="Contente-URl-image">
                   <label className="label-URL-imagem">Upload URL Image</label>
@@ -157,7 +171,19 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                     onChange={(e) => setNewBook((prev) => ({ ...prev, imageUrl: e.target.value }))}
                     className="input-URL-image"
                   />
-                  <button type="button" className="Button_upload-URL" onClick={() => setURLimagem(null)}>Confirmar</button>
+                  <button
+                    type="button"
+                    className="Button_upload-URL"
+                    onClick={() => {
+                      if (!newBook.imageUrl || !isValidUrl(newBook.imageUrl)) {
+                        alert("URL inválida.");
+                        return;
+                      }
+                      setURLimagem(null);
+                    }}
+                  >
+                    Confirmar
+                  </button>
                 </div>
               </div>
             )}
@@ -170,6 +196,8 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                   type="text"
                   placeholder="Name Book"
                   autoComplete="off"
+                  aria-label="Nome do Livro"
+                  required
                   value={newBook.title}
                   onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}
                 />
@@ -182,6 +210,8 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
                   name="author"
                   type="text"
                   placeholder="Author Book"
+                  aria-label="Autor do Livro"
+                  required
                   value={newBook.author}
                   onChange={(e) => setNewBook({ ...newBook, author: e.target.value })}
                 />
@@ -208,16 +238,23 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
 
             <div className="rating-enviar">
               <label className="input-text-rating">Rating:</label>
-              {[...Array(5)].map((_, index) => (
-                <li
-                  key={index}
-                  className="star-icon-enviar"
-                  onClick={() => handleRating(index + 1)}
-                  style={{ cursor: "pointer", color: index + 1 <= rating ? "#FFD700" : "#ccc" }}
-                >
-                  {index + 1 <= rating ? <IoStar /> : <IoStarOutline />}
-                </li>
-              ))}
+              <ul className="rating-stars">
+                {[...Array(5)].map((_, index) => (
+                  <li
+                    key={index}
+                    className="star-icon-enviar"
+                    onClick={() =>
+                      setNewBook((prev) => ({ ...prev, rating: index + 1 }))
+                    }
+                    style={{
+                      cursor: "pointer",
+                      color: index + 1 <= newBook.rating ? "#FFD700" : "#ccc",
+                    }}
+                  >
+                    {index + 1 <= newBook.rating ? <IoStar /> : <IoStarOutline />}
+                  </li>
+                ))}
+              </ul>
             </div>
 
             <label className="input-text-discretion">Description Book:</label>
@@ -225,7 +262,9 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
               <textarea
                 className="Box_discretion"
                 value={newBook.description}
-                onChange={(e) => setNewBook({ ...newBook, description: e.target.value })}
+                onChange={(e) =>
+                  setNewBook({ ...newBook, description: e.target.value })
+                }
               ></textarea>
               <span className="corner top-left"></span>
               <span className="corner top-right"></span>
