@@ -34,7 +34,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [inputPassword, setInputPassword] = useState("");
     const [submitted, setSubmitted] = useState(false);
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(book.rating);
     const [description, setDescription] = useState(book.description);
     const [toolbar, setToolbar] = useState(false);
     const [toolbarPosition, setToolbarPosition] = useState({ x: 0, y: 0 });
