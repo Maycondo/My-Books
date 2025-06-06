@@ -28,7 +28,7 @@ interface CardBookProps {
 
 export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
 
-    const { updateBookdescription } = useBook(); 
+    const { updateBookdescription,  } = useBook(); 
 
     const [hydrated, setHydrated] = useState(false);
     const [showPasswordModal, setShowPasswordModal] = useState(false);
@@ -52,7 +52,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         if (savedDescription) {
             setDescription(savedDescription);
         } else {
-            setDescription(book.description); // <- Isso garante atualização por nova prop
+            setDescription(book.description); 
         }
     }, [book.id, book.description]);
 
@@ -67,7 +67,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
 
     const handleSave = () => {
         localStorage.setItem(`@description-${book.id}`, description);
-        const updatedBook = { ...book, description };   
+        const updatedBook = { ...book, description };
         updateBookdescription(updatedBook);
         setIsEdit(false);
     };
@@ -113,7 +113,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
                                             setToolbar((prev) => !prev);
                                             setToolbarPosition({ x: e.clientX, y: e.clientY });
                                         }}
-                                        onChange={(e) => (e.target.value)}
+                                        onChange={(e) => setDescription(e.target.value)}
                                     />
                                     {toolbar && (
                                         <Toolbar setDescription={setDescription} position={toolbarPosition} />

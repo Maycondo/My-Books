@@ -74,6 +74,13 @@
     gap: 0.5rem;
 }
 
+.rating-stars {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
 .input-text-rating {
     font-size: 1.2rem;
     margin: 0rem 1rem;
@@ -81,7 +88,7 @@
     font-weight: 800;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    
 
 }
 
