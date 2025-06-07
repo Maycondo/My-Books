@@ -132,10 +132,12 @@
 }
 
 .Card_Book_Descricao p {
-  margin: 1rem;
+  margin: 1rem; 
   font-weight: 400;
   font-family: "Josefin Sans", serif;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .Card_Book_Button {
