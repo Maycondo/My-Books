@@ -27,7 +27,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
   const [bookData, setBookData] = useState<Book[]>([]); 
 
   useEffect(() => {
-    axios.get("http://localhost:4000/Books")                                                                                                                                                                                                                                              
+    axios.get("https://books-api-wt3h.onrender.com/Books")                                                                                                                                                                                                                                              
       .then((res) => setBookData(res.data))
       .catch((err) => console.error("Erro ao buscar livros:", err));
   }, []);
@@ -35,7 +35,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
 
   // Função para remover um livro pelo ID
   const removeBook = (id: string) => {
-    axios.delete(`http://localhost:4000/delete${id}`)
+    axios.delete(`https://books-api-wt3h.onrender.com/delete${id}`)
       .then(() => {
         setBookData((prevBooks) => prevBooks.filter((book) => book.id !== id));
       })
@@ -44,7 +44,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
 
   // Função para adicionar um livro
   const addBook = (newBook: Book) => {
-    axios.post("http://localhost:4000/Bookadd", newBook)
+    axios.post("https://books-api-wt3h.onrender.com/Bookadd", newBook)
       .then((res) => {
         setBookData((prevBooks) => [...prevBooks, res.data]);
       })
@@ -53,7 +53,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
 
   // Função para atualizar discrição um livro
   const updateBookdescription = (updatedBook: Book) => {
-    axios.put(`http://localhost:4000/update${updatedBook.id}`, updatedBook)
+    axios.put(`https://books-api-wt3h.onrender.com/update${updatedBook.id}`, updatedBook)
       .then((res) => {
         setBookData((prevBooks) =>
           prevBooks.map((book) => (book.id === updatedBook.id ? res.data : book))
