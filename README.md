@@ -11,13 +11,13 @@ My-Books é um site onde você pode cadastrar os livros que está lendo, adicion
 
 Utilizei o React para acelerar o desenvolvimento, já que é uma biblioteca robusta para construção de interfaces modernas e reativas.
 
-Permite a reutilização de componentes independentes.
+- Permite a reutilização de componentes independentes.
 
-Organiza melhor o código, facilitando a manutenção.
+- Organiza melhor o código, facilitando a manutenção.
 
-Utiliza o Virtual DOM para tornar as interações mais rápidas e eficientes.
+- Utiliza o Virtual DOM para tornar as interações mais rápidas e eficientes.
 
-Integra facilmente com diversas tecnologias como TypeScript, Redux, GraphQL, APIs REST, Firebase, entre outras. 
+- Integra facilmente com diversas tecnologias como TypeScript, Redux, GraphQL, APIs REST, Firebase, entre outras. 
  ## 🚀 Tecnologias utilizadas
 
 - __Axios__ — Cliente HTTP usado para fazer requisições à API de forma simples e eficiente.
