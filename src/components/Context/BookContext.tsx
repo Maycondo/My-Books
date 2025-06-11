@@ -44,7 +44,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
 
   // Função para adicionar um livro
   const addBook = (newBook: Book) => {
-    axios.post("https://books-api-wt3h.onrender.com/Books", newBook)
+    axios.post("https://books-api-wt3h.onrender.com/Bookadd", newBook)
       .then((res) => {
         setBookData((prevBooks) => [...prevBooks, res.data]);
       })
