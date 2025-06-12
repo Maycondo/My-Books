@@ -10,7 +10,7 @@
 !.yarn/releases
 !.yarn/versions
 
-/app/password.ts
+/password.ts
 
 # testing
 /coverage
