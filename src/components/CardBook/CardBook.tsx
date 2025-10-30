@@ -42,6 +42,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
     const [isAuthorized, setIsAuthorized] = useState(false);
 
 
+    // Controle de hidratação e carregamento de dados salvos        
     useEffect(() => {
         setHydrated(true); 
 
@@ -56,6 +57,7 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         }
     }, [book.id, book.description]);
 
+    // Função para alternar o modo de edição
     const toggleEdit = () => {
         if (!isAuthorized) {
             setShowPasswordModal(true);
@@ -64,7 +66,8 @@ export default function CardBook({ isOpen, onClose, book }: CardBookProps) {
         }
         setIsEdit(prev => !prev);
     };
-
+    
+    // Função para salvar a descrição editada
     const handleSave = () => {
         localStorage.setItem(`@description-${book.id}`, description);
         const updatedBook = { ...book, description };

@@ -6,6 +6,7 @@ import CardBook from "../CardBook/CardBook";
 
 import { RiHeartAddFill } from "react-icons/ri";
 
+// Componente para exibir livros favoritos
 export default function FavoritesBooks({ favorites }) {
   const [isCardBookOpen, setIsCardBookOpen] = useState(false);
   const [selectedBook, setSelectedBook] = useState(null);
@@ -14,6 +15,7 @@ export default function FavoritesBooks({ favorites }) {
 
   return (
     <>
+    // Verifica se a lista de favoritos está vazia
       {Object.keys(favorites).length === 0 ? (
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} >
               <div className="favorites-empty">
@@ -22,6 +24,7 @@ export default function FavoritesBooks({ favorites }) {
             </div>
           </motion.div>
       ) : (
+        // Mapeia e exibe cada livro favorito
         Object.values(favorites).map((book, index) => (
           <motion.div key={book.id} className="Card_Book" initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 * index }}  >
             <button className="save-book-favorite">
@@ -61,6 +64,7 @@ export default function FavoritesBooks({ favorites }) {
         ))
       )}
 
+      // Componente CardBook para exibir detalhes do livro selecionado
       {isCardBookOpen && selectedBook && (
         <CardBook
           book={selectedBook}

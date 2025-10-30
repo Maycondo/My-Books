@@ -1,5 +1,6 @@
 import "./cardPassWord.css";
 
+// Definição das props do componente CardPassword
 interface CardPasswordProps {
   onClose: () => void;
   isOpen: boolean;

@@ -12,12 +12,15 @@ import { v4 as uuidv4 } from "uuid";
 import "./Style/style_1.css";
 import "./Style/style_2.css";
 
+// define categorias como uma tupla de strings constantes
 const categorias = [
   "Ação", "Fantasia", "Aventura", "Romance", "Terror", "Biografia", "Comédia",
   "Drama", "Ficção", "Infantil", "Mistério", "Thriller", "Vida Real",
   "Científica", "Ficção Científica", "Documentário", "História", "Política",
 ] as const;
 
+
+// Definição das props do componente CardBookAdd
 interface CardBookAddProps {
   isOpen: boolean;
   onClose: () => void;
@@ -65,6 +68,7 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
     }
   };
 
+  // Função para lidar com a seleção de categorias
   const handleCategoriaClick = (categoria: string) => {
     setNewBook((prev) => ({
       ...prev,
@@ -74,10 +78,12 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
     }));
   };
 
+  // Função para lidar com o upload de imagem
   const handleImageUpload = () => {
     setURLimagem((prev) => (prev ? null : "upload"));
   };
 
+  // Função para validar o formulário
   const validateForm = (): string | null => {
     const { title, author, description, categories } = newBook;
     if (!title.trim() || !author.trim() || !description.trim() || categories.length === 0) {
@@ -86,6 +92,7 @@ export default function CardBookAdd({ isOpen, onClose }: CardBookAddProps) {
     return null;
   };
 
+  // Função para lidar com o envio do formulário
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

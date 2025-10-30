@@ -11,6 +11,7 @@ import CardBook from "../CardBook/CardBook";
 import { PASSWORD_ADMIN } from "../../app/password";
 import CardPassword from "../CardPassWord/CardPassWord";
 
+// Definição das props do componente PanelBook
 interface PanelBookProps {
   onFavoritesUpdate: (favorites: Record<string, Book>) => void;
   favorites: Record<string, Book>;
@@ -32,6 +33,7 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
     setHydrated(true);
   }, []);
 
+  // Funções para lidar com ações de favorito e remoção de livros
   const handleFavoriteClick = (book: Book) => {
     setPendingBook(book);
     setActionType("favorite");
@@ -39,6 +41,7 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
     setSubmitted(false);
   };
 
+  // Função para lidar com a remoção de livros
   const handleRemoveClick = (book: Book) => {
     setPendingBook(book);
     setActionType("remove");
@@ -73,6 +76,7 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
     setShowPasswordModal(false);
   };
 
+  // Função para abrir o card do livro  
   const handleOpenCard = (book: Book) => {
     setSelectedBook(book);
     setIsCardBookOpen(true);
@@ -132,7 +136,10 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
         ))
       )}
 
-      {selectedBook && (
+
+      {
+        // Abre o CardBook se houver um livro selecionado
+      selectedBook && (
         <CardBook
           isOpen={isCardBookOpen}
           onClose={() => setIsCardBookOpen(false)}
@@ -140,7 +147,9 @@ export default function PanelBook({ onFavoritesUpdate, favorites }: PanelBookPro
         />
       )}
 
-      {showPasswordModal && (
+      
+      { // Abre o modal de senha se showPasswordModal for true
+      showPasswordModal && (
         <CardPassword
           isOpen={true}
           onClose={() => {

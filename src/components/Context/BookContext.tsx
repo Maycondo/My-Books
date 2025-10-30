@@ -2,6 +2,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 
+// Definindo o tipo do livro
 export type Book = {
   id: string;
   title: string;
@@ -12,6 +13,7 @@ export type Book = {
   rating: number;
 };
 
+// Definindo o tipo do contexto
 type BookContextType = {
   bookData: Book[];
   setBookData: React.Dispatch<React.SetStateAction<Book[]>>;
@@ -26,6 +28,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
 
   const [bookData, setBookData] = useState<Book[]>([]); 
 
+  // Buscar livros da API ao montar o componente
   useEffect(() => {
     axios.get("https://books-api-wt3h.onrender.com/Books")                                                                                                                                                                                                                                              
       .then((res) => setBookData(res.data))
@@ -69,6 +72,7 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// Hook personalizado para usar o contexto do livro
 export const useBook = () => {
   const context = useContext(BookContext);
   if (!context) {

@@ -8,6 +8,7 @@ import { BookProvider } from "../Context/BookContext";
 import "./style.css";
 import "./ButtonToggle.css";
 
+// define categorias como uma tupla de strings constantes
 const categorias = ["Books", "Favorites"] as const;
 
 export default function Panelhome() {
@@ -15,6 +16,7 @@ export default function Panelhome() {
     const [isOpen, setIsOpen] = useState(false);
     const [favorites, setFavorites] = useState({});
 
+    // mapeia cada categoria ao seu respectivo componente JSX
     const panelContent: Record<(typeof categorias)[number], JSX.Element> = {
         Books: <PanelBook onFavoritesUpdate={setFavorites} favorites={favorites}/>,
         Favorites: <FavoritesBooks favorites={favorites} />,
