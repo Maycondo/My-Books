@@ -9,7 +9,7 @@ export type Book = {
   authorBook: string;
   description: string;
   imageUrl: string;
-  categoria: string[];
+  categoria: string[];    
   rating: number;
 };
 
