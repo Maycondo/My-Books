@@ -10,7 +10,7 @@
 !.yarn/releases
 !.yarn/versions
 
-.password.ts
+password.ts
 
 # testing
 /coverage
@@ -43,5 +43,5 @@ yarn-error.log*
 next-env.d.ts
 
 # local da senha do adminstrador
-/src/app
+/src/app/password.ts
 
